@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ECharts">
-    <meta name="author" content="kener.linfeng@gmail.com">
     <title>ECharts · Example</title>
 
     <link rel="shortcut icon" href="../asset/ico/favicon.png">
@@ -29,155 +28,151 @@
 </head>
 
 <body>
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="head"></div>
-
-
     <div class="container-fluid">
         <div class="row-fluid example">
             <div id="sidebar-code" class="col-md-4">
                 <div class="well sidebar-nav">
                     <div class="nav-header"><a href="#" onclick="autoResize()" class="glyphicon glyphicon-resize-full" id ="icon-resize" ></a>option</div>
                     <textarea id="code" name="code">
-option = {
-    title : {
-        text : '类目坐标散点图',
-        subtext : 'dataZoom支持'
-    },
-    tooltip : {
-        trigger: 'axis',
-        axisPointer:{
-            type : 'cross',
-            lineStyle: {
-                type : 'dashed',
-                width : 1
-            }
-        }
-    },
-    toolbox: {
-        show : true,
-        feature : {
-            mark : {show: true},
-            dataView : {show: true, readOnly: false},
-            restore : {show: true},
-            saveAsImage : {show: true}
-        }
-    },
-    dataZoom: {
-        show: true,
-        start : 30,
-        end : 70
-    },
-    legend : {
-        data : ['series1', 'series2']
-    },
-    dataRange: {
-        min: 0,
-        max: 100,
-        orient: 'horizontal',
-        y: 30,
-        x: 'center',
-        //text:['高','低'],           // 文本，默认为数值文本
-        color:['lightgreen','orange'],
-        splitNumber: 5
-    },
-    xAxis : [
-        {
-            type : 'category',
-            axisLabel: {
-                formatter : function(v) {
-                    return '类目' + v
-                }
-            },
-            data : function (){
-                var list = [];
-                var len = 0;
-                while (len++ < 500) {
-                    list.push(len);
-                }
-                return list;
-            }()
-        }
-    ],
-    yAxis : [
-        {
-            type : 'value'
-        }
-    ],
-    animation: false,
-    series : [
-        {
-            name:'series1',
-            type:'scatter',
-            tooltip : {
-                trigger: 'item',
-                formatter : function (params) {
-                    return params.seriesName + ' （'  + '类目' + params.value[0] + '）<br/>'
-                           + params.value[1] + ', ' 
-                           + params.value[2]; 
-                },
-                axisPointer:{
-                    type : 'cross',
-                    lineStyle: {
-                        type : 'dashed',
-                        width : 1
-                    }
-                }
-            },
-            symbolSize: function (value){
-                return Math.round(value[2]/10);
-            },
-            data: (function () {
-                var d = [];
-                var len = 0;
-                var value;
-                while (len++ < 500) {
-                    d.push([
-                        len,
-                        (Math.random()*30).toFixed(2) - 0,
-                        (Math.random()*100).toFixed(2) - 0
-                    ]);
-                }
-                return d;
-            })()
-        },
-        {
-            name:'series2',
-            type:'scatter',
-            tooltip : {
-                trigger: 'item',
-                formatter : function (params) {
-                    return params.seriesName + ' （'  + '类目' + params.value[0] + '）<br/>'
-                           + params.value[1] + ', ' 
-                           + params.value[2]; 
-                },
-                axisPointer:{
-                    type : 'cross',
-                    lineStyle: {
-                        type : 'dashed',
-                        width : 1
-                    }
-                }
-            },
-            symbolSize: function (value){
-                return Math.round(value[2]/10);
-            },
-            data: (function () {
-                var d = [];
-                var len = 0;
-                var value;
-                while (len++ < 500) {
-                    d.push([
-                        len,
-                        (Math.random()*30).toFixed(2) - 0,
-                        (Math.random()*100).toFixed(2) - 0
-                    ]);
-                }
-                return d;
-            })()
-        }
-    ]
-};
+                        option = {
+                            title : {
+                                text : '类目坐标散点图',
+                                subtext : 'dataZoom支持'
+                            },
+                            tooltip : {
+                                trigger: 'axis',
+                                axisPointer:{
+                                    type : 'cross',
+                                    lineStyle: {
+                                        type : 'dashed',
+                                        width : 1
+                                    }
+                                }
+                            },
+                            toolbox: {
+                                show : true,
+                                feature : {
+                                    mark : {show: true},
+                                    dataView : {show: true, readOnly: false},
+                                    restore : {show: true},
+                                    saveAsImage : {show: true}
+                                }
+                            },
+                            dataZoom: {
+                                show: true,
+                                start : 30,
+                                end : 70
+                            },
+                            legend : {
+                                data : ['series1', 'series2']
+                            },
+                            dataRange: {
+                                min: 0,
+                                max: 100,
+                                orient: 'horizontal',
+                                y: 30,
+                                x: 'center',
+                                //text:['高','低'],           // 文本，默认为数值文本
+                                color:['lightgreen','orange'],
+                                splitNumber: 5
+                            },
+                            xAxis : [
+                                {
+                                    type : 'category',
+                                    axisLabel: {
+                                        formatter : function(v) {
+                                            return '类目' + v
+                                        }
+                                    },
+                                    data : function (){
+                                        var list = [];
+                                        var len = 0;
+                                        while (len++ < 500) {
+                                            list.push(len);
+                                        }
+                                        return list;
+                                    }()
+                                }
+                            ],
+                            yAxis : [
+                                {
+                                    type : 'value'
+                                }
+                            ],
+                            animation: false,
+                            series : [
+                                {
+                                    name:'series1',
+                                    type:'scatter',
+                                    tooltip : {
+                                        trigger: 'item',
+                                        formatter : function (params) {
+                                            return params.seriesName + ' （'  + '类目' + params.value[0] + '）<br/>'
+                                                   + params.value[1] + ', '
+                                                   + params.value[2];
+                                        },
+                                        axisPointer:{
+                                            type : 'cross',
+                                            lineStyle: {
+                                                type : 'dashed',
+                                                width : 1
+                                            }
+                                        }
+                                    },
+                                    symbolSize: function (value){
+                                        return Math.round(value[2]/10);
+                                    },
+                                    data: (function () {
+                                        var d = [];
+                                        var len = 0;
+                                        var value;
+                                        while (len++ < 500) {
+                                            d.push([
+                                                len,
+                                                (Math.random()*30).toFixed(2) - 0,
+                                                (Math.random()*100).toFixed(2) - 0
+                                            ]);
+                                        }
+                                        return d;
+                                    })()
+                                },
+                                {
+                                    name:'series2',
+                                    type:'scatter',
+                                    tooltip : {
+                                        trigger: 'item',
+                                        formatter : function (params) {
+                                            return params.seriesName + ' （'  + '类目' + params.value[0] + '）<br/>'
+                                                   + params.value[1] + ', '
+                                                   + params.value[2];
+                                        },
+                                        axisPointer:{
+                                            type : 'cross',
+                                            lineStyle: {
+                                                type : 'dashed',
+                                                width : 1
+                                            }
+                                        }
+                                    },
+                                    symbolSize: function (value){
+                                        return Math.round(value[2]/10);
+                                    },
+                                    data: (function () {
+                                        var d = [];
+                                        var len = 0;
+                                        var value;
+                                        while (len++ < 500) {
+                                            d.push([
+                                                len,
+                                                (Math.random()*30).toFixed(2) - 0,
+                                                (Math.random()*100).toFixed(2) - 0
+                                            ]);
+                                        }
+                                        return d;
+                                    })()
+                                }
+                            ]
+                        };
                     </textarea>
               </div><!--/.well -->
             </div><!--/span-->
@@ -196,9 +191,6 @@ option = {
         </div><!--/.fluid-container-->
 
     <footer id="footer"></footer>
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="../asset/js/jquery.min.js"></script>
     <script type="text/javascript" src="../asset/js/echartsHome.js"></script>
     <script src="../asset/js/bootstrap.min.js"></script>

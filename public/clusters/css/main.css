@@ -1,0 +1,29 @@
+.go-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  border: none;
+  border-radius: 0.5em;
+  background: none;
+
+  color: #1793d1;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.go-back:disabled {
+  display: none;
+}
+
+.highcharts-tooltip span {
+  width: 340px;
+  white-space: normal !important;
+}
+
+#pie-chart,
+#column-chart {
+  float: left;
+  width: 50%;
+}

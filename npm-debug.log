@@ -1,57 +1,55 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'E:\\Coding\\node\\\\node.exe',
-1 verbose cli   'E:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'install' ]
+1 verbose cli [ 'e:\\Coding\\node\\node.exe',
+1 verbose cli   'e:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'seajs',
+1 verbose cli   '-g' ]
 2 info using npm@2.2.0
 3 info using node@v0.10.35
-4 verbose node symlink E:\Coding\node\\node.exe
-5 verbose install where, deps [ 'G:\\code\\mine\\yy_scatter', [ 'express' ] ]
-6 verbose install where, peers [ 'G:\\code\\mine\\yy_scatter', [] ]
-7 info preinstall yy_scatter@0.0.1
-8 silly cache add args [ 'express@3.x', null ]
-9 verbose cache add spec express@3.x
-10 silly cache add parsed spec { raw: 'express@3.x',
-10 silly cache add   scope: null,
-10 silly cache add   name: 'express',
-10 silly cache add   rawSpec: '3.x',
-10 silly cache add   spec: '>=3.0.0 <4.0.0',
-10 silly cache add   type: 'range' }
-11 verbose addNamed express@>=3.0.0 <4.0.0
-12 silly addNamed semver.valid null
-13 silly addNamed semver.validRange >=3.0.0 <4.0.0
-14 silly addNameRange { name: 'express', range: '>=3.0.0 <4.0.0', hasData: false }
-15 silly mapToRegistry name express
-16 silly mapToRegistry using default registry
-17 silly mapToRegistry registry http://npm.internal.baidu.com/
-18 silly mapToRegistry uri http://npm.internal.baidu.com/express
-19 verbose addNameRange registry:http://npm.internal.baidu.com/express not in flight; fetching
-20 verbose request uri http://npm.internal.baidu.com/express
-21 verbose request no auth needed
-22 info attempt registry request try #1 at 14:09:09
-23 verbose request id c13c4c9e59429044
-24 http request GET http://npm.internal.baidu.com/express
-25 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
-26 info attempt registry request try #2 at 14:09:31
-27 http request GET http://npm.internal.baidu.com/express
-28 info retry will retry, error on last attempt: Error: getaddrinfo EAGAIN
-29 info attempt registry request try #3 at 14:10:39
-30 http request GET http://npm.internal.baidu.com/express
-31 verbose stack Error: getaddrinfo ENOTFOUND
-31 verbose stack     at errnoException (dns.js:37:11)
-31 verbose stack     at Object.onanswer [as oncomplete] (dns.js:124:16)
-32 verbose cwd G:\code\mine\yy_scatter
-33 error Windows_NT 6.1.7601
-34 error argv "E:\\Coding\\node\\\\node.exe" "E:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js" "install"
-35 error node v0.10.35
-36 error npm  v2.2.0
-37 error code ENOTFOUND
-38 error errno ENOTFOUND
-39 error syscall getaddrinfo
-40 error network getaddrinfo ENOTFOUND
-40 error network This is most likely not a problem with npm itself
-40 error network and is related to network connectivity.
-40 error network In most cases you are behind a proxy or have bad network settings.
-40 error network
-40 error network If you are behind a proxy, please make sure that the
-40 error network 'proxy' config is set properly.  See: 'npm help config'
-41 verbose exit [ 1, true ]
+4 silly cache add args [ 'seajs', null ]
+5 verbose cache add spec seajs
+6 silly cache add parsed spec { raw: 'seajs',
+6 silly cache add   scope: null,
+6 silly cache add   name: 'seajs',
+6 silly cache add   rawSpec: '',
+6 silly cache add   spec: '*',
+6 silly cache add   type: 'range' }
+7 verbose addNamed seajs@*
+8 silly addNamed semver.valid null
+9 silly addNamed semver.validRange *
+10 silly addNameRange { name: 'seajs', range: '*', hasData: false }
+11 silly mapToRegistry name seajs
+12 silly mapToRegistry using default registry
+13 silly mapToRegistry registry http://npm.internal.baidu.com/
+14 silly mapToRegistry uri http://npm.internal.baidu.com/seajs
+15 verbose addNameRange registry:http://npm.internal.baidu.com/seajs not in flight; fetching
+16 verbose request uri http://npm.internal.baidu.com/seajs
+17 verbose request no auth needed
+18 info attempt registry request try #1 at 23:43:57
+19 verbose request id 6b595695fe66ab80
+20 http request GET http://npm.internal.baidu.com/seajs
+21 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+22 info attempt registry request try #2 at 23:44:19
+23 http request GET http://npm.internal.baidu.com/seajs
+24 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+25 info attempt registry request try #3 at 23:45:31
+26 http request GET http://npm.internal.baidu.com/seajs
+27 verbose stack Error: getaddrinfo ENOTFOUND
+27 verbose stack     at errnoException (dns.js:37:11)
+27 verbose stack     at Object.onanswer [as oncomplete] (dns.js:124:16)
+28 verbose cwd G:\bishe\yy_scatter
+29 error Windows_NT 6.1.7601
+30 error argv "e:\\Coding\\node\\node.exe" "e:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js" "install" "seajs" "-g"
+31 error node v0.10.35
+32 error npm  v2.2.0
+33 error code ENOTFOUND
+34 error errno ENOTFOUND
+35 error syscall getaddrinfo
+36 error network getaddrinfo ENOTFOUND
+36 error network This is most likely not a problem with npm itself
+36 error network and is related to network connectivity.
+36 error network In most cases you are behind a proxy or have bad network settings.
+36 error network
+36 error network If you are behind a proxy, please make sure that the
+36 error network 'proxy' config is set properly.  See: 'npm help config'
+37 verbose exit [ 1, true ]

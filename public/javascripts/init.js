@@ -1,5 +1,4 @@
 $(function () {
-
     // Give the points a 3D feel by adding a radial gradient
     Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function (color) {
         return {

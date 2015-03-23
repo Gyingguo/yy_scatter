@@ -1,40 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <link href="/main.css" rel="stylesheet">
-        <script src="/javascripts/jquery.js"></script>
-        <script src="/javascripts/main.js"></script>
-    </head>
-    <body>
-        <header>
-            <div class="container">
-                <nav class="social">
-                    <a class="github" target="_blank" href="" title="github"></a>
-                    <a class="weibo" target="_blank" href="" title="weibo"></a>
-                    <a class="rss" target="_blank" href="" title="rss"></a>
-                    <a class="google" target="_blank" href="" title="google"></a>
-                    <a class="linkedin" target="_blank" href="" title="linkedin"></a>
-                </nav>
-            </div>
-        </header>
-        <div class="container">
-            <div class="container-screen">
-                <% include parts/00001.ejs %>
-            </div>
-            <div class="container-menu">
-                <ul>
-                    <% for (var i = 0; i < buttonUrl.length; i++) {%>
-                    <li id="<%= buttonUrl[i].id %>">
-                        <a href="#<%= buttonUrl[i].id %>">
-                            <img src="<%= buttonUrl[i].src %>" alt="<%= buttonUrl[i].name %>"/>
-                        </a>
-                    </li>
-                    <% } %>
-                </ul>
-            </div>
-            <div class="container-menu-bottom"></div>
-            <div class="container-curtain"></div>
-        </div>
-        <footer></footer>
-    </body>
+<head>
+    <meta charset="utf-8">
+    <title>聚类</title>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+    <button type="button" class="go-back">￩</button>
+
+    <div id="pie-chart"></div>
+    <div id="column-chart"></div>
+    <div id="scatter-chart"></div>
+
+    <script src="/lib/jquery-2.0.3.js"></script>
+    <script src="/lib/highcharts-4.0.1/js/highcharts.js"></script>
+    <script src="/lib/highcharts-4.0.1/js/highcharts-3d.js"></script>
+    <script src="/lib/highcharts-4.0.1/js/modules/drilldown.js"></script>
+
+    <script src="/javascripts/init.js"></script>
+    <!--
+    <script src="js/main.js"></script>
+    -->
+</body>
 </html>

@@ -1,0 +1,1066 @@
+{
+  "nodes": [
+    {
+      "id": 29,
+      "name": "计算机",
+      "depth": 0
+    },
+    {
+      "id": 40,
+      "name": "机系统",
+      "depth": 1
+    },
+    {
+      "id": 1512,
+      "name": "机设备",
+      "depth": 1
+    },
+    {
+      "id": 1783,
+      "name": "笔记型",
+      "depth": 1
+    },
+    {
+      "id": 1108,
+      "name": "usb",
+      "depth": 1
+    },
+    {
+      "id": 1565,
+      "name": "操作系统",
+      "depth": 1
+    },
+    {
+      "id": 32,
+      "name": "服务器",
+      "depth": 1
+    },
+    {
+      "id": 1339,
+      "name": "bios",
+      "depth": 1
+    },
+    {
+      "id": 15,
+      "name": "便携式",
+      "depth": 1
+    },
+    {
+      "id": 103,
+      "name": "处理器",
+      "depth": 1
+    },
+    {
+      "id": 91,
+      "name": "控制器",
+      "depth": 1
+    },
+    {
+      "id": 125494,
+      "name": "掀启部",
+      "depth": 2
+    },
+    {
+      "id": 149877,
+      "name": "底承架",
+      "depth": 2
+    },
+    {
+      "id": 70562,
+      "name": "ground",
+      "depth": 2
+    },
+    {
+      "id": 125538,
+      "name": "入风部",
+      "depth": 2
+    },
+    {
+      "id": 158097,
+      "name": "形圈部",
+      "depth": 2
+    },
+    {
+      "id": 139195,
+      "name": "内卡钩",
+      "depth": 2
+    },
+    {
+      "id": 125371,
+      "name": "lalt",
+      "depth": 2
+    },
+    {
+      "id": 125370,
+      "name": "rshift",
+      "depth": 2
+    },
+    {
+      "id": 125369,
+      "name": "ralt",
+      "depth": 2
+    },
+    {
+      "id": 125368,
+      "name": "lctrl",
+      "depth": 2
+    },
+    {
+      "id": 49893,
+      "name": "ql3",
+      "depth": 2
+    },
+    {
+      "id": 21261,
+      "name": "adapter",
+      "depth": 2
+    },
+    {
+      "id": 49891,
+      "name": "ql1",
+      "depth": 2
+    },
+    {
+      "id": 77350,
+      "name": "类比推理",
+      "depth": 2
+    },
+    {
+      "id": 91050,
+      "name": "主用表",
+      "depth": 2
+    },
+    {
+      "id": 168107,
+      "name": "采集管理器",
+      "depth": 2
+    },
+    {
+      "id": 6094,
+      "name": "arm",
+      "depth": 2
+    },
+    {
+      "id": 334,
+      "name": "dsp",
+      "depth": 2
+    },
+    {
+      "id": 1554,
+      "name": "寄存器",
+      "depth": 2
+    },
+    {
+      "id": 3143,
+      "name": "高速缓存",
+      "depth": 2
+    },
+    {
+      "id": 1575,
+      "name": "gps",
+      "depth": 2
+    },
+    {
+      "id": 7789,
+      "name": "vliw",
+      "depth": 2
+    },
+    {
+      "id": 6799,
+      "name": "流水线",
+      "depth": 2
+    },
+    {
+      "id": 5063,
+      "name": "指令集",
+      "depth": 2
+    },
+    {
+      "id": 63204,
+      "name": "主动权",
+      "depth": 2
+    },
+    {
+      "id": 1166,
+      "name": "fpga",
+      "depth": 2
+    },
+    {
+      "id": 4384,
+      "name": "biso",
+      "depth": 2
+    },
+    {
+      "id": 84260,
+      "name": "1394guid",
+      "depth": 2
+    },
+    {
+      "id": 66663,
+      "name": "undi",
+      "depth": 2
+    },
+    {
+      "id": 51819,
+      "name": "spiselect",
+      "depth": 2
+    },
+    {
+      "id": 113220,
+      "name": "evd",
+      "depth": 2
+    },
+    {
+      "id": 67207,
+      "name": "功能存储器",
+      "depth": 2
+    },
+    {
+      "id": 4042,
+      "name": "电脑系统",
+      "depth": 2
+    },
+    {
+      "id": 150852,
+      "name": "u55",
+      "depth": 2
+    },
+    {
+      "id": 150851,
+      "name": "u54",
+      "depth": 2
+    },
+    {
+      "id": 124158,
+      "name": "capsule",
+      "depth": 2
+    },
+    {
+      "id": 30515,
+      "name": "micro",
+      "depth": 2
+    },
+    {
+      "id": 12672,
+      "name": "key",
+      "depth": 2
+    },
+    {
+      "id": 6456,
+      "name": "otg",
+      "depth": 2
+    },
+    {
+      "id": 6457,
+      "name": "mini",
+      "depth": 2
+    },
+    {
+      "id": 6463,
+      "name": "鼠标垫",
+      "depth": 2
+    },
+    {
+      "id": 11185,
+      "name": "导航仪",
+      "depth": 2
+    },
+    {
+      "id": 1143,
+      "name": "连接器",
+      "depth": 2
+    },
+    {
+      "id": 160985,
+      "name": "卡装件",
+      "depth": 2
+    },
+    {
+      "id": 6045,
+      "name": "上网卡",
+      "depth": 2
+    },
+    {
+      "id": 160492,
+      "name": "卡装块",
+      "depth": 2
+    },
+    {
+      "id": 7805,
+      "name": "linux",
+      "depth": 2
+    },
+    {
+      "id": 43571,
+      "name": "伽利略",
+      "depth": 2
+    },
+    {
+      "id": 82167,
+      "name": "代码运行",
+      "depth": 2
+    },
+    {
+      "id": 68475,
+      "name": "就地执行",
+      "depth": 2
+    },
+    {
+      "id": 4342,
+      "name": "镜像文件",
+      "depth": 2
+    },
+    {
+      "id": 67431,
+      "name": "serviceos",
+      "depth": 2
+    },
+    {
+      "id": 70378,
+      "name": "光盘版",
+      "depth": 2
+    },
+    {
+      "id": 13439,
+      "name": "强制访问控制",
+      "depth": 2
+    },
+    {
+      "id": 2789,
+      "name": "java",
+      "depth": 2
+    },
+    {
+      "id": 61265,
+      "name": "cssd",
+      "depth": 2
+    },
+    {
+      "id": 2419,
+      "name": "can",
+      "depth": 2
+    },
+    {
+      "id": 5232,
+      "name": "plc",
+      "depth": 2
+    },
+    {
+      "id": 1382,
+      "name": "无线网",
+      "depth": 2
+    },
+    {
+      "id": 1379,
+      "name": "无线网络",
+      "depth": 2
+    },
+    {
+      "id": 1895,
+      "name": "编程序",
+      "depth": 2
+    },
+    {
+      "id": 2326,
+      "name": "dma",
+      "depth": 2
+    },
+    {
+      "id": 18999,
+      "name": "mvb",
+      "depth": 2
+    },
+    {
+      "id": 1717,
+      "name": "以太网",
+      "depth": 2
+    },
+    {
+      "id": 297,
+      "name": "单片机",
+      "depth": 2
+    },
+    {
+      "id": 1057,
+      "name": "继电器",
+      "depth": 2
+    },
+    {
+      "id": 80360,
+      "name": "搜寻器",
+      "depth": 2
+    },
+    {
+      "id": 4029,
+      "name": "电子系统",
+      "depth": 2
+    },
+    {
+      "id": 4024,
+      "name": "电子系",
+      "depth": 2
+    },
+    {
+      "id": 5679,
+      "name": "集中器",
+      "depth": 2
+    },
+    {
+      "id": 19513,
+      "name": "高可靠性",
+      "depth": 2
+    },
+    {
+      "id": 10099,
+      "name": "金融交易",
+      "depth": 2
+    },
+    {
+      "id": 12390,
+      "name": "数字证书",
+      "depth": 2
+    },
+    {
+      "id": 3944,
+      "name": "数据共享",
+      "depth": 2
+    },
+    {
+      "id": 14008,
+      "name": "缓存数据",
+      "depth": 2
+    },
+    {
+      "id": 4580,
+      "name": "电子装置",
+      "depth": 2
+    },
+    {
+      "id": 611,
+      "name": "电子设备",
+      "depth": 2
+    },
+    {
+      "id": 173170,
+      "name": "偏尾仪",
+      "depth": 2
+    },
+    {
+      "id": 213391,
+      "name": "放样器",
+      "depth": 2
+    },
+    {
+      "id": 177009,
+      "name": "电量分析",
+      "depth": 2
+    },
+    {
+      "id": 160888,
+      "name": "血细胞计数器",
+      "depth": 2
+    },
+    {
+      "id": 30969,
+      "name": "跟屁虫",
+      "depth": 2
+    },
+    {
+      "id": 2472,
+      "name": "终端机",
+      "depth": 2
+    },
+    {
+      "id": 210029,
+      "name": "测氢仪",
+      "depth": 2
+    },
+    {
+      "id": 1068,
+      "name": "媒体播放器",
+      "depth": 2
+    },
+    {
+      "id": 2281,
+      "name": "web",
+      "depth": 2
+    },
+    {
+      "id": 4583,
+      "name": "流媒体",
+      "depth": 2
+    },
+    {
+      "id": 18938,
+      "name": "dhcp",
+      "depth": 2
+    },
+    {
+      "id": 3601,
+      "name": "dns",
+      "depth": 2
+    },
+    {
+      "id": 2788,
+      "name": "浏览器",
+      "depth": 2
+    },
+    {
+      "id": 2975,
+      "name": "sip",
+      "depth": 2
+    },
+    {
+      "id": 8704,
+      "name": "即时通讯",
+      "depth": 2
+    },
+    {
+      "id": 8702,
+      "name": "即时通",
+      "depth": 2
+    },
+    {
+      "id": 10616,
+      "name": "aaa",
+      "depth": 2
+    },
+    {
+      "id": 5131,
+      "name": "http",
+      "depth": 2
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 1,
+      "weight": 76154.7692158362
+    },
+    {
+      "source": 0,
+      "target": 2,
+      "weight": 24875.4061540188
+    },
+    {
+      "source": 0,
+      "target": 3,
+      "weight": 21711.0600367964
+    },
+    {
+      "source": 0,
+      "target": 4,
+      "weight": 16080.7686737303
+    },
+    {
+      "source": 0,
+      "target": 5,
+      "weight": 15164.1516880611
+    },
+    {
+      "source": 0,
+      "target": 6,
+      "weight": 14009.9381001181
+    },
+    {
+      "source": 0,
+      "target": 7,
+      "weight": 13050.0196997213
+    },
+    {
+      "source": 0,
+      "target": 8,
+      "weight": 11658.554176196
+    },
+    {
+      "source": 0,
+      "target": 9,
+      "weight": 11111.0431913953
+    },
+    {
+      "source": 0,
+      "target": 10,
+      "weight": 10240.3004943241
+    },
+    {
+      "source": 3,
+      "target": 11,
+      "weight": 28870.6949232387
+    },
+    {
+      "source": 3,
+      "target": 12,
+      "weight": 25662.8399317678
+    },
+    {
+      "source": 3,
+      "target": 13,
+      "weight": 18146.3681402579
+    },
+    {
+      "source": 3,
+      "target": 14,
+      "weight": 16039.2749573549
+    },
+    {
+      "source": 3,
+      "target": 15,
+      "weight": 12501.3776142176
+    },
+    {
+      "source": 3,
+      "target": 16,
+      "weight": 9238.6223754364
+    },
+    {
+      "source": 3,
+      "target": 17,
+      "weight": 9238.6223754364
+    },
+    {
+      "source": 3,
+      "target": 18,
+      "weight": 9238.6223754364
+    },
+    {
+      "source": 3,
+      "target": 19,
+      "weight": 9238.6223754364
+    },
+    {
+      "source": 3,
+      "target": 20,
+      "weight": 9238.6223754364
+    },
+    {
+      "source": 1,
+      "target": 21,
+      "weight": 7390.89070824193
+    },
+    {
+      "source": 1,
+      "target": 22,
+      "weight": 5268.06511105504
+    },
+    {
+      "source": 1,
+      "target": 23,
+      "weight": 5226.14893880651
+    },
+    {
+      "source": 1,
+      "target": 24,
+      "weight": 4692.62902110598
+    },
+    {
+      "source": 1,
+      "target": 25,
+      "weight": 3878.60153785291
+    },
+    {
+      "source": 1,
+      "target": 26,
+      "weight": 3378.69289519631
+    },
+    {
+      "source": 9,
+      "target": 27,
+      "weight": 16817.2134715927
+    },
+    {
+      "source": 9,
+      "target": 28,
+      "weight": 16668.4446905593
+    },
+    {
+      "source": 9,
+      "target": 29,
+      "weight": 14091.7654946818
+    },
+    {
+      "source": 9,
+      "target": 30,
+      "weight": 10908.9268066522
+    },
+    {
+      "source": 9,
+      "target": 31,
+      "weight": 9998.44305602002
+    },
+    {
+      "source": 9,
+      "target": 32,
+      "weight": 8709.968787691
+    },
+    {
+      "source": 9,
+      "target": 33,
+      "weight": 8297.19001591119
+    },
+    {
+      "source": 9,
+      "target": 34,
+      "weight": 7910.65084165901
+    },
+    {
+      "source": 9,
+      "target": 35,
+      "weight": 7775.86675835357
+    },
+    {
+      "source": 9,
+      "target": 36,
+      "weight": 7734.52518418476
+    },
+    {
+      "source": 7,
+      "target": 37,
+      "weight": 32641.8526847347
+    },
+    {
+      "source": 7,
+      "target": 38,
+      "weight": 24927.7774145777
+    },
+    {
+      "source": 7,
+      "target": 39,
+      "weight": 19474.8261051388
+    },
+    {
+      "source": 7,
+      "target": 40,
+      "weight": 19474.8261051388
+    },
+    {
+      "source": 7,
+      "target": 41,
+      "weight": 17310.9565379012
+    },
+    {
+      "source": 7,
+      "target": 42,
+      "weight": 13219.9503373176
+    },
+    {
+      "source": 7,
+      "target": 43,
+      "weight": 12232.4348991133
+    },
+    {
+      "source": 7,
+      "target": 44,
+      "weight": 10386.5739227407
+    },
+    {
+      "source": 7,
+      "target": 45,
+      "weight": 10386.5739227407
+    },
+    {
+      "source": 7,
+      "target": 46,
+      "weight": 10258.3446150526
+    },
+    {
+      "source": 4,
+      "target": 47,
+      "weight": 33970.8928033541
+    },
+    {
+      "source": 4,
+      "target": 48,
+      "weight": 26626.0568746667
+    },
+    {
+      "source": 4,
+      "target": 49,
+      "weight": 23781.2481100999
+    },
+    {
+      "source": 4,
+      "target": 50,
+      "weight": 18060.3405637961
+    },
+    {
+      "source": 4,
+      "target": 51,
+      "weight": 14979.8924006881
+    },
+    {
+      "source": 4,
+      "target": 52,
+      "weight": 13829.1638722466
+    },
+    {
+      "source": 4,
+      "target": 53,
+      "weight": 13182.6308280248
+    },
+    {
+      "source": 4,
+      "target": 54,
+      "weight": 12032.6641919334
+    },
+    {
+      "source": 4,
+      "target": 55,
+      "weight": 11827.2929998361
+    },
+    {
+      "source": 4,
+      "target": 56,
+      "weight": 11698.4235199353
+    },
+    {
+      "source": 5,
+      "target": 57,
+      "weight": 21094.9140726542
+    },
+    {
+      "source": 5,
+      "target": 58,
+      "weight": 10432.5480085387
+    },
+    {
+      "source": 5,
+      "target": 59,
+      "weight": 8667.03988401679
+    },
+    {
+      "source": 5,
+      "target": 60,
+      "weight": 8560.03939162152
+    },
+    {
+      "source": 5,
+      "target": 61,
+      "weight": 8213.3203434722
+    },
+    {
+      "source": 5,
+      "target": 62,
+      "weight": 8058.19823927181
+    },
+    {
+      "source": 5,
+      "target": 63,
+      "weight": 7879.12716728799
+    },
+    {
+      "source": 5,
+      "target": 64,
+      "weight": 7853.37315074968
+    },
+    {
+      "source": 5,
+      "target": 65,
+      "weight": 7740.15869509251
+    },
+    {
+      "source": 5,
+      "target": 66,
+      "weight": 7660.65334350318
+    },
+    {
+      "source": 10,
+      "target": 67,
+      "weight": 18016.283590132
+    },
+    {
+      "source": 10,
+      "target": 68,
+      "weight": 16473.8761037633
+    },
+    {
+      "source": 10,
+      "target": 69,
+      "weight": 16152.9711018951
+    },
+    {
+      "source": 10,
+      "target": 70,
+      "weight": 16110.8374008641
+    },
+    {
+      "source": 10,
+      "target": 71,
+      "weight": 13775.5305354727
+    },
+    {
+      "source": 10,
+      "target": 72,
+      "weight": 13019.885028213
+    },
+    {
+      "source": 10,
+      "target": 73,
+      "weight": 10386.890667097
+    },
+    {
+      "source": 10,
+      "target": 74,
+      "weight": 9134.13724978742
+    },
+    {
+      "source": 10,
+      "target": 75,
+      "weight": 8681.9546836292
+    },
+    {
+      "source": 10,
+      "target": 76,
+      "weight": 7810.75568510926
+    },
+    {
+      "source": 2,
+      "target": 77,
+      "weight": 10289.3866296787
+    },
+    {
+      "source": 2,
+      "target": 78,
+      "weight": 4047.26324685346
+    },
+    {
+      "source": 2,
+      "target": 79,
+      "weight": 4041.59083587129
+    },
+    {
+      "source": 2,
+      "target": 80,
+      "weight": 2880.20971536702
+    },
+    {
+      "source": 2,
+      "target": 81,
+      "weight": 2537.47162629797
+    },
+    {
+      "source": 2,
+      "target": 57,
+      "weight": 2255.62488780743
+    },
+    {
+      "source": 2,
+      "target": 82,
+      "weight": 1928.47237923597
+    },
+    {
+      "source": 2,
+      "target": 83,
+      "weight": 1837.02093100714
+    },
+    {
+      "source": 2,
+      "target": 84,
+      "weight": 1808.97912108826
+    },
+    {
+      "source": 2,
+      "target": 85,
+      "weight": 1771.42986909377
+    },
+    {
+      "source": 8,
+      "target": 86,
+      "weight": 25029.5345726507
+    },
+    {
+      "source": 8,
+      "target": 87,
+      "weight": 17430.2947902783
+    },
+    {
+      "source": 8,
+      "target": 88,
+      "weight": 13382.7475034304
+    },
+    {
+      "source": 8,
+      "target": 89,
+      "weight": 10037.0606275728
+    },
+    {
+      "source": 8,
+      "target": 90,
+      "weight": 10037.0606275728
+    },
+    {
+      "source": 8,
+      "target": 91,
+      "weight": 10037.0606275728
+    },
+    {
+      "source": 8,
+      "target": 92,
+      "weight": 9810.04956661517
+    },
+    {
+      "source": 8,
+      "target": 93,
+      "weight": 9286.08658790296
+    },
+    {
+      "source": 8,
+      "target": 94,
+      "weight": 8921.83166895358
+    },
+    {
+      "source": 8,
+      "target": 95,
+      "weight": 8878.53603586185
+    },
+    {
+      "source": 6,
+      "target": 96,
+      "weight": 33279.1018983358
+    },
+    {
+      "source": 6,
+      "target": 97,
+      "weight": 24547.1949231686
+    },
+    {
+      "source": 6,
+      "target": 98,
+      "weight": 20616.8447910055
+    },
+    {
+      "source": 6,
+      "target": 99,
+      "weight": 19575.733074034
+    },
+    {
+      "source": 6,
+      "target": 100,
+      "weight": 17207.0192702514
+    },
+    {
+      "source": 6,
+      "target": 101,
+      "weight": 16993.9220343766
+    },
+    {
+      "source": 6,
+      "target": 102,
+      "weight": 16661.4011562664
+    },
+    {
+      "source": 6,
+      "target": 103,
+      "weight": 16560.2063400621
+    },
+    {
+      "source": 6,
+      "target": 104,
+      "weight": 14787.5981232397
+    },
+    {
+      "source": 6,
+      "target": 105,
+      "weight": 13760.7621413256
+    }
+  ]
+}

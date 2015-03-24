@@ -1,0 +1,736 @@
+{
+  "nodes": [
+    {
+      "id": 43190,
+      "name": "rai",
+      "depth": 0
+    },
+    {
+      "id": 152902,
+      "name": "umm",
+      "depth": 1
+    },
+    {
+      "id": 152901,
+      "name": "ucchr",
+      "depth": 1
+    },
+    {
+      "id": 43189,
+      "name": "路由区标识",
+      "depth": 1
+    },
+    {
+      "id": 56796,
+      "name": "tai",
+      "depth": 1
+    },
+    {
+      "id": 213280,
+      "name": "rbj",
+      "depth": 1
+    },
+    {
+      "id": 59933,
+      "name": "list",
+      "depth": 1
+    },
+    {
+      "id": 10957,
+      "name": "rac",
+      "depth": 1
+    },
+    {
+      "id": 114258,
+      "name": "aurora",
+      "depth": 1
+    },
+    {
+      "id": 61337,
+      "name": "isr",
+      "depth": 1
+    },
+    {
+      "id": 59700,
+      "name": "tmsi",
+      "depth": 1
+    },
+    {
+      "id": 42584,
+      "name": "签约用户",
+      "depth": 2
+    },
+    {
+      "id": 14778,
+      "name": "scp",
+      "depth": 2
+    },
+    {
+      "id": 12294,
+      "name": "智能网",
+      "depth": 2
+    },
+    {
+      "id": 168800,
+      "name": "ova",
+      "depth": 2
+    },
+    {
+      "id": 109795,
+      "name": "balb",
+      "depth": 2
+    },
+    {
+      "id": 96667,
+      "name": "rlm",
+      "depth": 2
+    },
+    {
+      "id": 114986,
+      "name": "hsa",
+      "depth": 2
+    },
+    {
+      "id": 106507,
+      "name": "bsa",
+      "depth": 2
+    },
+    {
+      "id": 51798,
+      "name": "rdbms",
+      "depth": 2
+    },
+    {
+      "id": 49756,
+      "name": "mlc",
+      "depth": 2
+    },
+    {
+      "id": 29032,
+      "name": "人工免疫",
+      "depth": 2
+    },
+    {
+      "id": 22365,
+      "name": "分公司",
+      "depth": 2
+    },
+    {
+      "id": 91898,
+      "name": "多巴胺",
+      "depth": 2
+    },
+    {
+      "id": 59934,
+      "name": "allowed",
+      "depth": 2
+    },
+    {
+      "id": 73075,
+      "name": "网络商城",
+      "depth": 2
+    },
+    {
+      "id": 91930,
+      "name": "guti",
+      "depth": 2
+    },
+    {
+      "id": 35390,
+      "name": "ipg",
+      "depth": 2
+    },
+    {
+      "id": 59085,
+      "name": "flush",
+      "depth": 2
+    },
+    {
+      "id": 62825,
+      "name": "多环网",
+      "depth": 2
+    },
+    {
+      "id": 59935,
+      "name": "hms",
+      "depth": 2
+    },
+    {
+      "id": 28792,
+      "name": "csg",
+      "depth": 2
+    },
+    {
+      "id": 28838,
+      "name": "plmn",
+      "depth": 2
+    },
+    {
+      "id": 25751,
+      "name": "item",
+      "depth": 2
+    },
+    {
+      "id": 66815,
+      "name": "henb",
+      "depth": 2
+    },
+    {
+      "id": 20224,
+      "name": "cgi",
+      "depth": 2
+    },
+    {
+      "id": 26418,
+      "name": "mtc",
+      "depth": 2
+    },
+    {
+      "id": 27189,
+      "name": "mme",
+      "depth": 2
+    },
+    {
+      "id": 2238,
+      "name": "hss",
+      "depth": 2
+    },
+    {
+      "id": 25886,
+      "name": "enb",
+      "depth": 2
+    },
+    {
+      "id": 12362,
+      "name": "查询方法",
+      "depth": 2
+    },
+    {
+      "id": 3887,
+      "name": "发送给",
+      "depth": 2
+    },
+    {
+      "id": 32,
+      "name": "服务器",
+      "depth": 2
+    },
+    {
+      "id": 54884,
+      "name": "蛋白激酶",
+      "depth": 2
+    },
+    {
+      "id": 65673,
+      "name": "cdk",
+      "depth": 2
+    },
+    {
+      "id": 159769,
+      "name": "细胞系",
+      "depth": 2
+    },
+    {
+      "id": 44318,
+      "name": "喹唑啉",
+      "depth": 2
+    },
+    {
+      "id": 46573,
+      "name": "抑制剂",
+      "depth": 2
+    },
+    {
+      "id": 88149,
+      "name": "pma",
+      "depth": 2
+    },
+    {
+      "id": 57377,
+      "name": "exp",
+      "depth": 2
+    },
+    {
+      "id": 190482,
+      "name": "r4b",
+      "depth": 2
+    },
+    {
+      "id": 114383,
+      "name": "甲酰胺",
+      "depth": 2
+    },
+    {
+      "id": 190483,
+      "name": "r4a",
+      "depth": 2
+    },
+    {
+      "id": 70216,
+      "name": "ticker",
+      "depth": 2
+    },
+    {
+      "id": 69836,
+      "name": "icb40",
+      "depth": 2
+    },
+    {
+      "id": 180290,
+      "name": "synch",
+      "depth": 2
+    },
+    {
+      "id": 64852,
+      "name": "sgs",
+      "depth": 2
+    },
+    {
+      "id": 43338,
+      "name": "asr",
+      "depth": 2
+    },
+    {
+      "id": 70570,
+      "name": "csfb",
+      "depth": 2
+    },
+    {
+      "id": 70223,
+      "name": "program6",
+      "depth": 2
+    },
+    {
+      "id": 70222,
+      "name": "program1",
+      "depth": 2
+    },
+    {
+      "id": 70221,
+      "name": "program3",
+      "depth": 2
+    },
+    {
+      "id": 70220,
+      "name": "program2",
+      "depth": 2
+    },
+    {
+      "id": 124338,
+      "name": "s1apid",
+      "depth": 2
+    },
+    {
+      "id": 107580,
+      "name": "nri",
+      "depth": 2
+    },
+    {
+      "id": 62675,
+      "name": "信令跟踪",
+      "depth": 2
+    },
+    {
+      "id": 77167,
+      "name": "lmt",
+      "depth": 2
+    },
+    {
+      "id": 24641,
+      "name": "msisdn",
+      "depth": 2
+    },
+    {
+      "id": 69453,
+      "name": "chr",
+      "depth": 2
+    },
+    {
+      "id": 53599,
+      "name": "信令流",
+      "depth": 2
+    },
+    {
+      "id": 2236,
+      "name": "rat",
+      "depth": 2
+    },
+    {
+      "id": 15299,
+      "name": "重新分配",
+      "depth": 2
+    },
+    {
+      "id": 39823,
+      "name": "移动性管理实体",
+      "depth": 2
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "target": 1,
+      "weight": 141907.615484441
+    },
+    {
+      "source": 0,
+      "target": 2,
+      "weight": 85144.5692906647
+    },
+    {
+      "source": 0,
+      "target": 3,
+      "weight": 84523.3174965369
+    },
+    {
+      "source": 0,
+      "target": 4,
+      "weight": 64981.9000108418
+    },
+    {
+      "source": 0,
+      "target": 5,
+      "weight": 39418.7820790114
+    },
+    {
+      "source": 0,
+      "target": 6,
+      "weight": 34309.6459247135
+    },
+    {
+      "source": 0,
+      "target": 7,
+      "weight": 19038.9044848867
+    },
+    {
+      "source": 0,
+      "target": 8,
+      "weight": 11885.2099862605
+    },
+    {
+      "source": 0,
+      "target": 9,
+      "weight": 11499.6406256247
+    },
+    {
+      "source": 0,
+      "target": 10,
+      "weight": 9504.8050068939
+    },
+    {
+      "source": 3,
+      "target": 11,
+      "weight": 6719.21904099346
+    },
+    {
+      "source": 3,
+      "target": 12,
+      "weight": 4737.84046838905
+    },
+    {
+      "source": 3,
+      "target": 13,
+      "weight": 2250.359653017
+    },
+    {
+      "source": 7,
+      "target": 14,
+      "weight": 39664.384343514
+    },
+    {
+      "source": 7,
+      "target": 15,
+      "weight": 37395.9401878511
+    },
+    {
+      "source": 7,
+      "target": 16,
+      "weight": 32976.3498882748
+    },
+    {
+      "source": 7,
+      "target": 17,
+      "weight": 25514.8101847831
+    },
+    {
+      "source": 7,
+      "target": 18,
+      "weight": 25514.8101847831
+    },
+    {
+      "source": 7,
+      "target": 19,
+      "weight": 20403.0755466819
+    },
+    {
+      "source": 7,
+      "target": 20,
+      "weight": 19663.296
+    },
+    {
+      "source": 7,
+      "target": 21,
+      "weight": 18697.9700939255
+    },
+    {
+      "source": 7,
+      "target": 22,
+      "weight": 18665.2936263446
+    },
+    {
+      "source": 7,
+      "target": 23,
+      "weight": 17710.8003958504
+    },
+    {
+      "source": 6,
+      "target": 24,
+      "weight": 61757.3626644843
+    },
+    {
+      "source": 6,
+      "target": 25,
+      "weight": 24203.8442220792
+    },
+    {
+      "source": 6,
+      "target": 26,
+      "weight": 23430.3905735745
+    },
+    {
+      "source": 6,
+      "target": 27,
+      "weight": 19920.8594420404
+    },
+    {
+      "source": 6,
+      "target": 28,
+      "weight": 19778.1849346701
+    },
+    {
+      "source": 6,
+      "target": 29,
+      "weight": 16501.9119026728
+    },
+    {
+      "source": 6,
+      "target": 30,
+      "weight": 13370.861234543
+    },
+    {
+      "source": 6,
+      "target": 31,
+      "weight": 13059.0630640977
+    },
+    {
+      "source": 6,
+      "target": 32,
+      "weight": 11299.1316265996
+    },
+    {
+      "source": 6,
+      "target": 33,
+      "weight": 9261.67508497929
+    },
+    {
+      "source": 4,
+      "target": 26,
+      "weight": 42563.4181900356
+    },
+    {
+      "source": 4,
+      "target": 34,
+      "weight": 30663.3340228816
+    },
+    {
+      "source": 4,
+      "target": 35,
+      "weight": 17175.1822334764
+    },
+    {
+      "source": 4,
+      "target": 36,
+      "weight": 17165.4937556514
+    },
+    {
+      "source": 4,
+      "target": 37,
+      "weight": 13891.1572514192
+    },
+    {
+      "source": 4,
+      "target": 38,
+      "weight": 13007.5344532857
+    },
+    {
+      "source": 4,
+      "target": 39,
+      "weight": 4521.90850841385
+    },
+    {
+      "source": 4,
+      "target": 40,
+      "weight": 1018.85502815075
+    },
+    {
+      "source": 4,
+      "target": 41,
+      "weight": 402.16516576154
+    },
+    {
+      "source": 4,
+      "target": 42,
+      "weight": 118.798468562285
+    },
+    {
+      "source": 8,
+      "target": 43,
+      "weight": 54609.5356882925
+    },
+    {
+      "source": 8,
+      "target": 44,
+      "weight": 37781.6284735552
+    },
+    {
+      "source": 8,
+      "target": 45,
+      "weight": 22377.9931114576
+    },
+    {
+      "source": 8,
+      "target": 46,
+      "weight": 19348.8398682613
+    },
+    {
+      "source": 8,
+      "target": 47,
+      "weight": 15955.9891841031
+    },
+    {
+      "source": 8,
+      "target": 48,
+      "weight": 13889.507524317
+    },
+    {
+      "source": 8,
+      "target": 49,
+      "weight": 12101.9221110397
+    },
+    {
+      "source": 8,
+      "target": 50,
+      "weight": 11116.3252796073
+    },
+    {
+      "source": 8,
+      "target": 51,
+      "weight": 10697.5247644051
+    },
+    {
+      "source": 8,
+      "target": 52,
+      "weight": 9942.74359408048
+    },
+    {
+      "source": 9,
+      "target": 53,
+      "weight": 126757.132911722
+    },
+    {
+      "source": 9,
+      "target": 54,
+      "weight": 109752.034586502
+    },
+    {
+      "source": 9,
+      "target": 55,
+      "weight": 61966.9923673583
+    },
+    {
+      "source": 9,
+      "target": 56,
+      "weight": 44980.427525767
+    },
+    {
+      "source": 9,
+      "target": 57,
+      "weight": 37132.4971628166
+    },
+    {
+      "source": 9,
+      "target": 58,
+      "weight": 32693.6243899648
+    },
+    {
+      "source": 9,
+      "target": 59,
+      "weight": 32593.0284529612
+    },
+    {
+      "source": 9,
+      "target": 60,
+      "weight": 32593.0284529612
+    },
+    {
+      "source": 9,
+      "target": 61,
+      "weight": 32593.0284529612
+    },
+    {
+      "source": 9,
+      "target": 62,
+      "weight": 32593.0284529612
+    },
+    {
+      "source": 10,
+      "target": 63,
+      "weight": 21662.4480285206
+    },
+    {
+      "source": 10,
+      "target": 64,
+      "weight": 20934.2041222331
+    },
+    {
+      "source": 10,
+      "target": 65,
+      "weight": 15583.5602280422
+    },
+    {
+      "source": 10,
+      "target": 66,
+      "weight": 12400.3935047819
+    },
+    {
+      "source": 10,
+      "target": 67,
+      "weight": 12399.0407770595
+    },
+    {
+      "source": 10,
+      "target": 68,
+      "weight": 11883.481210474
+    },
+    {
+      "source": 10,
+      "target": 69,
+      "weight": 9106.50125626295
+    },
+    {
+      "source": 10,
+      "target": 70,
+      "weight": 8995.1350829282
+    },
+    {
+      "source": 10,
+      "target": 71,
+      "weight": 8464.47803168503
+    },
+    {
+      "source": 10,
+      "target": 72,
+      "weight": 7901.89591560775
+    }
+  ]
+}

@@ -6,5 +6,5 @@ var controller = require('../controller');
 
 exports.init = function(app) {
     app.get('/', controller.main);
-    app.post('/hash', controller.hash);
+    app.get('/api/groups/*', controller.groups);
 };

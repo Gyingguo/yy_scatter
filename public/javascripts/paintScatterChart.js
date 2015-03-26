@@ -2,7 +2,67 @@
  * Created by carol on 2015/3/26.
  */
 define(function(require,exports,module) {
-    exports.paintScatter = function() {
+    exports.paintScatterChart = function(data) {
+        /*
+         scatterChart = new Highcharts.Chart({
+         chart: {
+         renderTo: 'scatter-chart',
+         type: 'scatter',
+         height: 700,
+         spacingLeft:  300,
+         spacingRight: 300,
+         options3d: {
+         enabled: true,
+         alpha: 5,
+         beta: 16,
+         depth: 400,
+         viewDistance: 5,
+         frame: {
+         bottom: { size: 1, color: 'rgba(0,0,0,0.05)' },
+         back:   { size: 1, color: 'rgba(0,0,0,0.05)' },
+         side:   { size: 1, color: 'rgba(0,0,0,0.05)' }
+         }
+         }
+         },
+         plotOptions: {
+         scatter: {
+         marker: {
+         symbol: 'circle'
+         }
+         }
+         },
+         title: {
+         text: '专利分布'
+         },
+         xAxis: {
+         min: -1,
+         max: 1,
+         title: {text: 'x'}
+         },
+         yAxis: {
+         min: -1,
+         max: 1,
+         title: {text: 'y'}
+         },
+         zAxis: {
+         min: -1,
+         max: 1,
+         title: {text: 'z'}
+         },
+         tooltip: {
+         useHTML: true
+         },
+         credits: {
+         enabled: false
+         }
+         })
+
+         function updateScatterChart(group, colors) {
+             while (scatterChart.series.length > 0) {
+             scatterChart.series[0].remove(false)
+         }
+
+         */
         $(function () {
             // Give the points a 3D feel by adding a radial gradient
             Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function (color) {

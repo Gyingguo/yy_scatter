@@ -4,14 +4,7 @@
 define(function(require, exports, module) {
     var paint = require("../javascripts/paintScatterChart");
 
-    function randomColors(numberOfColors) {
-        var colors = []
-        var step = Math.floor(360 / numberOfColors)
-        for (var i = 0; i < numberOfColors; i++) {
-            colors.push('hsla(' + i * step + ', 100%, 50%, 0.7)')
-        }
-        return colors
-    }
+
 
     exports.render = function(data) {
 
@@ -19,7 +12,7 @@ define(function(require, exports, module) {
 
         if (!data.topic) data.topic = '专利聚类';
 
-        paint.paintScatterChart();
+        paint.paintScatterChart(data);
 
        // updateScatterChart(group, colors);
     }

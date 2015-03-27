@@ -2,6 +2,17 @@
  * Created by carol on 2015/3/26.
  */
 define(function(require,exports,module) {
+    /*(function (H) {
+        Highcharts.Chart.prototype.callbacks.push(function (chart) {
+            H.addEvent(chart.container, 'click', function (e) {
+                e = chart.pointer.normalize();
+                console.log('Clicked chart at ' + e.chartX + ', ' + e.chartY);
+            });
+            H.addEvent(chart.xAxis[0], 'afterSetExtremes', function (e) {
+                console.log('Set extremes to ' + e.min + ', ' + e.max);
+            });
+        });
+    }(Highcharts));*/
     var scatterChart = new Highcharts.Chart({
         chart: {
             renderTo: 'scatter-chart',

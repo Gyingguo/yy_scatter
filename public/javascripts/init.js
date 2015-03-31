@@ -4,6 +4,16 @@ define(function(require,exports,module) {
     reload.reload();
 
     $(window).on('hashchange', reload.reload);
+
+    //extending
+    /*var scatter = require('../javascripts/scatterExtend');
+    scatter.scatterExtend(Highcharts);*/
+
+    /*var scatter = require('../javascripts/columnExtend');
+    scatter.columnExtend();
+
+    var scatter = require('../javascripts/pieExtend');
+    scatter.pieExtend();*/
 });
 
 

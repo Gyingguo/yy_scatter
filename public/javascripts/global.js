@@ -11,9 +11,8 @@ define(function(require, exports, module) {
                 chart: {
                     renderTo: 'scatter-chart',
                     type: 'scatter',
-                    height: 600,
-                    spacingLeft: 300,
-                    spacingRight: 300,
+                    height: 500,
+                    spacingRight: 100,
                     backgroundColor: 'black',
                     options3d: {
                         enabled: true,

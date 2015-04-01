@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var scatter = require('../javascripts/scatterExtend');
 
     exports.global = {
+
         init: function() {
             //定义一些全局变量
             window._scatterChart = new Highcharts.Chart({
@@ -28,7 +29,7 @@ define(function(require, exports, module) {
                     },
                     events: {
                         afterPrint: scatter.scatterExtend.afterPrint(),
-                        click: scatter.scatterExtend.click()
+                        click: scatter.scatterExtend.clickChart()
                     }
                 },
                 title: {
@@ -41,11 +42,10 @@ define(function(require, exports, module) {
                         depth: 10
                     },
                     series: {
-                            events: {
-                                click: scatter.scatterExtend.click(),
-                                mouseOver: scatter.scatterExtend.mouseOver(),
-                                mouseOut: scatter.scatterExtend.mouseOut()
-                            }
+                        events: {
+                            mouseOver: scatter.scatterExtend.mouseOver,
+                            mouseOut: scatter.scatterExtend.mouseOut
+                        }
                     }
                 },
                 yAxis: {

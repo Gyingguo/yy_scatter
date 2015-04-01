@@ -6,12 +6,15 @@ define(function(require, exports, module) {
     var plusMinusScatter = require('../javascripts/plusMinusScatter');
 
     exports.scatterExtend = {
-        click: function() {
-            console.log("his");
+        clickChart: function() {
             plusMinusScatter.plusMinusScatter();    //绑定鼠标单击事件放大事件
             //alert("click" + JSON.stringify(this.options));
         },
+        /*clickPoint: function() {
+            alert("click" + JSON.stringify(this.options))
+        },*/
         mouseOver: function() {
+            //console.log("mouseover " + this);
             /*var targetGroupId = this.options.group_id;
             var oldColor = this.series.color;
             var groupPoints = util.util.sameGroupIdPoint(targetGroupId);

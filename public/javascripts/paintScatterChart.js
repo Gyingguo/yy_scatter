@@ -3,7 +3,7 @@
  */
 define(function(require,exports,module) {
     var globalScatterChart = require('../javascripts/global');
-    var params = require('../javascripts/params');
+    var shareParams = require('../javascripts/shareParams');
 
     globalScatterChart.global.init();
 
@@ -18,17 +18,17 @@ define(function(require,exports,module) {
     }
 
     function updateScatterChart(group, colors) {
-        while (params.params._scatterChart.series.length > 0) {
-            params.params._scatterChart.series[0].remove(false)
+        while (shareParams.shareParams._scatterChart.series.length > 0) {
+            shareParams.shareParams._scatterChart.series[0].remove(false)
         }
 
         group.patents.forEach(function (patent, i) {
-            if (!params.params._scatterChart.get(patent.group_id)) {
+            if (!shareParams.shareParams._scatterChart.get(patent.group_id)) {
                 var topic = $.grep(group.children, function (group) {
                     return group.id === patent.group_id
                 })[0].topic;
 
-                params.params._scatterChart.addSeries({
+                shareParams.shareParams._scatterChart.addSeries({
                     id: patent.group_id,
                     name: topic,
                     color: colors[i],
@@ -43,15 +43,14 @@ define(function(require,exports,module) {
             patent.x = patent.z;
             patent.z = x;
 
-            params.params._scatterChart.get(patent.group_id).addPoint(patent, false);   //增加点所包含的信息
+            shareParams.shareParams._scatterChart.get(patent.group_id).addPoint(patent, false);   //增加点所包含的信息
         })
 
-        params.params._scatterChart.redraw();
-
+        shareParams.shareParams._scatterChart.redraw();
     }
 
     exports.paintScatterChart = function(data) {
-        //console.log(params.params._scatterChart);
+        //console.log(shareParams.shareParams._scatterChart);
         var data = JSON.parse(data);
         var colors = randomColors(Math.max(data.children.length, 10));
         updateScatterChart(data, colors);

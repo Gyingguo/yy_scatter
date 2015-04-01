@@ -8,8 +8,7 @@ define(function(require, exports, module) {
 
     exports.scatterExtend = {
         clickChart: function() {
-
-;            plusMinusScatter.plusMinusScatter();    //绑定鼠标单击事件放大事件
+            plusMinusScatter.plusMinusScatter();    //绑定鼠标单击事件放大事件
             //alert("click" + JSON.stringify(this.options));
         },
         /*clickPoint: function() {

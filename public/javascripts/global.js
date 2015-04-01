@@ -3,13 +3,12 @@
  */
 define(function(require, exports, module) {
     var scatter = require('../javascripts/scatterExtend');
-    var params = require('../javascripts/params');
+    var shareParams = require('../javascripts/shareParams');
 
     exports.global = {
-
         init: function() {
             //定义一些全局变量
-            params.params._scatterChart = new Highcharts.Chart({
+            shareParams.shareParams._scatterChart = new Highcharts.Chart({
                 chart: {
                     renderTo: 'scatter-chart',
                     type: 'scatter',
@@ -75,8 +74,8 @@ define(function(require, exports, module) {
                     enabled: false
                 }
             })
-            window._pm = {
-                _param: 2,    //缩放系数，可以在此配置
+            shareParams.shareParams._pm = {
+                _param: 0.2,    //缩放系数，可以在此配置
                 _plus: 1,
                 _minus: -1,
                 _flag: 1,       //1表示按键为plus放大，-1表示按键为minus缩小

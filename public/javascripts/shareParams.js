@@ -4,7 +4,8 @@
 define(function(require, exports, module) {
     //var globalScatterChart = require('../javascripts/global');
 
-    exports.params = {
-        _scatterChart: null
+    exports.shareParams = {
+        _scatterChart: null,
+        _pm: null
     }
 })

@@ -3,6 +3,7 @@
  */
 define(function(require,exports,module) {
     var globalScatterChart = require('../javascripts/global');
+
     globalScatterChart.global.init();
 
     function randomColors(numberOfColors) {
@@ -44,6 +45,7 @@ define(function(require,exports,module) {
         })
 
         _scatterChart.redraw();
+
     }
 
     exports.paintScatterChart = function(data) {

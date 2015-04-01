@@ -5,6 +5,8 @@ define(function(require,exports,module) {
 
     $(window).on('hashchange', reload.reload);
 
+    //window._scatterChart = null;
+
     //extending
     /*var scatter = require('../javascripts/scatterExtend');
     scatter.scatterExtend(Highcharts);*/

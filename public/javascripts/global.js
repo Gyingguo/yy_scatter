@@ -3,12 +3,13 @@
  */
 define(function(require, exports, module) {
     var scatter = require('../javascripts/scatterExtend');
+    var params = require('../javascripts/params');
 
     exports.global = {
 
         init: function() {
             //定义一些全局变量
-            window._scatterChart = new Highcharts.Chart({
+            params.params._scatterChart = new Highcharts.Chart({
                 chart: {
                     renderTo: 'scatter-chart',
                     type: 'scatter',

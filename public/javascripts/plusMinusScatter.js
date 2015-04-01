@@ -3,8 +3,10 @@
  */
 define(function(require, exports, module) {
    //var globalScatterChart = require('../javascripts/params');
+    var params = require('../javascripts/params');
 
     exports.plusMinusScatter = function(H) {
+
         var H = H || Highcharts;
         /*var yOldMin = globalScatterChart.global._scatterChart.yAxis.min;
         var yOldMax = globalScatterChart.global._scatterChart.yAxis.max;
@@ -21,6 +23,7 @@ define(function(require, exports, module) {
                 globalScatterChart.global._scatterChart.redraw();*/
                  //console.log("y: " + e.yAxis[0].value + " x: " + e.xAxis[0].value);
                 console.log('Clicked chart at ' + e.chartX + ', ' + e.chartY);
+                console.log(params.params._scatterChart);
             });
             H.addEvent(chart.xAxis[0], 'afterSetExtremes', function (e) {
                 //console.log('Set extremes to ' + e.min + ', ' + e.max);

@@ -46,6 +46,7 @@ define(function(require, exports, module) {
                             min: -1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount - 1),
                             max: 1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount - 1)
                         }, true);
+                        shareParams.shareParams._pm._plusMinusCount--;
                     }
                 } else {
                     //return;

@@ -3,7 +3,6 @@
  */
 define(function(require, exports, module) {
     var shareParams = require('../javascripts/shareParams');
-    var flag_first_load = 1;
     exports.plusMinusScatter = function(H) {
         var H = H || Highcharts;
         var yOldMin = -1;

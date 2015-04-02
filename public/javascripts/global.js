@@ -28,8 +28,8 @@ define(function(require, exports, module) {
                         }
                     },
                     events: {
-                        afterPrint: scatter.scatterExtend.afterPrint(),
-                        click: scatter.scatterExtend.clickChart()
+                        afterPrint: scatter.scatterExtend.afterPrint()
+                       // click: scatter.scatterExtend.clickChart()
                     }
                 },
                 title: {
@@ -44,7 +44,9 @@ define(function(require, exports, module) {
                     series: {
                         events: {
                             mouseOver: scatter.scatterExtend.mouseOver,
-                            mouseOut: scatter.scatterExtend.mouseOut
+                            mouseOut: scatter.scatterExtend.mouseOut,
+                            drag: scatter.scatterExtend.drag(),
+                            drop: scatter.scatterExtend.drop
                         }
                     }
                 },

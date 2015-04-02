@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var util = require('../javascripts/util');
     var plusMinusScatter = require('../javascripts/plusMinusScatter');
     var shareParams = require("../javascripts/shareParams");
+    var draggableScatter = require("../javascripts/draggableScatter");
 
 
     exports.scatterExtend = {
@@ -26,6 +27,7 @@ define(function(require, exports, module) {
             this.series.color = "white";
             console.log(groupPoints.color);
             console.log(this.series.color);*/
+            console.log("moveover");
         },
         mouseOut: function() {
 
@@ -56,6 +58,14 @@ define(function(require, exports, module) {
                     shareParams.shareParams._pm._flag = -1;    //表示缩小
                 }
             })
+
+        },
+
+        drag: function() {
+            draggableScatter.draggableScatter(Highcharts);
+        },
+        drop: function() {
+            
         }
 
     };

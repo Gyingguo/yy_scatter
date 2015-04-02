@@ -4,6 +4,7 @@
 define(function(require, exports, module) {
     var util = require('../javascripts/util');
     var plusMinusScatter = require('../javascripts/plusMinusScatter');
+    var shareParams = require("../javascripts/shareParams");
 
 
     exports.scatterExtend = {
@@ -37,22 +38,22 @@ define(function(require, exports, module) {
             plus.click(function() {
                 if (plus.hasClass('chosen')) {
                     plus.removeClass('chosen');  //取消缩放效果
-                    _pm.flag = 0;
+                    shareParams.shareParams._pm.flag = 0;
                 } else {
                     minus.removeClass('chosen');
                     plus.addClass('chosen');
-                    _pm._flag = 1;     //表示放大
+                    shareParams.shareParams._pm._flag = 1;     //表示放大
                 }
             })
 
             minus.click(function() {
                 if (minus.hasClass('chosen')) {
                     minus.removeClass('chosen');
-                    _pm.flag = 0;   //取消缩放效果
+                    shareParams.shareParams._pm.flag = 0;   //取消缩放效果
                 } else {
                     plus.removeClass('chosen');
                     minus.addClass('chosen');
-                    _pm._flag = -1;    //表示缩小
+                    shareParams.shareParams._pm._flag = -1;    //表示缩小
                 }
             })
         }

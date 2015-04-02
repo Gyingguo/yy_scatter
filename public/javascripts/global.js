@@ -56,8 +56,7 @@ define(function(require, exports, module) {
                 xAxis: {
                     min: -1,
                     max: 1,
-                    title: {text: 'x'},
-                    gridLineWidth: 1
+                    title: {text: 'x'}
                 },
                 zAxis: {
                     min: -1,
@@ -75,10 +74,10 @@ define(function(require, exports, module) {
                 }
             })
             shareParams.shareParams._pm = {
-                _param: 0.2,    //缩放系数，可以在此配置
+                _param: 1.2,    //缩放系数，可以在此配置
                 _plus: 1,
                 _minus: -1,
-                _flag: 1,       //1表示按键为plus放大，-1表示按键为minus缩小
+                _flag: 1,       //1表示按键为plus放大，-1表示按键为minus缩小,0表示取消单击放大缩小的功能
                 /*
                  累计缩放次数，实时判断缩放比例，
                  -2表示缩小，坐标轴范围*_param,

@@ -46,8 +46,8 @@ define(function(require, exports, module) {
             })
 
             minus.click(function() {
-                if (minus.hasClass('chonse')) {
-                    minus.removeClass('chonse');
+                if (minus.hasClass('chosen')) {
+                    minus.removeClass('chosen');
                     _pm.flag = 0;   //取消缩放效果
                 } else {
                     plus.removeClass('chosen');

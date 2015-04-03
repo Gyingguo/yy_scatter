@@ -65,7 +65,7 @@ define(function(require, exports, module) {
             draggableScatter.draggableScatter(Highcharts);
         },
         drop: function() {
-            
+
         }
 
     };

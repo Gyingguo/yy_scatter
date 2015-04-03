@@ -4,6 +4,46 @@ body {
 #left-container {
   width: 40%;
   float: left;
+  #decsription {
+    text-align: center;
+    padding: 10px;
+  }
+  #type-charts-button {
+    display: inline;
+    button {
+      height: 20px;
+      width: 50px;
+      background: #c2d8ef;
+    }
+  }
+  h2 {
+    display: inline;
+    font-size: 16px;
+    color: rgb(194, 216, 239);
+  }
+}
+#left-charts {
+  height: 500px;
+  border: 1px dashed rgb(194, 216, 239);
+  box-sizing: border-box;
+  #left-charts-top {
+    height: 50%;
+    box-sizing: border-box;
+    border-bottom: 1px dashed rgb(194, 216, 239);
+  }
+  #left-charts-bottom {
+    height: 50%;
+    box-sizing: border-box;
+    border-top: 1px dashed rgb(194, 216, 239);
+  }
+  #pie-chart {
+    height: 100%;
+    background: url("/image/pie_chart.png") no-repeat;
+  }
+  #column-chart {
+    height: 100%;
+    background: url("/image/column_chart.png") no-repeat;
+  }
 }
 #right-container {
   width: 60%;

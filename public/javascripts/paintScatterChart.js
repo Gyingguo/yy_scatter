@@ -35,7 +35,9 @@ define(function(require,exports,module) {
                     tooltip: {
                         headerFormat: '话题：{series.name} <br>',
                         pointFormat: '标题：{point.title} <br> 关键词：{point.keywords} <br> 摘要：{point.abstract}'
-                    }
+                    },
+                    draggableY: true, //允许数据点纵向拖拽
+                    draggableX: true //允许数据点横向拖拽
                 }, false)
             }
 

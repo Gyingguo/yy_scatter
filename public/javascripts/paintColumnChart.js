@@ -21,7 +21,7 @@ define(function(request, exports, module) {
         }
     }
 
-    exports.paintColumnChart = function() {
+    exports.paintColumnChart = function(data, flag) {
         columnChart = new Highcharts.Chart({
             chart: {
                 renderTo: 'column-chart',

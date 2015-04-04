@@ -3,41 +3,53 @@
  */
 define(function(require, exports, module) {
     var shareParams = require('../javascripts/shareParams');
+    var paintPieChart = require('../javascripts/paintPieChart');
+    var paintColumnChart = require('../javascripts/paintColumnChart');
+    var paintLineChart = require('../javascripts/paintLineChart');
+
     var flag = 0;
     var dragPoint = null;
+    var upPosition = 0;
 
     function isTopOrBottom(targetPoint) {  //判断落在哪个区域了
-        var topArea = {
+        //从shareParams的_dragChartType中判断，获得当前页面拥有的
+        var area = {
             'x': {
-                'min': $('#left-charts-top')[0].offsetLeft,
-                'max': $('#left-charts-top')[0].offsetLeft + $('#left-charts-top')[0].offsetWidth
+                'min': null,
+                'max': null
             },
             'y': {
-                'min': $('#left-charts-top')[0].offsetTop,
-                'max': $('#left-charts-top')[0].offsetTop + $('#left-charts-top')[0].offsetHeight
-            }
-        };
-        var bottomArea = {
-            'x': {
-                'min': $('#left-charts-bottom')[0].offsetLeft,
-                'max': $('#left-charts-bottom')[0].offsetLeft + $('#left-charts-bottom')[0].offsetWidth
-            },
-            'y': {
-                'min': $('#left-charts-bottom')[0].offsetTop,
-                'max': $('#left-charts-bottom')[0].offsetTop + $('#left-charts-bottom')[0].offsetHeight
+                'min': null,
+                'max': null
             }
         };
         var x = targetPoint.clientX;
         var y = targetPoint.clientY;
-        console.log(x + " " + y);
-        console.log(topArea);
-        console.log(bottomArea);
-        if(x >= topArea.x.min && x <= topArea.x.max && y >= topArea.y.min && y <= topArea.y.max) {
-            return 1;
-        } else if (x >= bottomArea.x.min && x <= bottomArea.x.max && y >= bottomArea.y.min && y <= bottomArea.y.max) {
-            return -1;
+        var putAbleArea = shareParams.shareParams._dragChartType;
+        for(var i = 0; i < putAbleArea.length; i++) {
+            area.x.min = $(putAbleArea[i].id)[0].offsetLeft;
+            area.x.max = $(putAbleArea[i].id)[0].offsetLeft + $(putAbleArea[i].id)[0].offsetWidth;
+            area.y.min = $(putAbleArea[i].id)[0].offsetTop;
+            area.y.max = $(putAbleArea[i].id)[0].offsetTop + + $(putAbleArea[i].id)[0].offsetHeight;
+            if (x >= area.x.min && x <= area.x.max && y >= area.y.min && y <= area.y.max) {
+                return putAbleArea[i].flag;
+            }
+        }
+        return 0;
+    }
+
+    function drawWithDragData() {
+        if (upPosition === 1) {
+            var test = shareParams.shareParams._scatterChart;
+
+            console.log('drag: ' + JSON.stringify(test));
+            paintPieChart.paintPieChart(shareParams.shareParams._scatterChart, upPosition);
+        } else if (upPosition === 2) {
+            paintColumnChart(shareParams.shareParams._scatterChart, upPosition);
+        } else if (upPosition === 3) {
+            paintLineChart(shareParams.shareParams._scatterChart, upPosition);
         } else {
-            return 0;
+
         }
     }
 
@@ -56,8 +68,8 @@ define(function(require, exports, module) {
                         "clientX": e.clientX,
                         "clientY": e.clientY
                     };
-                    isTopOrBottom(upPoint);
-                    console.log(isTopOrBottom(upPoint))
+                    upPosition = isTopOrBottom(upPoint);
+                    drawWithDragData();
                 }
                 flag = 0;
             });

@@ -52,7 +52,6 @@ define(function(require,exports,module) {
     }
 
     exports.paintScatterChart = function(data) {
-        //console.log(shareParams.shareParams._scatterChart);
         var data = JSON.parse(data);
         var colors = randomColors(Math.max(data.children.length, 10));
         updateScatterChart(data, colors);

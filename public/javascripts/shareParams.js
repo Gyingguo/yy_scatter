@@ -4,15 +4,24 @@
 define(function(require, exports, module) {
 
     exports.shareParams = {
-        _scatterChart: null,
-        _pm: null,
-        _dragChartType: {   //标识左侧拖曳计算的支持图形类型
-            "pieChart": 1,
-            "columnChart": 1,
-            "lineChart": 0,
-            "isPieDraw": [0,0],
-            "isColumnDraw": [0,0],
-            "isLineDraw": [0,0]
-        }
+        "_scatterChart": null,
+        "_pm": null,
+        "_dragChartType": [
+            {
+                "id": "#pie-chart",
+                "chartType": "pie",
+                "flag": 1
+            },
+            {
+                "id": "#column-chart",
+                "chartType": "column",
+                "flag": 2
+            },
+            {
+                "id": "#line-chart",
+                "chartType": "line",
+                "flag": 3
+            }
+        ]
     }
 })

@@ -2,6 +2,18 @@
  * Created by carol on 2015/3/26.
  */
 define(function(request, exports, module) {
+    var pieChart = null;
+
+    function randomColors(numberOfColors) {
+
+        var colors = [];
+        var step = Math.floor(360 / numberOfColors);
+        for (var i = 0; i < numberOfColors; i++) {
+            colors.push('hsla(' + i * step + ', 100%, 50%, 0.7)');
+        }
+        return colors;
+    }
+
     function updatePieChart(group, colors) {
         var series = {
             name: group.topic,
@@ -22,7 +34,7 @@ define(function(request, exports, module) {
         }
     }
 
-    exports.paintPieChart = function() {
+    exports.paintPieChart = function(data, flag) {
         pieChart = new Highcharts.Chart({
             chart: {
                 renderTo: 'pie-chart',
@@ -50,5 +62,10 @@ define(function(request, exports, module) {
                 }
             }
         })
+
+        //var data = JSON.parse(data);
+        //console.log("data: " + data.children);
+        var colors = randomColors(Math.max(data.children.length, 10));
+        updatePieChart(data, colors);
     }
 })

@@ -4,6 +4,8 @@ body {
 #left-container {
   width: 40%;
   float: left;
+  box-sizing: border-box;
+  padding-left: 25px;
   #decsription {
     text-align: center;
     padding: 10px;
@@ -26,15 +28,60 @@ body {
   height: 500px;
   border: 1px dashed rgb(194, 216, 239);
   box-sizing: border-box;
+  position: relative;
+  .button {
+    position: absolute;
+  }
+  .menu-list {
+    width: 520px;
+    height: 249px;
+    background: rgba(0, 0, 0, 0.5);
+    .line {
+      position: absolute;
+      left: 226px;
+      top: 32px;
+    }
+    .pie {
+      position: absolute;
+      top: 152px;
+      left: 125px;
+    }
+    .column {
+      position: absolute;
+      top: 152px;
+      left: 327px;
+    }
+  }
+  #top-menu {
+    position: absolute;
+    z-index: 10000;
+    &-list {
+      visibility: hidden;
+    }
+  }
+  #bottom-menu {
+    position: absolute;
+    z-index: 10000;
+    top: 249px;
+    &-list {
+      visibility: hidden;
+    }
+  }
   #left-charts-top {
     height: 50%;
     box-sizing: border-box;
     border-bottom: 1px dashed rgb(194, 216, 239);
+    position: relative;
   }
   #left-charts-bottom {
     height: 50%;
     box-sizing: border-box;
     border-top: 1px dashed rgb(194, 216, 239);
+    position: relative;
+  }
+  #line-chart {
+    height: 100%;
+    background: url("/image/line_chart.png") no-repeat;
   }
   #pie-chart {
     height: 100%;

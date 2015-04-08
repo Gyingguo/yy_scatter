@@ -63,8 +63,7 @@ define(function(request, exports, module) {
             }
         })
 
-        //var data = JSON.parse(data);
-        //console.log("data: " + data.children);
+        var data = JSON.parse(data);
         var colors = randomColors(Math.max(data.children.length, 10));
         updatePieChart(data, colors);
     }

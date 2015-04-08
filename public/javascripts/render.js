@@ -12,6 +12,7 @@ define(function(require, exports, module) {
 
         if (!data.topic) data.topic = '专利聚类';
 
+
         paint.paintScatterChart(data);
 
        // updateScatterChart(group, colors);

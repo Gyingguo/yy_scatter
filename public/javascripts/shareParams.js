@@ -6,6 +6,7 @@ define(function(require, exports, module) {
     exports.shareParams = {
         "_scatterChart": null,
         "_pm": null,
+        "_scatter_data_json": null,
         "_dragChartType": [
             {
                 "id": "#pie-chart",

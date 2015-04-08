@@ -47,11 +47,12 @@ define(function(require,exports,module) {
 
             shareParams.shareParams._scatterChart.get(patent.group_id).addPoint(patent, false);   //增加点所包含的信息
         })
-
         shareParams.shareParams._scatterChart.redraw();
     }
 
     exports.paintScatterChart = function(data) {
+        shareParams.shareParams._scatter_data_json = data; //当前scatter图表中显示的数据
+
         var data = JSON.parse(data);
         var colors = randomColors(Math.max(data.children.length, 10));
         updateScatterChart(data, colors);

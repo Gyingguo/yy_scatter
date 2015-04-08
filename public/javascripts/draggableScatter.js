@@ -9,6 +9,7 @@ define(function(require, exports, module) {
 
     var flag = 0;
     var dragPoint = null;
+    var options = null;
     var upPosition = 0;
 
     function isTopOrBottom(targetPoint) {  //判断落在哪个区域了
@@ -40,14 +41,13 @@ define(function(require, exports, module) {
 
     function drawWithDragData() {
         if (upPosition === 1) {
-            var test = shareParams.shareParams._scatterChart;
-
-            console.log('drag: ' + JSON.stringify(test));
-            paintPieChart.paintPieChart(shareParams.shareParams._scatterChart, upPosition);
+            //console.log('drag:' + shareParams.shareParams._scatterChart.series.length);
+            paintPieChart.paintPieChart(shareParams.shareParams._scatter_data_json, upPosition);
         } else if (upPosition === 2) {
-            paintColumnChart(shareParams.shareParams._scatterChart, upPosition);
+            //console.log(options.data[0].group_id);
+            paintColumnChart.paintColumnChart(options, upPosition);
         } else if (upPosition === 3) {
-            paintLineChart(shareParams.shareParams._scatterChart, upPosition);
+            paintLineChart.paintLineChart(shareParams.shareParams._scatterChart, upPosition);
         } else {
 
         }
@@ -59,7 +59,8 @@ define(function(require, exports, module) {
             H.addEvent(chart.container, 'mousedown touchstart', function (e) {
                 dragPoint = chart.hoverPoint;
                 //console.log('dragPoint' + dragPoint.keywords);   //获取单击点的点属性
-                //options = JSON.stringify(dragPoint.series.options); //得到的是单击点所处簇的所有信息
+                options = dragPoint.series.options; //得到的是单击点所处簇的所有信息
+                //console.log('options: ' + options);
                 flag = 1;
             });
             H.addEvent(document, 'mouseup touchup', function (e) {

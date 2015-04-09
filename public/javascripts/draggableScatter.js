@@ -12,6 +12,11 @@ define(function(require, exports, module) {
     var options = null;
     var upPosition = 0;
 
+    var leftChartsTopArea = null;
+    var leftChartsBottomArea = null;
+
+    var currentObj = null;    //当前有效的区域的节点
+
     function isTopOrBottom(targetPoint) {  //判断落在哪个区域了
         //从shareParams的_dragChartType中判断，获得当前页面拥有的
         var area = {
@@ -26,28 +31,33 @@ define(function(require, exports, module) {
         };
         var x = targetPoint.clientX;
         var y = targetPoint.clientY;
-        var putAbleArea = shareParams.shareParams._dragChartType;
-        for(var i = 0; i < putAbleArea.length; i++) {
-            area.x.min = $(putAbleArea[i].id)[0].offsetLeft;
-            area.x.max = $(putAbleArea[i].id)[0].offsetLeft + $(putAbleArea[i].id)[0].offsetWidth;
-            area.y.min = $(putAbleArea[i].id)[0].offsetTop;
-            area.y.max = $(putAbleArea[i].id)[0].offsetTop + + $(putAbleArea[i].id)[0].offsetHeight;
-            if (x >= area.x.min && x <= area.x.max && y >= area.y.min && y <= area.y.max) {
-                return putAbleArea[i].flag;
-            }
+
+        if (x >= leftChartsTopArea.x.min && x <= leftChartsTopArea.x.max &&
+            y >= leftChartsTopArea.y.min && y <= leftChartsTopArea.y.max) {
+            currentObj = $('#left-charts-top').children()[0];
+            var id = 'left-charts-top-' + currentObj.className;
+            currentObj.setAttribute('id',id);
+            return shareParams.shareParams._dragChartType[currentObj.className];
+        } else if (x >= leftChartsBottomArea.x.min && x <= leftChartsBottomArea.x.max &&
+            y >= leftChartsBottomArea.y.min && y <= leftChartsBottomArea.y.max) {
+            currentObj = $('#left-charts-bottom').children()[0];
+            var id = 'left-charts-bottom-' + currentObj.className;
+            currentObj.setAttribute('id',id);
+            return shareParams.shareParams._dragChartType[currentObj.className];
+        } else {
+            return 0;
         }
-        return 0;
     }
 
     function drawWithDragData() {
         if (upPosition === 1) {
             //console.log('drag:' + shareParams.shareParams._scatterChart.series.length);
-            paintPieChart.paintPieChart(shareParams.shareParams._scatter_data_json, upPosition);
+            paintPieChart.paintPieChart(shareParams.shareParams._scatter_data_json, currentObj);
         } else if (upPosition === 2) {
             //console.log(options.data[0].group_id);
-            paintColumnChart.paintColumnChart(options, upPosition);
+            paintColumnChart.paintColumnChart(options, currentObj);
         } else if (upPosition === 3) {
-            paintLineChart.paintLineChart(shareParams.shareParams._scatterChart, upPosition);
+            paintLineChart.paintLineChart(shareParams.shareParams._scatterChart, currentObj);
         } else {
 
         }
@@ -55,6 +65,26 @@ define(function(require, exports, module) {
 
     exports.draggableScatter = function(H) {
         var H = H || Highcharts;
+        leftChartsTopArea = {
+            'x': {
+                'min': $('#left-charts-top')[0].offsetLeft,
+                'max': $('#left-charts-top')[0].offsetLeft + $('#left-charts-top')[0].offsetWidth
+            },
+            'y': {
+                'min': $('#left-charts-top')[0].offsetTop,
+                'max': $('#left-charts-top')[0].offsetTop + + $('#left-charts-top')[0].offsetHeight
+            }
+        };
+        leftChartsBottomArea = {
+            'x': {
+                'min': $('#left-charts-bottom')[0].offsetLeft,
+                'max': $('#left-charts-bottom')[0].offsetLeft + $('#left-charts-bottom')[0].offsetWidth
+            },
+            'y': {
+                'min': $('#left-charts-bottom')[0].offsetTop,
+                'max': $('#left-charts-bottom')[0].offsetTop + + $('#left-charts-bottom')[0].offsetHeight
+            }
+        };
         Highcharts.Chart.prototype.callbacks.push(function (chart) {
             H.addEvent(chart.container, 'mousedown touchstart', function (e) {
                 dragPoint = chart.hoverPoint;

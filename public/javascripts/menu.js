@@ -17,14 +17,14 @@ define(function(require, exports, module) {
     var topAnimation = null;
     var bottomAnimation = null;
 
-    var htmlLine = '<div id="line-chart">' +
+    var htmlLine = '<div class="line-chart" data-chart-type="line">' +
                         '<div class="line-chart-list"><\/div>' +
                     '<\/div>';
-    var htmlPie = '<div id="pie-chart">' +
+    var htmlPie = '<div class="pie-chart" data-chart-type="pie">' +
                         '<div class="pie-chart-list"><\/div>' +
                     '<\/div>';
 
-    var htmlColumn = '<div id="column-chart">' +
+    var htmlColumn = '<div class="column-chart" data-chart-type="column">' +
                         '<div class="column-chart-list"><\/div>' +
                     '<\/div>';
 

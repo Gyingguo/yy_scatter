@@ -34,10 +34,10 @@ define(function(request, exports, module) {
         }
     }
 
-    exports.paintPieChart = function(data, flag) {
+    exports.paintPieChart = function(data, posObj) {
         pieChart = new Highcharts.Chart({
             chart: {
-                renderTo: 'pie-chart',
+                renderTo: posObj.id,
                 type: 'pie',
                 events: {
                     drilldown: function (event) {

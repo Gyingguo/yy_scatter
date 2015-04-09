@@ -7,22 +7,10 @@ define(function(require, exports, module) {
         "_scatterChart": null,
         "_pm": null,
         "_scatter_data_json": null,
-        "_dragChartType": [
-            {
-                "id": "#pie-chart",
-                "chartType": "pie",
-                "flag": 1
-            },
-            {
-                "id": "#column-chart",
-                "chartType": "column",
-                "flag": 2
-            },
-            {
-                "id": "#line-chart",
-                "chartType": "line",
-                "flag": 3
-            }
-        ]
+        "_dragChartType": {
+            "pie-chart": 1,
+            "column-chart": 2,
+            "line-chart": 3
+        }
     }
 })

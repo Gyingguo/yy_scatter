@@ -33,10 +33,10 @@ define(function(request, exports, module) {
         return colors;
     }
 
-    exports.paintColumnChart = function(data, flag) {
+    exports.paintColumnChart = function(data, posObj) {
         columnChart = new Highcharts.Chart({
             chart: {
-                renderTo: 'column-chart',
+                renderTo: posObj.id,
                 type: 'column'
             },
             title: {

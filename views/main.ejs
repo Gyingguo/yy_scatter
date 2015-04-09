@@ -10,7 +10,7 @@
 <body>
     <div id="left-container">
         <div id="decsription">
-            <h2>拖曳图表绘制</h2>
+            <h2>拖曳中心</h2>
         </div>
 
         <div id="left-charts">
@@ -39,17 +39,23 @@
         </div>
     </div>
     <div id="right-container">
-        <div id="magnifying">
-            <span id="plus" class="chosen">
+        <div id="scatter-menu">
+            <div id="plus" class="chosen">
                 <img src="/image/search_plus.png" alt="放大"/>
-            </span>
-            <span id="minus">
+            </div>
+            <div id="minus">
                 <img src="/image/search_minus.png" alt="缩小"/>
-            </span>
+            </div>
+            <div id="single-point-drag">
+                单点拖曳
+            </div>
+            <div id="set-points-drag">
+                簇集拖曳
+            </div>
         </div>
+        <img id="scatter-menu-button" class="button" src="/image/menu.png" alt="下侧菜单"/>
         <div id="scatter-chart"></div>
     </div>
-
 
     <script src="/lib/jquery-2.0.3.js"></script>
     <script src="/lib/highcharts-4.0.1/js/highcharts.js"></script>

@@ -87,11 +87,14 @@ define(function(require, exports, module) {
         };
         Highcharts.Chart.prototype.callbacks.push(function (chart) {
             H.addEvent(chart.container, 'mousedown touchstart', function (e) {
-                dragPoint = chart.hoverPoint;
-                //console.log('dragPoint' + dragPoint.keywords);   //获取单击点的点属性
-                options = dragPoint.series.options; //得到的是单击点所处簇的所有信息
-                //console.log('options: ' + options);
-                flag = 1;
+                if(shareParams.shareParams._current_menu_choice === 2 ||
+                    shareParams.shareParams._current_menu_choice === 3) {
+                    dragPoint = chart.hoverPoint;
+                    //console.log('dragPoint' + dragPoint.keywords);   //获取单击点的点属性
+                    options = dragPoint.series.options; //得到的是单击点所处簇的所有信息
+                    //console.log('options: ' + options);
+                    flag = 1;
+                }
             });
             H.addEvent(document, 'mouseup touchup', function (e) {
                 if(flag) {

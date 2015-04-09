@@ -8,13 +8,12 @@ define(function(require, exports, module) {
     var draggableScatter = require("../javascripts/draggableScatter");
 
     exports.scatterExtend = {
-        clickChart: function() {
-            plusMinusScatter.plusMinusScatter();    //绑定鼠标单击事件放大事件
-            //alert("click" + JSON.stringify(this.options));
+        clickChart: function() {   //单击图表非节点区域
+            plusMinusScatter.plusMinusScatter(Highcharts);    //绑定鼠标单击事件放大事件
         },
-        /*clickPoint: function() {
-            alert("click" + JSON.stringify(this.options))
-        },*/
+        clickPoint: function() {  //刚好点击到节点
+            plusMinusScatter.plusMinusScatter(Highcharts);
+        },
         mouseOver: function() {
            // console.log("mouseover " + JSON.stringify(this.options));
             /*var targetGroupId = this.options.group_id;
@@ -33,7 +32,7 @@ define(function(require, exports, module) {
         },
         afterPrint: function() {
             //console.log("afterAnimation" + $('#plus').html());
-            var plus = $('#plus');
+           /* var plus = $('#plus');
             var minus = $('#minus');
 
             plus.click(function() {
@@ -56,7 +55,7 @@ define(function(require, exports, module) {
                     minus.addClass('chosen');
                     shareParams.shareParams._pm._flag = -1;    //表示缩小
                 }
-            })
+            })*/
 
         },
 

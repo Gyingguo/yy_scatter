@@ -19,8 +19,16 @@ define(function(require, exports, module) {
                     xOldMin = shareParams.shareParams._scatterChart.xAxis[0].min;
                     xOldMax = shareParams.shareParams._scatterChart.xAxis[0].max;
 
-                    var x = e.xAxis[0].value;
-                    var y = e.yAxis[0].value;
+                    var x = null;
+                    var y = null;
+
+                    try {
+                        x = e.xAxis[0].value;
+                        y = e.yAxis[0].value;
+                    } catch (e) {
+                        x = chart.hoverPoint.x;
+                        y = chart.hoverPoint.y;
+                    }
 
                     yNewMin = yOldMin - y;
                     yNewMax = yOldMax + y;

@@ -4,6 +4,8 @@
 define(function(require, exports, module) {
 
     exports.shareParams = {
+        "_url": "http://scut-ai-lab.tk:50000/api/groups/",
+        "_patent_url": "http://scut-ai-lab.tk:50000/api/patents?q=电子设备&limit=6277",
         "_scatterChart": null,
         "_pm": null,
         "_scatter_data_json": null,
@@ -11,7 +13,8 @@ define(function(require, exports, module) {
            "plus":  0,
            "minus": 1,
            "single_point_drag": 2,
-           "set_point_drag": 3
+           "set_point_drag": 3,
+           "all_point_drag": 4
         },
         "_current_menu_choice": 0,
         "_dragChartType": {

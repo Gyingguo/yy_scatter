@@ -60,12 +60,8 @@ define(function(request, exports, module) {
             }
         });
 
-        var id = data.data[0].group_id;
-        //实际中要将 1替代为 id
-       $.get('/api/groups/' + 1, function(data) {
-            var data = JSON.parse(data);
-            var colors = randomColors(Math.max(data.children.length, 10));
-            updateColumnChart(data, colors);
-        });
+        var data = JSON.parse(data);
+        var colors = randomColors(Math.max(data.children.length, 10));
+        updateColumnChart(data, colors);
     }
 })

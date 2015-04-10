@@ -52,11 +52,30 @@ define(function(require, exports, module) {
     function drawWithDragData() {
         if (upPosition === 1) {
             //console.log('drag:' + shareParams.shareParams._scatterChart.series.length);
-            paintPieChart.paintPieChart(shareParams.shareParams._scatter_data_json, currentObj);
+            if(shareParams.shareParams._current_menu_choice === 2) {
+                var url = shareParams.shareParams._url + options.id;
+                $.get(url,function(data) {
+                    var data = JSON.stringify(data);
+                    paintPieChart.paintPieChart(data, currentObj);
+                });
+            } else if(shareParams.shareParams._current_menu_choice === 3) {
+                paintPieChart.paintPieChart(shareParams.shareParams._scatter_data_json, currentObj);
+            }
         } else if (upPosition === 2) {
-            //console.log(options.data[0].group_id);
-            paintColumnChart.paintColumnChart(options, currentObj);
+           if(shareParams.shareParams._current_menu_choice === 2) {
+                var url = shareParams.shareParams._url + options.id;
+                $.get(url,function(data) {
+                    var data = JSON.stringify(data);
+                    paintColumnChart.paintColumnChart(data, currentObj);
+                });
+            } else if(shareParams.shareParams._current_menu_choice === 3) {
+                paintColumnChart.paintColumnChart(shareParams.shareParams._scatter_data_json, currentObj);
+            }
+            //paintColumnChart.paintColumnChart(options, currentObj);
         } else if (upPosition === 3) {
+            if(shareParams.shareParams._current_menu_choice === 2) {//单个点的关键词
+
+            }
             paintLineChart.paintLineChart(shareParams.shareParams._scatterChart, currentObj);
         } else {
 

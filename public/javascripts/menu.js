@@ -20,8 +20,8 @@ define(function(require, exports, module) {
     var topAnimation = null;
     var bottomAnimation = null;
 
-    var htmlLine = '<div class="line-chart" data-chart-type="line">' +
-                        '<div class="line-chart-list"><\/div>' +
+    var htmlMatrix = '<div class="matrix-chart" data-chart-type="matrix">' +
+                        '<div class="matrix-chart-list"><\/div>' +
                     '<\/div>';
     var htmlPie = '<div class="pie-chart" data-chart-type="pie">' +
                         '<div class="pie-chart-list"><\/div>' +
@@ -99,9 +99,9 @@ define(function(require, exports, module) {
             } else {
                 topAnimation = setInterval(function() {
                     return (function() {
-                        $('#top-menu-list .line').animate(pos2, 5000);
-                        $('#top-menu-list .line').animate(pos3, 5000);
-                        $('#top-menu-list .line').animate(pos1, 5000);
+                        $('#top-menu-list .matrix').animate(pos2, 5000);
+                        $('#top-menu-list .matrix').animate(pos3, 5000);
+                        $('#top-menu-list .matrix').animate(pos1, 5000);
                         $('#top-menu-list .pie').animate(pos3, 5000);
                         $('#top-menu-list .pie').animate(pos1, 5000);
                         $('#top-menu-list .pie').animate(pos2, 5000);
@@ -120,9 +120,9 @@ define(function(require, exports, module) {
                 $('#bottom-menu-list').css('display', 'none');
             } else {
                 bottomAnimation = setInterval(function() {
-                        $('#bottom-menu-list .line').animate(pos2, 5000);
-                        $('#bottom-menu-list .line').animate(pos3, 5000);
-                        $('#bottom-menu-list .line').animate(pos1, 5000);
+                        $('#bottom-menu-list .matrix').animate(pos2, 5000);
+                        $('#bottom-menu-list .matrix').animate(pos3, 5000);
+                        $('#bottom-menu-list .matrix').animate(pos1, 5000);
                         $('#bottom-menu-list .pie').animate(pos3, 5000);
                         $('#bottom-menu-list .pie').animate(pos1, 5000);
                         $('#bottom-menu-list .pie').animate(pos2, 5000);
@@ -134,10 +134,10 @@ define(function(require, exports, module) {
             }
         });
 
-        $('#top-menu-list .line').click(function() {
+        $('#top-menu-list .matrix').click(function() {
             clearInterval(topAnimation);
             $('#top-menu-list').css('display', 'none');
-            $('#left-charts-top')[0].innerHTML = htmlLine;
+            $('#left-charts-top')[0].innerHTML = htmlMatrix;
         });
 
         $('#top-menu-list .pie').click(function() {
@@ -152,10 +152,10 @@ define(function(require, exports, module) {
             $('#left-charts-top')[0].innerHTML = htmlColumn;
         });
 
-        $('#bottom-menu-list .line').click(function() {
+        $('#bottom-menu-list .matrix').click(function() {
             clearInterval(bottomAnimation);
             $('#bottom-menu-list').css('display', 'none');
-            $('#left-charts-bottom')[0].innerHTML = htmlLine;
+            $('#left-charts-bottom')[0].innerHTML = htmlMatrix;
         });
 
         $('#bottom-menu-list .pie').click(function() {

@@ -20,7 +20,7 @@ define(function(require, exports, module) {
         "_dragChartType": {
             "pie-chart": 1,
             "column-chart": 2,
-            "line-chart": 3
+            "matrix-chart": 3
         }
     }
 })

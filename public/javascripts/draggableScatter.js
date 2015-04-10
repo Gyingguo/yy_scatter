@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var shareParams = require('../javascripts/shareParams');
     var paintPieChart = require('../javascripts/paintPieChart');
     var paintColumnChart = require('../javascripts/paintColumnChart');
-    var paintLineChart = require('../javascripts/paintLineChart');
+    var paintMatrixChart = require('../javascripts/paintMatrixChart');
 
     var flag = 0;
     var dragPoint = null;
@@ -73,12 +73,20 @@ define(function(require, exports, module) {
             }
             //paintColumnChart.paintColumnChart(options, currentObj);
         } else if (upPosition === 3) {
+            var data = null;
             if(shareParams.shareParams._current_menu_choice === 2) {//单个点的关键词
-
+                console.log("单个点" + dragPoint.keywords);
+                data = 2;
+            } else if(shareParams.shareParams._current_menu_choice === 3) {  //单个簇
+                console.log('单个簇发出请求');
+                data = 3;
+            } else {   //散点图中的所有簇
+                //console.log('所有簇' + JSON.stringify(JSON.parse(shareParams.shareParams._scatter_data_json).keywords));
+                data = 4;
             }
-            paintLineChart.paintLineChart(shareParams.shareParams._scatterChart, currentObj);
+            paintMatrixChart.paintMatrixChart(data, currentObj);
         } else {
-
+            //
         }
     }
 
@@ -107,7 +115,8 @@ define(function(require, exports, module) {
         Highcharts.Chart.prototype.callbacks.push(function (chart) {
             H.addEvent(chart.container, 'mousedown touchstart', function (e) {
                 if(shareParams.shareParams._current_menu_choice === 2 ||
-                    shareParams.shareParams._current_menu_choice === 3) {
+                    shareParams.shareParams._current_menu_choice === 3 ||
+                    shareParams.shareParams._current_menu_choice === 4) {
                     dragPoint = chart.hoverPoint;
                     //console.log('dragPoint' + dragPoint.keywords);   //获取单击点的点属性
                     options = dragPoint.series.options; //得到的是单击点所处簇的所有信息

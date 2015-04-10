@@ -74,15 +74,16 @@ define(function(require, exports, module) {
             //paintColumnChart.paintColumnChart(options, currentObj);
         } else if (upPosition === 3) {
             var data = null;
+            var keywordsArray = null;
             if(shareParams.shareParams._current_menu_choice === 2) {//单个点的关键词
-                console.log("单个点" + dragPoint.keywords);
-                data = 2;
+                keywordsArray = dragPoint.keywords.split(',');
             } else if(shareParams.shareParams._current_menu_choice === 3) {  //单个簇
-                console.log('单个簇发出请求');
-                data = 3;
-            } else {   //散点图中的所有簇
-                //console.log('所有簇' + JSON.stringify(JSON.parse(shareParams.shareParams._scatter_data_json).keywords));
-                data = 4;
+                var url = shareParams.shareParams._url + dragPoint.group_id;
+                $.get(url, function(data) {  //得到该簇的keywords
+                    keywordsArray = data.keywords;
+                });
+            } else {  //散点图中的所有簇
+                keywordsArray = JSON.parse(shareParams.shareParams._scatter_data_json).keywords;
             }
             paintMatrixChart.paintMatrixChart(data, currentObj);
         } else {

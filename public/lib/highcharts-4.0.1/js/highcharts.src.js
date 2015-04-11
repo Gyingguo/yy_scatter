@@ -15571,7 +15571,7 @@ defaultPlotOptions.scatter = merge(defaultSeriesOptions, {
 /**
  * The scatter series class
  */
-var ScatterSeries = extendClass(Series, {
+    var ScatterSeries = extendClass(Series, {
 	type: 'scatter',
 	sorted: false,
 	requireSorting: false,

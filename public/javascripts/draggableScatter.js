@@ -49,6 +49,31 @@ define(function(require, exports, module) {
         }
     }
 
+    function searchByKeywords(arr) {
+        var patent = [];
+        var len = arr.length;
+        if (len > 10) {   //限制做多为10个
+            len = 10;
+        }
+        $.ajaxSetup({  //设置get为同步
+            async : false
+        });
+        for(var i = 0; i < len; i++) {
+            for(var j = i + 1; j < len; j++) {
+                //var part = 'q=' + arr[i].trim() + '+'+ arr[j].trim() + '&limit=9999999';
+                //var url = shareParams.shareParams._patent_url + part;
+                //本地测试
+                $.get('/api/groups/patent', function(data) {
+                    patent.push(data);
+                })
+            }
+        }
+        $.ajaxSetup({
+            async : true
+        });
+        return patent;
+    }
+
     function drawWithDragData() {
         if (upPosition === 1) {
             //console.log('drag:' + shareParams.shareParams._scatterChart.series.length);
@@ -73,7 +98,10 @@ define(function(require, exports, module) {
             }
             //paintColumnChart.paintColumnChart(options, currentObj);
         } else if (upPosition === 3) {
-            var data = null;
+            var data = {
+                "keywordsArray": null,
+                "patentsArray": null
+            };
             var keywordsArray = null;
             if(shareParams.shareParams._current_menu_choice === 2) {//单个点的关键词
                 keywordsArray = dragPoint.keywords.split(',');
@@ -85,6 +113,9 @@ define(function(require, exports, module) {
             } else {  //散点图中的所有簇
                 keywordsArray = JSON.parse(shareParams.shareParams._scatter_data_json).keywords;
             }
+            //获取两两关键词组合的patents信息
+            data.keywordsArray = keywordsArray;
+            data.patentsArray = searchByKeywords(keywordsArray);
             paintMatrixChart.paintMatrixChart(data, currentObj);
         } else {
             //

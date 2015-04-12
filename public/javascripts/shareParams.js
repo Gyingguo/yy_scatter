@@ -6,6 +6,7 @@ define(function(require, exports, module) {
     exports.shareParams = {
         "_url": "http://scut-ai-lab.tk:50000/api/groups/",
         "_patent_url": "http://scut-ai-lab.tk:50000/api/patents?",
+        "_keyword_url": "http://scut-ai-lab.tk:50000/#!/",
         "_scatterChart": null,
         "_pm": null,
         "_scatter_data_json": null,

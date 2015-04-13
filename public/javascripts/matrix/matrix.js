@@ -9,7 +9,6 @@ define(function(require, exports, module) {
        colors: [],
        chart: {
            borderColor: ''
-
        },
        title: {
            text: '矩阵关系图',
@@ -115,6 +114,12 @@ define(function(require, exports, module) {
         return rect;
     }
 
+    function createSpan(content, params) {
+        var span = makeSVG('tspan', params);
+        span.appendChild(document.createTextNode(content));
+        return span;
+    }
+
     function createxAxis(xData) {
         var len = null;
         if(xData.length > 10) {
@@ -172,16 +177,74 @@ define(function(require, exports, module) {
             rectPos.x = xStart + i * rectPos.stepX;
             rectPos.y = yStart + i * rectPos.stepY;
             for(var j = i; j < len; j++) {
-                var fillStyle = 'fill:' + defaultOptions.colors[k++];
-                var rectNode = createRect(rectPos, {style: fillStyle});
+                var fillStyle = 'fill:' + defaultOptions.colors[k];
+                var rectNode = createRect(rectPos, {style: fillStyle,id: k});
+                k++;
                 document.getElementById(_gMainId).appendChild(rectNode);
                 rectPos.x = rectPos.x + rectPos.stepX;
             }
         }
     }
 
-    function createTooltip(data) {
+    var tooltipData = null;
+    function createTooltip(evt) {
+        var event = evt || window.event;
+        var target = window.event.srcElement || evt.target;
+        var id = target.id;
+        if(!isNaN(parseInt(id,10))) {//判断位数字
+            var x = event.clientX;
+            var y = event.clientY;
+            var data = JSON.parse(tooltipData.dataJSON.patentsArray[id]);
+            var textNode = createTextNode({x: 8,y: 21},'',{style: 'font-size:12px;color:#333333;fill:#333333'});
+            var aLink = createALink('http://www.baidu.com');
+            var tSpan = createSpan('查看相关 云计算&amp;分布式 专利（共有12345篇)', {});
 
+            var tSpan1 = createSpan('技术要点', {});
+            aLink.appendChild(tSpan);
+            textNode.appendChild(aLink);
+            textNode.appendChild(tSpan1);
+
+            for(var i = 0; i < data.patents.length; i++) {
+                var aLink2 = createALink('http://www.baidu.com');
+                var tSpan2 = createSpan(data.patents[i].points, {x: 10, dy: 16});
+                aLink2.appendChild(tSpan2);
+                textNode.appendChild(aLink2);
+            }
+            document.getElementById(_gTooltipId).appendChild(textNode);
+
+            //生成框
+            var width = document.getElementById(_gTooltipId).clientWidth;
+            var height = document.getElementById(_gTooltipId).clientHeight;
+            var start = {
+                x: x,
+                y: y
+            };
+            var L1 = {
+                x: width + 16,
+                y: start.y
+            };
+            var L2 = {
+                x: width + 16,
+                y: height + 16
+            };
+            var L3 = {
+                x: start.x,
+                y: height + 16
+            };
+            var L4 = {
+                x: start.x,
+                y: start.y
+            };
+            var pathD = "M" + " " + start.x + " " + start.y + " " +
+                "L" + " " + L1.x    + " " + L1.y    + " " +
+                "L" + " " + L2.x    + " " + L2.y    + " " +
+                "L" + " " + L3.x    + " " + L3.y    + " " +
+                "L" + " " + L4.x    + " " + L4.y    + " ";
+            var path = makeSVG('path', {id: 'path-id', zIndex: 3, d: pathD, style:'fill:rgba(249, 249, 249, .85);stoke-width:1;stroke:hsla(24, 100%, 50%, 0.7)'});
+            var parent = document.getElementById(_gTooltipId);
+            parent.insertBefore(path,parent.childNodes[0]);
+        }
+        return false;
     }
 
     function drawMatrix(data) {
@@ -193,11 +256,16 @@ define(function(require, exports, module) {
         mainHTML = createMain(data.dataJSON);
         gTooltipElement = createTooltip(data.dataJSON);
         //添加交互事件
-        addEvent();
+        addEvent(data);
     }
 
-    function addEvent() {
+    function addEvent(data) {
         //添加交互事件
+        tooltipData = data;
+        var rectGroup = document.getElementById(_gMainId).childNodes;
+        for(var i = 0; i < rectGroup.length; i++) {
+            rectGroup[i].addEventListener('mouseover',createTooltip, false);
+        }
     }
     exports.matrix = function(options) {
         defaultOptions.colors = randomColors(100);

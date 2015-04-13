@@ -74,7 +74,7 @@ define(function(require, exports, module) {
         //矩阵分布
         rectPos.stepX = (svgClientWidth - 80) / (length + 1);
         rectPos.stepY = (svgClientHeight - 60) / length;
-        rectPos.x = xAxisPos.x;
+        rectPos.x =  xAxisPos.x - xAxisPos.step / 10;
         rectPos.y = 40 + yAxisPos.step / 2;
         rectPos.width = rectPos.stepX - 1;
         rectPos.height = rectPos.stepY - 1;
@@ -82,9 +82,10 @@ define(function(require, exports, module) {
 
     function randomColors(numberOfColors) {
         var colors = [];
-        var step = Math.floor(360 / numberOfColors);
+        //var step = Math.floor(360 / numberOfColors);
+        var step = Math.random()*36;
         for (var i = 0; i < numberOfColors; i++) {
-            colors.push('hsla(' + i * step + ', 100%, 50%, 0.7)');
+            colors.push('hsla(' + i * step + ', 100%, 50%, 0.8)');
         }
         return colors;
     }
@@ -177,16 +178,21 @@ define(function(require, exports, module) {
         } else {
             len = data.keywordsArray.length;
         }
-        for(var i = 0; i < len; i++) {
+        var xStart = null;
+        var yStart = null;
+        xStart = rectPos.x;     //记录最开始的点
+        yStart = rectPos.y;
+        for(var i = 0,k = 0; i < len; i++) {
             //var href = shareParams.shareParams._keyword_url + xData[i].trim();
             //var count = data.dataJSON.patentsArray[i].count.trim();
+            rectPos.x = xStart + i * rectPos.stepX;
+            rectPos.y = yStart + i * rectPos.stepY;
             for(var j = i; j < len; j++) {
-                var fillStyle = 'fill:' + defaultOptions.colors[j];
+                var fillStyle = 'fill:' + defaultOptions.colors[k++];
                 var rectNode = createRect(rectPos, {style: fillStyle});
                 document.getElementById(_gMainId).appendChild(rectNode);
                 rectPos.x = rectPos.x + rectPos.stepX;
             }
-            rectPos.y = rectPos.y + rectPos.stepY;
         }
     }
 
@@ -209,8 +215,7 @@ define(function(require, exports, module) {
         //添加交互事件
     }
     exports.matrix = function(options) {
-        defaultOptions.colors = randomColors(options.dataJSON.keywordsArray.length);
-        console.log(defaultOptions.colors.length)
+        defaultOptions.colors = randomColors(100);
         options = $.extend(defaultOptions, options);
         var id = '#' + options.id;
         container = $(id);    //容器

@@ -82,8 +82,7 @@ define(function(require, exports, module) {
 
     function randomColors(numberOfColors) {
         var colors = [];
-        //var step = Math.floor(360 / numberOfColors);
-        var step = Math.random()*36;
+        var step = Math.floor(360 / 36);
         for (var i = 0; i < numberOfColors; i++) {
             colors.push('hsla(' + i * step + ', 100%, 50%, 0.8)');
         }
@@ -97,8 +96,8 @@ define(function(require, exports, module) {
         return el;
     }
 
-    function createTextNode(pos, content) {   //创建文本节点
-        var text = makeSVG("text",{x: pos.x, y: pos.y, style: 'font-size: 10px'});
+    function createTextNode(pos, content, param) {   //创建文本节点
+        var text = makeSVG("text",{x: pos.x, y: pos.y, style: param.style});
         text.appendChild(document.createTextNode(content));
         return text;
     }
@@ -109,23 +108,6 @@ define(function(require, exports, module) {
             'xlink:href',
             href);
         return a;
-       // var a = document.createElementNS('http://www.w3.org/2000/svg','a');
-
-       /* a.setAttributeNS('http://www.w3.org/1999/xlink',
-            'xlink:href',
-            'http://www.baidu.com');*/
-        //document.getElementById('gyy-matrix').appendChild(a);
-       // var rect= makeSVG('rect', {id: 'rect', x: '10', y: '10', width: '100', height: '30',rx: '10', ry: '10', style: 'fill:lightgrey'});
-        //var text = makeSVG('text', {color: 'green', x: '10', y: '40'});
-
-        //a.appendChild(rect);
-
-        //创造一个文本节点对象
-       // var text = makeSVG("text",{x: '30', y: '30', style: 'font-size: 14px'});
-
-        //将文本内容添加到text节点对象中
-       /* text.appendChild(document.createTextNode("技术要点"));
-        a.appendChild(text);*/
     }
 
     function createRect(pos, params) { // style: 'fill:lightgrey' 创建一个矩形节点
@@ -145,7 +127,8 @@ define(function(require, exports, module) {
             //var content = xData[i].trim();
             var href = "http://www.baidu.com";
             var aNode = createALink(href);
-            var textNode = createTextNode(xAxisPos, '计算机');
+            var fillStyle = "font-size: 10px;fill:" + defaultOptions.colors[i*len - i];
+            var textNode = createTextNode(xAxisPos, '计算机', {style: fillStyle});
             $(aNode).append(textNode);
             document.getElementById(_gRowId).appendChild(aNode);
             xAxisPos.x = xAxisPos.x + xAxisPos.step;
@@ -164,7 +147,8 @@ define(function(require, exports, module) {
             //var content = xData[i].trim();
             var href = "http://www.baidu.com";
             var aNode = createALink(href);
-            var textNode = createTextNode(yAxisPos, '计算机');
+            var fillStyle = "font-size: 10px;fill:" + defaultOptions.colors[i*len - i];
+            var textNode = createTextNode(yAxisPos, '计算机', {style: fillStyle});
             $(aNode).append(textNode);
             document.getElementById(_gColumnId).appendChild(aNode);
             yAxisPos.y = yAxisPos.y + yAxisPos.step;
@@ -207,6 +191,7 @@ define(function(require, exports, module) {
         xAxisHTML = createxAxis(data.dataJSON.keywordsArray);
         yAxisHTML = createyAxis(data.dataJSON.keywordsArray);
         mainHTML = createMain(data.dataJSON);
+        gTooltipElement = createTooltip(data.dataJSON);
         //添加交互事件
         addEvent();
     }
@@ -217,9 +202,15 @@ define(function(require, exports, module) {
     exports.matrix = function(options) {
         defaultOptions.colors = randomColors(100);
         options = $.extend(defaultOptions, options);
+        _svgId = options.id + '-' + _svgId;
+        _gRowId = options.id + '-' + _gRowId;
+        _gColumnId = options.id + '-' + _gColumnId;
+        _gMainId = options.id + '-' + _gMainId;
+        _gTooltipId = options.id + '-' + _gTooltipId;
+
         var id = '#' + options.id;
         container = $(id);    //容器
-        svgElement = makeSVG('svg', {id: _svgId, width: '100%', height: '100%', color: 'red'});
+        svgElement = makeSVG('svg', {id: _svgId, width: '100%', height: '100%', style: 'background: black;'});
 
         gRowElement = makeSVG('g', {id: _gRowId});
         gColumnElement = makeSVG('g', {id: _gColumnId});
@@ -237,6 +228,5 @@ define(function(require, exports, module) {
         svgClientHeight = svgElement.clientHeight;
 
         drawMatrix(options);
-        //console.log('default: ' + options.dataJSON.keywordsArray);
     }
 })

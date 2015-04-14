@@ -177,9 +177,9 @@ define(function(require, exports, module) {
         for(var i = 0,k = 0; i < len; i++) {
             //var href = shareParams.shareParams._keyword_url + xData[i].trim();
             //var count = data.dataJSON.patentsArray[i].count.trim();
-            rectPos.x = xStart + i * rectPos.stepX;
-            rectPos.y = yStart + i * rectPos.stepY;
-            for(var j = i; j < len; j++) {
+            rectPos.x = xStart + (i + 1) * rectPos.stepX;
+            rectPos.y = yStart + i* rectPos.stepY;
+            for(var j = i + 1; j < len; j++) {
                 var fillStyle = 'fill:' + defaultOptions.colors[k];
                 var rectNode = createRect(rectPos, {style: fillStyle,id: k});
                 k++;
@@ -192,7 +192,6 @@ define(function(require, exports, module) {
 
     var tooltipData = null;
     var mouseOverPos = null;  //获取鼠标移入的位置
-    var mouseOverSize = null; //获取当前元素的大小，以防tooltip遮盖
     function createTooltipBorder() { //根据内容大小生成对应大小tooltip那层遮罩
         //生成框
         var width = document.getElementById(_gTooltipId + '-text').clientWidth;
@@ -230,10 +229,10 @@ define(function(require, exports, module) {
     }
 
     function removeTooltip() {
-        var childNodes = document.getElementById(_gTooltipId).childNodes;
-        for(var i = 0;i < childNodes.length; i++) {
-            document.getElementById(_gTooltipId).removeChild(childNodes[i]);
-        }
+        var path = document.getElementById(_gTooltipId + '-path');
+        var text = document.getElementById(_gTooltipId + '-text');
+        document.getElementById(_gTooltipId).removeChild(path);
+        document.getElementById(_gTooltipId).removeChild(text);
     }
 
     function createTooltip(evt) {

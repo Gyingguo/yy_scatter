@@ -189,88 +189,29 @@ define(function(require, exports, module) {
         }
     }
 
-    var Common = {
-        getItself: function(id) {
-            return "string" == typeof id ? document.getElementById(id) : id;
-        },
-        getEvent: function() {
-            if(document.all) {
-                return window.event;
-            } else {
-                func = getEvent.caller;
-                return func.arguments[0].event;
-            }
-        },
-        getMousePos: function(ev) {
-            if(!ev) {
-                ev = this.getEvent();
-            }
-            if(ev.pageX || ev.pageY) {
-                return {
-                    x: ev.pageX,
-                    y: ev.pageY
-                };
-            }
-            if(document.documentElement && document.documentElement.scrollTop) {
-                return {
-                    x: ev.clientX + document.documentElement.scrollLeft - document.documentElement.clientLeft,
-                    y: ev.clientY + document.documentElement.scrollTop - document.documentElement.clientTop
-                };
-            } else if (document.body) {
-                return {
-                    x: ev.clientX + document.body.scrollLeft - document.body.clientLeft,
-                    y: ev.clientY + document.body.scrollTop - document.body.clientTop
-                };
-            }
-        },
-        getElementPos: function(el) {
-            el = this.getItself(el);
-            var _x = 0, _y = 0;
-            do {
-                _x += el.offsetLeft;
-                _y += el.offsetTop;
-            } while (el = el.offsetParent);
-            return { x: _x, y: _y };
-        }/*,
-        getTextSize: function(text) {
-            var span = document.createElement("span");
-            var result = {};
-            result.width = span.offsetWidth;
-            result.height = span.offsetWidth;
-            span.style.visibility = "hidden";
-            document.body.appendChild(span);
-            if (typeof span.textContent != "undefined")
-                span.textContent = text;
-            else span.innerText = text;
-            result.width = span.offsetWidth - result.width;
-            result.height = span.offsetHeight - result.height;
-            span.parentNode.removeChild(span);
-            return result;
-        }*/
-    };
+
     var tooltipData = null;
     var mouseOverPos = null;  //获取鼠标移入的位置
     var mouseOverSize = null; //获取当前元素的大小，以防tooltip遮盖
     function createTooltipBorder() { //根据内容大小生成对应大小tooltip那层遮罩
         //生成框
-        var width = document.getElementById('test-id').clientWidth;
-        var height = document.getElementById('test-id').clientHeight;
-        console.log(width + " , " + height);
+        var width = document.getElementById(_gTooltipId + '-text').clientWidth;
+        var height = document.getElementById(_gTooltipId + '-text').clientHeight;
         var start = {
-            x: mouseOverPos.x,
-            y: mouseOverPos.y
+            x: mouseOverPos.x - 16,
+            y: mouseOverPos.y - 16
         };
         var L1 = {
-            x: width + 16,
+            x: start.x + width + 16,
             y: start.y
         };
         var L2 = {
-            x: width + 16,
-            y: height + 16
+            x: start.x + width + 16,
+            y: start.y + height + 16
         };
         var L3 = {
-            x: start.x,
-            y: height + 16
+            x: start.x ,
+            y: start.y + height + 16
         };
         var L4 = {
             x: start.x,
@@ -281,9 +222,18 @@ define(function(require, exports, module) {
             "L" + " " + L2.x    + " " + L2.y    + " " +
             "L" + " " + L3.x    + " " + L3.y    + " " +
             "L" + " " + L4.x    + " " + L4.y;
-        var path = makeSVG('path', {id: 'path-id', zIndex: 3, d: pathD, style:'fill:rgba(249, 249, 249, .85);stoke-width:1;stroke:hsla(24, 100%, 50%, 0.7)'});
+        var path = makeSVG('path', {id: _gTooltipId + '-path', zIndex: 3, d: pathD, style:'fill:rgba(249, 249, 249, .85);stoke-width:1;stroke:hsla(24, 100%, 50%, 0.7)'});
         var parent = document.getElementById(_gTooltipId);
         parent.insertBefore(path,parent.childNodes[0]);
+        //对path进行监听
+        document.getElementById(_gTooltipId + '-path').addEventListener('mouseout', removeTooltip, false);  //当鼠标移出tooltip删除
+    }
+
+    function removeTooltip() {
+        var childNodes = document.getElementById(_gTooltipId).childNodes;
+        for(var i = 0;i < childNodes.length; i++) {
+            document.getElementById(_gTooltipId).removeChild(childNodes[i]);
+        }
     }
 
     function createTooltip(evt) {
@@ -292,29 +242,31 @@ define(function(require, exports, module) {
         var id = target.id;
         if(!isNaN(parseInt(id,10))) {//判断位数字
             mouseOverPos = {
-                x:event.x,
-                y:event.y
+                x:event.offsetX,
+                y:event.offsetY
             };
-            console.log(event.x + " " + event.y);
             var data = JSON.parse(tooltipData.dataJSON.patentsArray[id]);
-            var textNode = createTextNode('',{x: 8,y: 21, style: 'font-size:12px;color:#333333;fill:#333333',id:'test-id'});
+            var textNode = createTextNode('',{x: mouseOverPos.x,y: mouseOverPos.y, style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)',id: _gTooltipId + '-text'});
             var aLink = createALink('http://www.baidu.com');
-            var tSpan = createSpan('查看相关 云计算&amp;分布式 专利（共有12345篇)', {});
+            var tSpan = createSpan('云计算&分布式 专利（共有12345篇)', {style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
 
-            var tSpan1 = createSpan('技术要点', {});
             aLink.appendChild(tSpan);
             textNode.appendChild(aLink);
-            textNode.appendChild(tSpan1);
 
+            var unique = {};  //用于数组去重的对象
             for(var i = 0; i < data.patents.length; i++) {
                 var aLink2 = createALink('http://www.baidu.com');
-                var tSpan2 = createSpan(data.patents[i].points, {x: 10, dy: 16});
-                aLink2.appendChild(tSpan2);
-                textNode.appendChild(aLink2);
+                var point = data.patents[i].points;
+                if(!unique[point]) {
+                    unique[point] = 1;
+                    var tSpan2 = createSpan(point, {x: mouseOverPos.x, dy: 16,style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
+                    aLink2.appendChild(tSpan2);
+                    textNode.appendChild(aLink2);
+                }
             }
             document.getElementById(_gTooltipId).appendChild(textNode);
 
-            createTooltipBorder();
+           createTooltipBorder();
         }
         return false;
     }

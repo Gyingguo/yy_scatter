@@ -1573,7 +1573,8 @@ defaultOptions = {
 			millisecond: '%A, %b %e, %H:%M:%S.%L',
 			second: '%A, %b %e, %H:%M:%S',
 			minute: '%A, %b %e, %H:%M',
-			hour: '%A, %b %e, %H:%M',
+			hour: '%A,' +
+                ' %b %e, %H:%M',
 			day: '%A, %b %e, %Y',
 			week: 'Week from %A, %b %e, %Y',
 			month: '%B %Y',

@@ -5,21 +5,6 @@
 define(function(require, exports, module) {
     var shareParams = require('../javascripts/shareParams');
 
-    var pos1 = {
-        left: '226px',
-        top: '32px'
-        },
-        pos2 = {
-            left: '125px',
-            top: '152px'
-        },
-        pos3 = {
-            left: '327px',
-            top: '152px'
-        };
-    var topAnimation = null;
-    var bottomAnimation = null;
-
     var htmlMatrix = '<div class="matrix-chart" data-chart-type="matrix">' +
                         '<div class="matrix-chart-list"><\/div>' +
                     '<\/div>';
@@ -32,9 +17,6 @@ define(function(require, exports, module) {
                     '<\/div>';
 
     exports.menu = function() {
-        $('#scatter-menu-button').click(function() {
-            $('#scatter-menu').toggle();
-        })
 
         var plus = $('#plus');
         var minus = $('#minus');
@@ -92,83 +74,35 @@ define(function(require, exports, module) {
             shareParams.shareParams._current_menu_choice = shareParams.shareParams._main_menu_choice['all_point_drag'];
         })
 
-        $('#top-menu-button').click(function() {
-            if($('#top-menu-list').css('display') != 'none') {
-                clearInterval(topAnimation);
-                $('#top-menu-list').css('display', 'none');
-            } else {
-                topAnimation = setInterval(function() {
-                    return (function() {
-                        $('#top-menu-list .matrix').animate(pos2, 5000);
-                        $('#top-menu-list .matrix').animate(pos3, 5000);
-                        $('#top-menu-list .matrix').animate(pos1, 5000);
-                        $('#top-menu-list .pie').animate(pos3, 5000);
-                        $('#top-menu-list .pie').animate(pos1, 5000);
-                        $('#top-menu-list .pie').animate(pos2, 5000);
-                        $('#top-menu-list .column').animate(pos1, 5000);
-                        $('#top-menu-list .column').animate(pos2, 5000);
-                        $('#top-menu-list .column').animate(pos3, 5000);
-                    })
-                }(),1000);
-                $('#top-menu-list').css('display', 'block');
+        $('#matrix-1').change(function() {
+            if(this.checked) {
+                $('#left-charts-top')[0].innerHTML = htmlMatrix;
             }
-        });
-
-        $('#bottom-menu-button').click(function() {
-            if($('#bottom-menu-list').css('display') != 'none') {
-                clearInterval(bottomAnimation);
-                $('#bottom-menu-list').css('display', 'none');
-            } else {
-                bottomAnimation = setInterval(function() {
-                        $('#bottom-menu-list .matrix').animate(pos2, 5000);
-                        $('#bottom-menu-list .matrix').animate(pos3, 5000);
-                        $('#bottom-menu-list .matrix').animate(pos1, 5000);
-                        $('#bottom-menu-list .pie').animate(pos3, 5000);
-                        $('#bottom-menu-list .pie').animate(pos1, 5000);
-                        $('#bottom-menu-list .pie').animate(pos2, 5000);
-                        $('#bottom-menu-list .column').animate(pos1, 5000);
-                        $('#bottom-menu-list .column').animate(pos2, 5000);
-                        $('#bottom-menu-list .column').animate(pos3, 5000);
-                }(),1000);
-              $('#bottom-menu-list').css('display', 'block');
+        })
+        $('#pie-1').change(function() {
+            if(this.checked) {
+                $('#left-charts-top')[0].innerHTML = htmlPie;
             }
-        });
-
-        $('#top-menu-list .matrix').click(function() {
-            clearInterval(topAnimation);
-            $('#top-menu-list').css('display', 'none');
-            $('#left-charts-top')[0].innerHTML = htmlMatrix;
-        });
-
-        $('#top-menu-list .pie').click(function() {
-            clearInterval(topAnimation);
-            $('#top-menu-list').css('display', 'none');
-            $('#left-charts-top')[0].innerHTML = htmlPie;
-        });
-
-        $('#top-menu-list .column').click(function() {
-            clearInterval(topAnimation);
-            $('#top-menu-list').css('display', 'none');
-            $('#left-charts-top')[0].innerHTML = htmlColumn;
-        });
-
-        $('#bottom-menu-list .matrix').click(function() {
-            clearInterval(bottomAnimation);
-            $('#bottom-menu-list').css('display', 'none');
-            $('#left-charts-bottom')[0].innerHTML = htmlMatrix;
-        });
-
-        $('#bottom-menu-list .pie').click(function() {
-            clearInterval(bottomAnimation);
-            $('#bottom-menu-list').css('display', 'none');
-            $('#left-charts-bottom')[0].innerHTML = htmlPie;
-        });
-
-        $('#bottom-menu-list .column').click(function() {
-            clearInterval(bottomAnimation);
-            $('#bottom-menu-list').css('display', 'none');
-            $('#left-charts-bottom')[0].innerHTML = htmlColumn;
-        });
-
+        })
+        $('#column-1').change(function() {
+            if(this.checked) {
+                $('#left-charts-top')[0].innerHTML = htmlColumn;
+            }
+        })
+        $('#matrix-2').change(function() {
+            if(this.checked) {
+                $('#left-charts-bottom')[0].innerHTML = htmlMatrix;
+            }
+        })
+        $('#pie-2').change(function() {
+            if(this.checked) {
+                $('#left-charts-bottom')[0].innerHTML = htmlPie;
+            }
+        })
+        $('#column-2').change(function() {
+            if(this.checked) {
+                $('#left-charts-bottom')[0].innerHTML = htmlColumn;
+            }
+        })
     }
 })

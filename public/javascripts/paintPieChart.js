@@ -62,7 +62,9 @@ define(function(request, exports, module) {
             },
             drilldown: {
                 activeDataLabelStyle: {
-                    textDecoration: 'none'
+                    color: 'white',
+                    textDecoration: 'none',
+                    fontWeight: 'normal'
                 }
             }
         })

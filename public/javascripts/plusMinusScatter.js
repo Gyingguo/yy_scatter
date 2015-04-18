@@ -22,7 +22,7 @@ define(function(require, exports, module) {
                     var x = null;
                     var y = null;
 
-                    try {
+                    try {  //区别单击到点还是单击到图表
                         x = e.xAxis[0].value;
                         y = e.yAxis[0].value;
                     } catch (e) {
@@ -38,6 +38,7 @@ define(function(require, exports, module) {
                    // shareParams.shareParams._scatterChart.yAxis[0].update({min: yNewMin, max: yNewMax}, true);
                     //shareParams.shareParams._scatterChart.xAxis[0].update({min: xNewMin, max: xNewMax}, true);
                     //根据_pm中的_flag判断当前选择的是放大/缩小
+                    console.log(shareParams.shareParams._scatterChart.zField);
                     if (shareParams.shareParams._pm._flag === 1) {
                         shareParams.shareParams._pm._plusMinusCount++;
                         shareParams.shareParams._scatterChart.yAxis[0].update({

@@ -37,16 +37,30 @@ define(function(request, exports, module) {
         columnChart = new Highcharts.Chart({
             chart: {
                 renderTo: posObj.id,
-                type: 'column'
+                type: 'column',
+                backgroundColor: 'black',
             },
             title: {
-                text: '排名前10关键词'
+                text: '排名前10关键词',
+                style: {
+                    color: 'white'
+                }
             },
             xAxis: {
-                type: 'category'
+                type: 'category',
+                labels:{
+                    style: {
+                        color: 'white'
+                    }
+                }
             },
             yAxis: {
-                title: {text: '权重'}
+                title: {text: '权重'},
+                labels:{
+                    style: {
+                        color: 'white'
+                    }
+                }
             },
             legend: {
                 enabled: false

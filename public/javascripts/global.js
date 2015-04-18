@@ -6,7 +6,7 @@ define(function(require, exports, module) {
     var shareParams = require('../javascripts/shareParams');
 
     exports.global = {
-        init: function() {
+        init: function(params) {
             //定义一些全局变量
             shareParams.shareParams._scatterChart = new Highcharts.Chart({
                 chart: {
@@ -88,7 +88,6 @@ define(function(require, exports, module) {
                  */
                 _plusMinusCount: 0
             }
-
         }
     }
 })

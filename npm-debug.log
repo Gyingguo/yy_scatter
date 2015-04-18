@@ -1,55 +1,56 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'e:\\Coding\\node\\node.exe',
-1 verbose cli   'e:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli [ 'E:\\Coding\\node\\\\node.exe',
+1 verbose cli   'E:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js',
 1 verbose cli   'install',
-1 verbose cli   'seajs',
-1 verbose cli   '-g' ]
+1 verbose cli   '-g',
+1 verbose cli   'boostrap' ]
 2 info using npm@2.2.0
 3 info using node@v0.10.35
-4 silly cache add args [ 'seajs', null ]
-5 verbose cache add spec seajs
-6 silly cache add parsed spec { raw: 'seajs',
-6 silly cache add   scope: null,
-6 silly cache add   name: 'seajs',
-6 silly cache add   rawSpec: '',
-6 silly cache add   spec: '*',
-6 silly cache add   type: 'range' }
-7 verbose addNamed seajs@*
-8 silly addNamed semver.valid null
-9 silly addNamed semver.validRange *
-10 silly addNameRange { name: 'seajs', range: '*', hasData: false }
-11 silly mapToRegistry name seajs
-12 silly mapToRegistry using default registry
-13 silly mapToRegistry registry http://npm.internal.baidu.com/
-14 silly mapToRegistry uri http://npm.internal.baidu.com/seajs
-15 verbose addNameRange registry:http://npm.internal.baidu.com/seajs not in flight; fetching
-16 verbose request uri http://npm.internal.baidu.com/seajs
-17 verbose request no auth needed
-18 info attempt registry request try #1 at 23:43:57
-19 verbose request id 6b595695fe66ab80
-20 http request GET http://npm.internal.baidu.com/seajs
-21 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
-22 info attempt registry request try #2 at 23:44:19
-23 http request GET http://npm.internal.baidu.com/seajs
-24 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
-25 info attempt registry request try #3 at 23:45:31
-26 http request GET http://npm.internal.baidu.com/seajs
-27 verbose stack Error: getaddrinfo ENOTFOUND
-27 verbose stack     at errnoException (dns.js:37:11)
-27 verbose stack     at Object.onanswer [as oncomplete] (dns.js:124:16)
-28 verbose cwd G:\bishe\yy_scatter
-29 error Windows_NT 6.1.7601
-30 error argv "e:\\Coding\\node\\node.exe" "e:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js" "install" "seajs" "-g"
-31 error node v0.10.35
-32 error npm  v2.2.0
-33 error code ENOTFOUND
-34 error errno ENOTFOUND
-35 error syscall getaddrinfo
-36 error network getaddrinfo ENOTFOUND
-36 error network This is most likely not a problem with npm itself
-36 error network and is related to network connectivity.
-36 error network In most cases you are behind a proxy or have bad network settings.
-36 error network
-36 error network If you are behind a proxy, please make sure that the
-36 error network 'proxy' config is set properly.  See: 'npm help config'
-37 verbose exit [ 1, true ]
+4 verbose node symlink E:\Coding\node\\node.exe
+5 silly cache add args [ 'boostrap', null ]
+6 verbose cache add spec boostrap
+7 silly cache add parsed spec { raw: 'boostrap',
+7 silly cache add   scope: null,
+7 silly cache add   name: 'boostrap',
+7 silly cache add   rawSpec: '',
+7 silly cache add   spec: '*',
+7 silly cache add   type: 'range' }
+8 verbose addNamed boostrap@*
+9 silly addNamed semver.valid null
+10 silly addNamed semver.validRange *
+11 silly addNameRange { name: 'boostrap', range: '*', hasData: false }
+12 silly mapToRegistry name boostrap
+13 silly mapToRegistry using default registry
+14 silly mapToRegistry registry http://npm.internal.baidu.com/
+15 silly mapToRegistry uri http://npm.internal.baidu.com/boostrap
+16 verbose addNameRange registry:http://npm.internal.baidu.com/boostrap not in flight; fetching
+17 verbose request uri http://npm.internal.baidu.com/boostrap
+18 verbose request no auth needed
+19 info attempt registry request try #1 at 10:04:16
+20 verbose request id f127ff72dcde8ddd
+21 http request GET http://npm.internal.baidu.com/boostrap
+22 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+23 info attempt registry request try #2 at 10:04:38
+24 http request GET http://npm.internal.baidu.com/boostrap
+25 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+26 info attempt registry request try #3 at 10:05:50
+27 http request GET http://npm.internal.baidu.com/boostrap
+28 verbose stack Error: getaddrinfo ENOTFOUND
+28 verbose stack     at errnoException (dns.js:37:11)
+28 verbose stack     at Object.onanswer [as oncomplete] (dns.js:124:16)
+29 verbose cwd G:\bishe\yy_scatter
+30 error Windows_NT 6.1.7601
+31 error argv "E:\\Coding\\node\\\\node.exe" "E:\\Coding\\node\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "boostrap"
+32 error node v0.10.35
+33 error npm  v2.2.0
+34 error code ENOTFOUND
+35 error errno ENOTFOUND
+36 error syscall getaddrinfo
+37 error network getaddrinfo ENOTFOUND
+37 error network This is most likely not a problem with npm itself
+37 error network and is related to network connectivity.
+37 error network In most cases you are behind a proxy or have bad network settings.
+37 error network
+37 error network If you are behind a proxy, please make sure that the
+37 error network 'proxy' config is set properly.  See: 'npm help config'
+38 verbose exit [ 1, true ]

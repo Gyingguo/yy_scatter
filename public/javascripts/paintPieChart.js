@@ -39,6 +39,7 @@ define(function(request, exports, module) {
             chart: {
                 renderTo: posObj.id,
                 type: 'pie',
+                backgroundColor: 'black',
                 events: {
                     drilldown: function (event) {
                         var id = event.point.drilldown
@@ -47,7 +48,10 @@ define(function(request, exports, module) {
                 }
             },
             title: {
-                text: '聚类分布'
+                text: '聚类分布',
+                style: {
+                    color: 'white'
+                }
             },
             tooltip: {
                 headerFormat: '话题：{point.key} <br>',

@@ -8,6 +8,7 @@ define(function(require, exports, module) {
         "_url": "http://scut-ai-lab.tk:50000/api/groups/",
         "_patent_url": "http://scut-ai-lab.tk:50000/api/patents?",
         "_keyword_url": "http://scut-ai-lab.tk:50000/#!/",
+        "_keyword_year_trend_url": "http://222.201.145.184:8800/patentmining/tech_analyze.do?key=",
         "_scatterChart": null,
         "_pm": null,
         "_scatter_data_json": null,

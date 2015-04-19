@@ -247,10 +247,37 @@ define(function(require, exports, module) {
                 y:event.offsetY
             };
             var data = JSON.parse(tooltipData.dataJSON.patentsArray[id]);
+
+            console.log(tooltipData.dataJSON.patentsArray)
+            console.log(tooltipData.dataJSON.keywordsArray)
+            console.log(id)
             var textNode = createTextNode('',{x: mouseOverPos.x,y: mouseOverPos.y, style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)',id: _gTooltipId + '-text'});
+            //确定是哪两个关键词的组合
+            var tSpanContent = null;
+            var keywordX = 0;    //确定是哪两个关键字的组合
+            var keywordY = 0;
+            var sum = 0;
+            var len = null;
+            if(tooltipData.dataJSON.keywordsArray.length > 10) {
+                len = 10;
+            }else {
+                len = tooltipData.dataJSON.keywordsArray.length;
+            }
+            for(var i = len - 1, j = 0; i > 0; i--) {
+                sum = sum + i;
+                if(sum > id) {
+                    console.log(sum)
+                    keywordY = j;
+                    keywordX = len - (sum - id);
+                    break;
+                }
+                j++;
+            }
+            tSpanContent = tooltipData.dataJSON.keywordsArray[keywordX] + "&" + tooltipData.dataJSON.keywordsArray[keywordY] + " （共有" + tooltipData.dataJSON.patentsArray.count + "）篇";
+
             //var href = '';   需要自己写一个页面
             var aLink = createALink('http://www.baidu.com');
-            var tSpan = createSpan('云计算&分布式 专利（共有12345篇)', {style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
+            var tSpan = createSpan(tSpanContent, {style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
 
             aLink.appendChild(tSpan);
             textNode.appendChild(aLink);
@@ -258,7 +285,7 @@ define(function(require, exports, module) {
             var unique = {};  //用于数组去重的对象
             for(var i = 0; i < data.patents.length; i++) {
                 var point = data.patents[i].points.trim();
-                var href = shareParams.shareParams._keyword_url + point;
+                var href = shareParams.shareParams._keyword_year_trend_url + point + "&keyword=" + point;
                 var aLink2 = createALink(href);
                 if(!unique[point]) {
                     unique[point] = 1;

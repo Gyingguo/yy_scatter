@@ -60,10 +60,11 @@ define(function(require, exports, module) {
         });
         for(var i = 0; i < len; i++) {
             for(var j = i + 1; j < len; j++) {
-                //var part = 'q=' + arr[i].trim() + '+'+ arr[j].trim() + '&limit=9999999';
+                //var part = 'q=' + arr[i].trim() + '+'+ arr[j].trim();
                 //var url = shareParams.shareParams._patent_url + part;
                 //本地测试
-                $.get('/api/groups/patent', function(data) {
+                var url = '/api/groups/patent';
+                $.get(url, function(data) {
                     patent.push(data);
                 })
             }

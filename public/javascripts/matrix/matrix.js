@@ -3,7 +3,7 @@
  */
 define(function(require, exports, module) {
    var shareParams = require("../shareParams");
-    var tooltip = require("../matrix/tooltip");
+   //var tooltip = require("../matrix/tooltip");
 
    var defaultOptions = {
        id: 'matrix',
@@ -129,13 +129,14 @@ define(function(require, exports, module) {
             len = xData.length;
         }
         for(var i = 0; i < len; i++) {
-            //var href = shareParams.shareParams._keyword_url + xData[i].trim();
-            //var content = xData[i].trim();
-            var href = "http://www.baidu.com";
+            var href = shareParams.shareParams._keyword_url + xData[i].trim();
+            var content = xData[i].trim();
+           // var href = "http://www.baidu.com";
+            // var content = " 计算机";
             var aNode = createALink(href);
             var fillStyle = "font-size: 10px;fill:" + defaultOptions.colors[i*len - i];
             xAxisPos.style = fillStyle;
-            var textNode = createTextNode('计算机', xAxisPos);
+            var textNode = createTextNode(content, xAxisPos);
             $(aNode).append(textNode);
             document.getElementById(_gRowId).appendChild(aNode);
             xAxisPos.x = xAxisPos.x + xAxisPos.step;
@@ -150,13 +151,14 @@ define(function(require, exports, module) {
             len = yData.length;
         }
         for(var i = 0; i < len; i++) {
-            //var href = shareParams.shareParams._keyword_url + xData[i].trim();
-            //var content = xData[i].trim();
-            var href = "http://www.baidu.com";
+            var href = shareParams.shareParams._keyword_url + yData[i].trim();
+            var content = yData[i].trim();
+            //var href = "http://www.baidu.com";
+            //var content = "计算机";
             var aNode = createALink(href);
             var fillStyle = "font-size: 10px;fill:" + defaultOptions.colors[i*len - i];
             yAxisPos.style = fillStyle;
-            var textNode = createTextNode('计算机', yAxisPos);
+            var textNode = createTextNode(content, yAxisPos);
             $(aNode).append(textNode);
             document.getElementById(_gColumnId).appendChild(aNode);
             yAxisPos.y = yAxisPos.y + yAxisPos.step;
@@ -246,6 +248,7 @@ define(function(require, exports, module) {
             };
             var data = JSON.parse(tooltipData.dataJSON.patentsArray[id]);
             var textNode = createTextNode('',{x: mouseOverPos.x,y: mouseOverPos.y, style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)',id: _gTooltipId + '-text'});
+            //var href = '';   需要自己写一个页面
             var aLink = createALink('http://www.baidu.com');
             var tSpan = createSpan('云计算&分布式 专利（共有12345篇)', {style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
 
@@ -254,8 +257,9 @@ define(function(require, exports, module) {
 
             var unique = {};  //用于数组去重的对象
             for(var i = 0; i < data.patents.length; i++) {
-                var aLink2 = createALink('http://www.baidu.com');
-                var point = data.patents[i].points;
+                var point = data.patents[i].points.trim();
+                var href = shareParams.shareParams._keyword_url + point;
+                var aLink2 = createALink(href);
                 if(!unique[point]) {
                     unique[point] = 1;
                     var tSpan2 = createSpan(point, {x: mouseOverPos.x, dy: 16,style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
@@ -271,6 +275,7 @@ define(function(require, exports, module) {
     }
 
     function drawMatrix(data) {
+        console.log(data);
         var len = data.dataJSON.keywordsArray.length > 10 ? 10 : data.dataJSON.keywordsArray.length;
         layoutInit(len);
 

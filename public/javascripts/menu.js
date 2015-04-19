@@ -17,7 +17,6 @@ define(function(require, exports, module) {
                     '<\/div>';
 
     exports.menu = function() {
-
         var plus = $('#plus');
         var minus = $('#minus');
         var singleDrag = $('#single-point-drag');

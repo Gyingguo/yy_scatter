@@ -1,5 +1,6 @@
 /**
  * Created by carol on 2015/4/1.
+ * 定义一些共享通信变量，shareParams和global同时存在是为了克服循环引用问题
  */
 define(function(require, exports, module) {
 

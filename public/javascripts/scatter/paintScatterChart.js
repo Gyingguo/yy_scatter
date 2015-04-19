@@ -2,13 +2,10 @@
  * Created by carol on 2015/3/26.
  */
 define(function(require,exports,module) {
-    var globalScatterChart = require('../javascripts/global');
-    var shareParams = require('../javascripts/shareParams');
-
-    globalScatterChart.global.init();
+    var shareParams = require('../shareParams');
+    var globalScatterChart = require('../global');
 
     function randomColors(numberOfColors) {
-
         var colors = [];
         var step = Math.floor(360 / numberOfColors);
         for (var i = 0; i < numberOfColors; i++) {
@@ -51,11 +48,10 @@ define(function(require,exports,module) {
     }
 
     exports.paintScatterChart = function(data) {
+        globalScatterChart.global.init();    //每次paintScatterChart都要初始化全局变量
         shareParams.shareParams._scatter_data_json = data; //当前scatter图表中显示的数据
-
         var data = JSON.parse(data);
         var colors = randomColors(Math.max(data.children.length, 10));
         updateScatterChart(data, colors);
     }
-
 })

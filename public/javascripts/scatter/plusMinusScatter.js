@@ -2,7 +2,8 @@
  * Created by carol on 2015/4/1.
  */
 define(function(require, exports, module) {
-    var shareParams = require('../javascripts/shareParams');
+    var shareParams = require('../shareParams');
+
     exports.plusMinusScatter = function(H) {
         var H = H || Highcharts;
         var yOldMin = -1;

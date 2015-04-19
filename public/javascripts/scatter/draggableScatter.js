@@ -2,10 +2,10 @@
  * Created by carol on 2015/4/2.
  */
 define(function(require, exports, module) {
-    var shareParams = require('../javascripts/shareParams');
-    var paintPieChart = require('../javascripts/paintPieChart');
-    var paintColumnChart = require('../javascripts/paintColumnChart');
-    var paintMatrixChart = require('../javascripts/paintMatrixChart');
+    var shareParams = require('../shareParams');
+    var paintPieChart = require('../pie/paintPieChart');
+    var paintColumnChart = require('../column/paintColumnChart');
+    var paintMatrixChart = require('../matrix/paintMatrixChart');
 
     var flag = 0;
     var dragPoint = null;
@@ -49,7 +49,7 @@ define(function(require, exports, module) {
         }
     }
 
-    function searchByKeywords(arr) {
+    function searchByKeywords(arr) { //两两关键词配对，到后台搜索keywords中同时含有这两个关键词的专利信息
         var patent = [];
         var len = arr.length;
         if (len > 10) {   //限制做多为10个
@@ -76,7 +76,6 @@ define(function(require, exports, module) {
 
     function drawWithDragData() {
         if (upPosition === 1) {
-            //console.log('drag:' + shareParams.shareParams._scatterChart.series.length);
             if(shareParams.shareParams._current_menu_choice === 2) {
                 var url = shareParams.shareParams._url + options.id;
                 $.get(url,function(data) {
@@ -96,7 +95,6 @@ define(function(require, exports, module) {
             } else if(shareParams.shareParams._current_menu_choice === 3) {
                 paintColumnChart.paintColumnChart(shareParams.shareParams._scatter_data_json, currentObj);
             }
-            //paintColumnChart.paintColumnChart(options, currentObj);
         } else if (upPosition === 3) {
             var data = {
                 "keywordsArray": null,
@@ -168,6 +166,5 @@ define(function(require, exports, module) {
                 flag = 0;
             });
         });
-
     }
 })

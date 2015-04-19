@@ -2,10 +2,9 @@
  * Created by carol on 2015/3/30.
  */
 define(function(require, exports, module) {
-    var util = require('../javascripts/util');
-    var plusMinusScatter = require('../javascripts/plusMinusScatter');
-    var shareParams = require("../javascripts/shareParams");
-    var draggableScatter = require("../javascripts/draggableScatter");
+    var shareParams = require("../shareParams");
+    var plusMinusScatter = require('../scatter/plusMinusScatter');
+    var draggableScatter = require("../scatter/draggableScatter");
 
     exports.scatterExtend = {
         clickChart: function() {   //单击图表非节点区域
@@ -56,7 +55,6 @@ define(function(require, exports, module) {
                     shareParams.shareParams._pm._flag = -1;    //表示缩小
                 }
             })*/
-
         },
 
         drag: function() {
@@ -65,7 +63,6 @@ define(function(require, exports, module) {
         drop: function() {
 
         }
-
     };
 
 })

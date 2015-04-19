@@ -1,13 +1,13 @@
 /**
  * Created by carol on 2015/3/31.
+ * //定义一些全局变量
  */
 define(function(require, exports, module) {
-    var scatter = require('../javascripts/scatterExtend');
+    var scatter = require('../javascripts/scatter/scatterExtend');
     var shareParams = require('../javascripts/shareParams');
 
     exports.global = {
         init: function(params) {
-            //定义一些全局变量
             shareParams.shareParams._scatterChart = new Highcharts.Chart({
                 chart: {
                     renderTo: 'scatter-chart',

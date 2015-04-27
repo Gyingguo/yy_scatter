@@ -17,8 +17,8 @@ define(function(require, exports, module) {
 
     var currentObj = null;    //当前有效的区域的节点
 
-    function isTopOrBottom(targetPoint) {  //判断落在哪个区域了
-        //从shareParams的_dragChartType中判断，获得当前页面拥有的
+    function isTopOrBottom(targetPoint) {
+        ///判断落在哪个区域了,/从shareParams的_dragChartType中判断，获得当前页面拥有的
         var area = {
             'x': {
                 'min': null,
@@ -60,10 +60,10 @@ define(function(require, exports, module) {
         });
         for(var i = 0; i < len; i++) {
             for(var j = i + 1; j < len; j++) {
-                //var part = 'q=' + arr[i].trim() + '+'+ arr[j].trim();
-                //var url = shareParams.shareParams._patent_url + part;
+                var part = 'q=' + arr[i].trim() + '+'+ arr[j].trim();
+                var url = shareParams.shareParams._patent_url + part;
                 //本地测试
-                var url = '/api/groups/patent';
+                //var url = '/api/groups/patent';
                 $.get(url, function(data) {
                     patent.push(data);
                 })
@@ -84,7 +84,7 @@ define(function(require, exports, module) {
                     paintPieChart.paintPieChart(data, currentObj);
                 });
             } else if(shareParams.shareParams._current_menu_choice === 3) {
-                paintPieChart.paintPieChart(shareParams.shareParams._scatter_data_json, currentObj);
+                paintPieChart.paintPieChart(JSON.stringify(shareParams.shareParams._scatter_data_json), currentObj);
             }
         } else if (upPosition === 2) {
            if(shareParams.shareParams._current_menu_choice === 2) {
@@ -94,7 +94,7 @@ define(function(require, exports, module) {
                     paintColumnChart.paintColumnChart(data, currentObj);
                 });
             } else if(shareParams.shareParams._current_menu_choice === 3) {
-                paintColumnChart.paintColumnChart(shareParams.shareParams._scatter_data_json, currentObj);
+                paintColumnChart.paintColumnChart(JSON.stringify(shareParams.shareParams._scatter_data_json), currentObj);
             }
         } else if (upPosition === 3) {
             var data = {
@@ -110,7 +110,7 @@ define(function(require, exports, module) {
                     keywordsArray = data.keywords;
                 });
             } else {  //散点图中的所有簇
-                keywordsArray = JSON.parse(shareParams.shareParams._scatter_data_json).keywords;
+                keywordsArray = shareParams.shareParams._scatter_data_json.keywords;
             }
             //获取两两关键词组合的patents信息
             data.keywordsArray = keywordsArray;

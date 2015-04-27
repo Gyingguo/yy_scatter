@@ -246,11 +246,8 @@ define(function(require, exports, module) {
                 x:event.offsetX,
                 y:event.offsetY
             };
-            var data = JSON.parse(tooltipData.dataJSON.patentsArray[id]);
+            var data = tooltipData.dataJSON.patentsArray[id];
 
-            console.log(tooltipData.dataJSON.patentsArray)
-            console.log(tooltipData.dataJSON.keywordsArray)
-            console.log(id)
             var textNode = createTextNode('',{x: mouseOverPos.x,y: mouseOverPos.y, style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)',id: _gTooltipId + '-text'});
             //确定是哪两个关键词的组合
             var tSpanContent = null;

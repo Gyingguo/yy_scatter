@@ -2,19 +2,11 @@
  * Created by carol on 2015/3/26.
  */
 define(function(require,exports,module) {
+    var common = require('../common');
     var shareParams = require('../shareParams');
-    var util = require('../util');
     var scatterSetting= require('../scatter/scatterSetting');
+    var calculateAxis = require('../scatter/calculateAxis');
     var draggableScatter = require("../scatter/draggableScatter");
-
-    function randomColors(numberOfColors) {
-        var colors = [];
-        var step = Math.floor(360 / numberOfColors);
-        for (var i = 0; i < numberOfColors; i++) {
-            colors.push('hsla(' + i * step + ', 100%, 50%, 0.7)');
-        }
-        return colors;
-    }
 
     function updateScatterChart(group, colors) {
         while (shareParams.shareParams._scatterChart.series.length > 0) {
@@ -52,23 +44,23 @@ define(function(require,exports,module) {
     exports.paintScatterChart = {
         init: function (data, chart) {
             scatterSetting.scatterSetting.init(chart);    //初始化散点图的属性
+
             //绑定事件
             this.bindEvent();
             shareParams.shareParams._scatterChart = new Highcharts.Chart(shareParams.shareParams._current_scater_chart);
             shareParams.shareParams._scatter_data_json = data; //当前scatter图表中显示的数据
-            var data = JSON.parse(data);
-            var colors = randomColors(Math.max(data.children.length, 10));
+            var colors = common.common.randomColors(Math.max(data.children.length, 10));
             updateScatterChart(data, colors);
         },
         update: function (chart) {
             scatterSetting.scatterSetting.update(chart);
             shareParams.shareParams._scatterChart = new Highcharts.Chart(shareParams.shareParams._current_scater_chart);
-            var data = JSON.parse(shareParams.shareParams._scatter_data_json);
-            var colors = randomColors(Math.max(data.children.length, 10));
+            var data = shareParams.shareParams._scatter_data_json;
+            var colors = common.common.randomColors(Math.max(data.children.length, 10));
             updateScatterChart(data, colors);
         },
         bindEvent: function() {
-            var event = {
+            var eventPoint = {
                     plotOptions: {
                         scatter: {
                             width: 10,
@@ -77,30 +69,28 @@ define(function(require,exports,module) {
                         },
                         series: {
                             events: {
-                                click: this.scatterExtendClickPoint(),
-                               drag: this.scatterExtendDrag()
+                                click: this.scatterExtendClickPoint(),   //刚好点击到节点
+                                drag: this.scatterExtendDrag()
                             }
                         }
-                    }/*,
-                    chart: {
-                        events: {
-                            //click: this.scatterExtendClickChart()
-                        }
-                    }*/
+                    }
                 };
-            $.extend(shareParams.shareParams._current_scater_chart, event);
+            shareParams.shareParams._current_scater_chart.chart.events = {   //单击图表非节点区域
+                click: this.scatterExtendClickChart()
+            };
+            $.extend(shareParams.shareParams._current_scater_chart, eventPoint);
         },
-        plusMinusScatter: function (H) {
+        plusMinusScatter: function (H, that) {
             var H = H || Highcharts;
+            var that = that;
             var yOldMin = -1;
             var yOldMax = 1;
             var xOldMin = -1;
             var xOldMax = 1;
             Highcharts.Chart.prototype.callbacks.push(function (chart) {
                 H.addEvent(chart.container, 'click', function (e) {
+                    e = chart.pointer.normalize();
                     if (shareParams.shareParams._pm._flag !== 0) {
-                        e = chart.pointer.normalize();
-
                         yOldMin = shareParams.shareParams._scatterChart.yAxis[0].min;
                         yOldMax = shareParams.shareParams._scatterChart.yAxis[0].max;
                         xOldMin = shareParams.shareParams._scatterChart.xAxis[0].min;
@@ -121,60 +111,11 @@ define(function(require,exports,module) {
                         yNewMax = yOldMax + y;
                         xNewMin = xOldMin - x;
                         xNewMax = xOldMax + x;
-                        //将缩放焦点区域移动到视觉中心的位置
-                        // shareParams.shareParams._scatterChart.yAxis[0].update({min: yNewMin, max: yNewMax}, true);
-                        //shareParams.shareParams._scatterChart.xAxis[0].update({min: xNewMin, max: xNewMax}, true);
-                        //根据_pm中的_flag判断当前选择的是放大/缩小
-                        //console.log(shareParams.shareParams._scatterChart.zField);
-                        var yAxisMin = null;
-                        var yAxisMax = null;
-                        var xAxisMin = null;
-                        var xAxisMax = null;
-                        var zAxisMin = null;
-                        var zAxisMax = null;
-                        if (shareParams.shareParams._pm._flag === 1) {
-                            /*shareParams.shareParams._pm._plusMinusCount++;
-                             yAxisMin = yNewMin / shareParams.shareParams._pm._param;
-                             yAxisMax = yNewMax / shareParams.shareParams._pm._param;
-                             xAxisMin = xNewMin / shareParams.shareParams._pm._param;
-                             xAxisMax = xNewMax / shareParams.shareParams._pm._param;
-                             zAxisMin = shareParams.shareParams._current_scater_chart.zAxis.min / shareParams.shareParams._pm._param;
-                             zAxisMax = shareParams.shareParams._current_scater_chart.zAxis.max / shareParams.shareParams._pm._param;
-                             global.global.update(
-                             {
-                             yAxis: {
-                             min: yAxisMin,
-                             max: yAxisMax,
-                             title: {text: 'y'}
-                             },
-                             xAxis: {
-                             min: xAxisMin,
-                             max: xAxisMax,
-                             title: {text: 'x'}
-                             },
-                             zAxis: {
-                             min: zAxisMin,
-                             max: zAxisMax,
-                             title: {text: 'z'}
-                             }
-                             }
-                             );
-                             paint.paintScatterChart(shareParams.shareParams._scatter_data_json, shareParams.shareParams._current_scater_chart);*/
-                            /*shareParams.shareParams._scatterChart.yAxis[0].update({
-                             min: yNewMin / shareParams.shareParams._pm._param, max: yNewMax / shareParams.shareParams._pm._param}, true);
-                             shareParams.shareParams._scatterChart.xAxis[0].update({
-                             min: xNewMin / shareParams.shareParams._pm._param, max: xNewMax / shareParams.shareParams._pm._param}, true);*/
+
+                        if (shareParams.shareParams._pm._flag === 1) { //放大plus
+                            that.update(calculateAxis.calculateAxis.plus(xNewMin, xNewMax, yNewMin, yNewMax));
                         } else {
-                            shareParams.shareParams._pm._plusMinusCount--;
-                            /*shareParams.shareParams._scatterChart.yAxis[0].update({
-                             min: -1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount),
-                             max: 1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount)
-                             }, true);
-                             shareParams.shareParams._scatterChart.xAxis[0].update({
-                             min: -1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount),
-                             max: 1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount)
-                             }, true);
-                             */
+                            that.update(calculateAxis.calculateAxis.minus());
                         }
                     } else {
                         //return;
@@ -183,10 +124,10 @@ define(function(require,exports,module) {
             });
         },
         scatterExtendClickChart: function() {
-            this.plusMinusScatter(Highcharts);
+            this.plusMinusScatter(Highcharts, this);
         },
         scatterExtendClickPoint: function() {
-            this.plusMinusScatter(Highcharts);
+            this.plusMinusScatter(Highcharts, this);
         },
         scatterExtendDrag: function() {
             draggableScatter.draggableScatter(Highcharts);

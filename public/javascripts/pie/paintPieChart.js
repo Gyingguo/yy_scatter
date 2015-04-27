@@ -1,18 +1,9 @@
 /**
  * Created by carol on 2015/3/26.
  */
-define(function(request, exports, module) {
+define(function(require, exports, module) {
+    var common = require('../common');
     var pieChart = null;
-
-    function randomColors(numberOfColors) {
-
-        var colors = [];
-        var step = Math.floor(360 / numberOfColors);
-        for (var i = 0; i < numberOfColors; i++) {
-            colors.push('hsla(' + i * step + ', 100%, 50%, 0.7)');
-        }
-        return colors;
-    }
 
     function updatePieChart(group, colors) {
         var series = {
@@ -70,7 +61,7 @@ define(function(request, exports, module) {
         })
 
         var data = JSON.parse(data);
-        var colors = randomColors(Math.max(data.children.length, 10));
+        var colors = common.common.randomColors(Math.max(data.children.length, 10));
         updatePieChart(data, colors);
     }
 })

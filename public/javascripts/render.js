@@ -6,7 +6,6 @@ define(function(require, exports, module) {
     var paint = require("../javascripts/scatter/paintScatterChart");
 
     exports.render = function(data) {
-
         if (!data.topic) data.topic = '专利聚类';
         paint.paintScatterChart.init(data, shareParams.shareParams._default_scatter_chart);
     }

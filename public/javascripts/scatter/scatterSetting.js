@@ -3,10 +3,10 @@
  * //定义一些全局变量
  */
 define(function(require, exports, module) {
-    var scatter = require('../javascripts/scatter/scatterExtend');
-    var shareParams = require('../javascripts/shareParams');
+    //var scatter = require('../scatter/scatterExtend');
+    var shareParams = require('../shareParams');
 
-    exports.global = {
+    exports.scatterSetting = {
         init: function(chart) {
             $.extend(chart,
                 {
@@ -27,16 +27,16 @@ define(function(require, exports, module) {
                                 back: { size: 1, color: 'rgba(0,0,0,0.04)' },
                                 side: { size: 1, color: 'rgba(0,0,0,0.06)' }
                             }
-                        },
+                        }/*,
                         events: {
                             afterPrint: scatter.scatterExtend.afterPrint(),
                             click: scatter.scatterExtend.clickChart()
-                        }
+                        }*/
                     },
                     title: {
                         text: '专利分布'
                     },
-                    plotOptions: {
+                    /*plotOptions: {
                         scatter: {
                             width: 10,
                             height: 10,
@@ -51,7 +51,7 @@ define(function(require, exports, module) {
                                 drop: scatter.scatterExtend.drop
                             }
                         }
-                    },
+                    },*/
                     tooltop: {
                         useHTML: true
                     },
@@ -63,7 +63,7 @@ define(function(require, exports, module) {
                     }
                 }
             )
-            shareParams.shareParams._scatterChart = new Highcharts.Chart(chart);
+           // shareParams.shareParams._scatterChart = new Highcharts.Chart(chart);
             shareParams.shareParams._current_scater_chart = chart;
             shareParams.shareParams._pm = {
                 _param: 1.2,    //缩放系数，可以在此配置
@@ -80,6 +80,8 @@ define(function(require, exports, module) {
         },
         update: function(params) {  //更新_default_scatter_chart数据
             $.extend(shareParams.shareParams._current_scater_chart, params);
+            draggableScatter.draggableScatter(Highcharts);
+            //shareparams.shareParams._scatterChart = new Highcharts.Chart(shareParams.shareParams._current_scater_chart);
         }
     }
 })

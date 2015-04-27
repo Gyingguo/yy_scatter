@@ -9,6 +9,26 @@ define(function(require, exports, module) {
         "_patent_url": "http://scut-ai-lab.tk:50000/api/patents?",
         "_keyword_url": "http://scut-ai-lab.tk:50000/#!/",
         "_keyword_year_trend_url": "http://222.201.145.184:8800/patentmining/tech_analyze.do?key=",
+        "_default_scatter_chart": {
+            yAxis: {
+                min: -1,
+                max: 1,
+                title: {text: 'y'}
+            },
+            xAxis: {
+                min: -1,
+                max: 1,
+                title: {text: 'x'}
+            },
+            zAxis: {
+                min: -1,
+                max: 1,
+                title: {text: 'z'}
+            }
+        },
+        "_current_scater_chart": {
+
+        },
         "_scatterChart": null,
         "_pm": null,
         "_scatter_data_json": null,

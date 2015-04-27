@@ -3,7 +3,9 @@
  */
 define(function(require, exports, module) {
     var shareParams = require('../shareParams');
+    //var global = require('../global');
 
+    //var paint = require("../scatter/paintScatterChart");
     exports.plusMinusScatter = function(H) {
         var H = H || Highcharts;
         var yOldMin = -1;
@@ -39,31 +41,62 @@ define(function(require, exports, module) {
                    // shareParams.shareParams._scatterChart.yAxis[0].update({min: yNewMin, max: yNewMax}, true);
                     //shareParams.shareParams._scatterChart.xAxis[0].update({min: xNewMin, max: xNewMax}, true);
                     //根据_pm中的_flag判断当前选择的是放大/缩小
-                    console.log(shareParams.shareParams._scatterChart.zField);
+                    //console.log(shareParams.shareParams._scatterChart.zField);
+                    var yAxisMin = null;
+                    var yAxisMax = null;
+                    var xAxisMin = null;
+                    var xAxisMax = null;
+                    var zAxisMin = null;
+                    var zAxisMax = null;
                     if (shareParams.shareParams._pm._flag === 1) {
-                        shareParams.shareParams._pm._plusMinusCount++;
-                        shareParams.shareParams._scatterChart.yAxis[0].update({
+                        /*shareParams.shareParams._pm._plusMinusCount++;
+                        yAxisMin = yNewMin / shareParams.shareParams._pm._param;
+                        yAxisMax = yNewMax / shareParams.shareParams._pm._param;
+                        xAxisMin = xNewMin / shareParams.shareParams._pm._param;
+                        xAxisMax = xNewMax / shareParams.shareParams._pm._param;
+                        zAxisMin = shareParams.shareParams._current_scater_chart.zAxis.min / shareParams.shareParams._pm._param;
+                        zAxisMax = shareParams.shareParams._current_scater_chart.zAxis.max / shareParams.shareParams._pm._param;
+                        global.global.update(
+                            {
+                                yAxis: {
+                                    min: yAxisMin,
+                                    max: yAxisMax,
+                                    title: {text: 'y'}
+                                },
+                                xAxis: {
+                                    min: xAxisMin,
+                                    max: xAxisMax,
+                                    title: {text: 'x'}
+                                },
+                                zAxis: {
+                                    min: zAxisMin,
+                                    max: zAxisMax,
+                                    title: {text: 'z'}
+                                }
+                            }
+                        );
+                        paint.paintScatterChart(shareParams.shareParams._scatter_data_json, shareParams.shareParams._current_scater_chart);*/
+                        /*shareParams.shareParams._scatterChart.yAxis[0].update({
                             min: yNewMin / shareParams.shareParams._pm._param, max: yNewMax / shareParams.shareParams._pm._param}, true);
                         shareParams.shareParams._scatterChart.xAxis[0].update({
-                            min: xNewMin / shareParams.shareParams._pm._param, max: xNewMax / shareParams.shareParams._pm._param}, true);
+                            min: xNewMin / shareParams.shareParams._pm._param, max: xNewMax / shareParams.shareParams._pm._param}, true);*/
                     } else {
-                        shareParams.shareParams._scatterChart.yAxis[0].update({
-                            min: -1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount - 1),
-                            max: 1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount - 1)
+                        shareParams.shareParams._pm._plusMinusCount--;
+                        /*shareParams.shareParams._scatterChart.yAxis[0].update({
+                            min: -1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount),
+                            max: 1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount)
                         }, true);
                         shareParams.shareParams._scatterChart.xAxis[0].update({
-                            min: -1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount - 1),
-                            max: 1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount - 1)
+                            min: -1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount),
+                            max: 1 * Math.pow(2, shareParams.shareParams._pm._plusMinusCount)
                         }, true);
-                        shareParams.shareParams._pm._plusMinusCount--;
+                        */
                     }
                 } else {
                     //return;
                 }
             });
-            H.addEvent(chart.xAxis[0], 'afterSetExtremes', function (e) {
-                //console.log('Set extremes to ' + e.min + ', ' + e.max);
-            });
+
         });
     }
 })

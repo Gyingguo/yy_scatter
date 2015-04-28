@@ -38,6 +38,7 @@ define(function(require,exports,module) {
 
             shareParams.shareParams._scatterChart.get(patent.group_id).addPoint(patent, false);   //增加点所包含的信息
         })
+
         shareParams.shareParams._scatterChart.redraw();
     }
 
@@ -54,7 +55,15 @@ define(function(require,exports,module) {
         },
         update: function (chart) {
             scatterSetting.scatterSetting.update(chart);
+
             shareParams.shareParams._scatterChart = new Highcharts.Chart(shareParams.shareParams._current_scater_chart);
+
+            shareParams.shareParams._scatterChart.yAxis[0].min = chart.yAxis.min;
+            shareParams.shareParams._scatterChart.yAxis[0].max = chart.yAxis.max;
+            shareParams.shareParams._scatterChart.xAxis[0].min = chart.xAxis.min;
+            shareParams.shareParams._scatterChart.xAxis[0].max = chart.xAxis.max;
+
+
             var data = shareParams.shareParams._scatter_data_json;
             var colors = common.common.randomColors(Math.max(data.children.length, 10));
             updateScatterChart(data, colors);
@@ -107,13 +116,13 @@ define(function(require,exports,module) {
                             y = chart.hoverPoint.y;
                         }
 
-                        yNewMin = yOldMin - y;
+                        /*yNewMin = yOldMin - y;
                         yNewMax = yOldMax + y;
                         xNewMin = xOldMin - x;
-                        xNewMax = xOldMax + x;
+                        xNewMax = xOldMax + x;*/
 
                         if (shareParams.shareParams._pm._flag === 1) { //放大plus
-                            that.update(calculateAxis.calculateAxis.plus(xNewMin, xNewMax, yNewMin, yNewMax));
+                            that.update(calculateAxis.calculateAxis.plus(x, y));
                         } else {
                             that.update(calculateAxis.calculateAxis.minus());
                         }

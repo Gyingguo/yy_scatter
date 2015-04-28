@@ -16,6 +16,7 @@ define(function(require, exports, module) {
                         height: 500,
                         spacingRight: 100,
                         backgroundColor: 'black',
+                        zoomType: 'xy',
                         options3d: {
                             enabled: true,
                             alpha: 5,

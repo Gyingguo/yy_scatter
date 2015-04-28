@@ -38,7 +38,6 @@ define(function(require,exports,module) {
 
             shareParams.shareParams._scatterChart.get(patent.group_id).addPoint(patent, false);   //增加点所包含的信息
         })
-
         shareParams.shareParams._scatterChart.redraw();
     }
 
@@ -89,22 +88,13 @@ define(function(require,exports,module) {
             };
             $.extend(shareParams.shareParams._current_scater_chart, eventPoint);
         },
-        plusMinusScatter: function (H, that) {
+        plusMinusScatter: function (H, a) {
             var H = H || Highcharts;
-            var that = that;
-            var yOldMin = -1;
-            var yOldMax = 1;
-            var xOldMin = -1;
-            var xOldMax = 1;
+            var that = a;
             Highcharts.Chart.prototype.callbacks.push(function (chart) {
                 H.addEvent(chart.container, 'click', function (e) {
                     e = chart.pointer.normalize();
                     if (shareParams.shareParams._pm._flag !== 0) {
-                        yOldMin = shareParams.shareParams._scatterChart.yAxis[0].min;
-                        yOldMax = shareParams.shareParams._scatterChart.yAxis[0].max;
-                        xOldMin = shareParams.shareParams._scatterChart.xAxis[0].min;
-                        xOldMax = shareParams.shareParams._scatterChart.xAxis[0].max;
-
                         var x = null;
                         var y = null;
 
@@ -115,11 +105,6 @@ define(function(require,exports,module) {
                             x = chart.hoverPoint.x;
                             y = chart.hoverPoint.y;
                         }
-
-                        /*yNewMin = yOldMin - y;
-                        yNewMax = yOldMax + y;
-                        xNewMin = xOldMin - x;
-                        xNewMax = xOldMax + x;*/
 
                         if (shareParams.shareParams._pm._flag === 1) { //放大plus
                             that.update(calculateAxis.calculateAxis.plus(x, y));

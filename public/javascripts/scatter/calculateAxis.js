@@ -41,12 +41,12 @@ define(function(require, exports, module) {
             var zMinusMin = null;
             var zMinusMax = null;
             shareParams.shareParams._pm._plusMinusCount--;
-            yMinusMin =  -1 * Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
-            yMinusMax = 1 * Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
-            xMinusMin = -1 * Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
-            xMinusMax= 1 * Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
-            zMinusMin = -1 * Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
-            zMinusMax = 1 * Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
+            yMinusMin =  -1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
+            yMinusMax = 1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
+            xMinusMin = -1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
+            xMinusMax= 1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
+            zMinusMin = -1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
+            zMinusMax = 1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
             return {
                 yAxis: {
                     min: yMinusMin,

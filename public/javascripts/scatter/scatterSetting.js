@@ -43,11 +43,12 @@ define(function(require, exports, module) {
                 }
             )
             shareParams.shareParams._current_scater_chart = chart;
-            shareParams.shareParams._default_scatter_chart = {
+            /*shareParams.shareParams._default_scatter_chart = {
                 yAxis: {
                     min: -1,
                     max: 1,
-                    title: {text: 'y'}
+                    title: {text: 'y'},
+                    allowDecimals: true
                 },
                 xAxis: {
                     min: -1,
@@ -59,7 +60,7 @@ define(function(require, exports, module) {
                     max: 1,
                     title: {text: 'z'}
                 }
-            };
+            };*/
             shareParams.shareParams._pm = {
                 _param: 1.2,    //缩放系数，可以在此配置
                 _plus: 1,

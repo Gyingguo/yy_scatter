@@ -78,7 +78,8 @@ define(function(require,exports,module) {
                         series: {
                             events: {
                                 click: this.scatterExtendClickPoint(),   //刚好点击到节点
-                                drag: this.scatterExtendDrag()
+                                drag: this.scatterExtendDrag(),
+                                mouseover: this.scatterExtendMouseover()
                             }
                         }
                     }
@@ -125,6 +126,9 @@ define(function(require,exports,module) {
         },
         scatterExtendDrag: function() {
             draggableScatter.draggableScatter(Highcharts);
+        },
+        scatterExtendMouseover: function() {
+            //鼠标附近生成一张图片
         }
     }
 })

@@ -54,6 +54,8 @@ define(function(require,exports,module) {
         },
         update: function (chart) {
             scatterSetting.scatterSetting.update(chart);
+            //绑定事件
+            this.bindEvent();
 
             shareParams.shareParams._scatterChart = new Highcharts.Chart(shareParams.shareParams._current_scater_chart);
 
@@ -95,6 +97,7 @@ define(function(require,exports,module) {
             Highcharts.Chart.prototype.callbacks.push(function (chart) {
                 H.addEvent(chart.container, 'click', function (e) {
                     e = chart.pointer.normalize();
+                    $('.zoom-range').css('display', 'none');
                     if (shareParams.shareParams._pm._flag !== 0) {
                         var x = null;
                         var y = null;
@@ -106,9 +109,9 @@ define(function(require,exports,module) {
                             x = chart.hoverPoint.x;
                             y = chart.hoverPoint.y;
                         }
-
                         if (shareParams.shareParams._pm._flag === 1) { //放大plus
                             that.update(calculateAxis.calculateAxis.plus(x, y));
+                            //重新绑定
                         } else {
                             that.update(calculateAxis.calculateAxis.minus());
                         }
@@ -118,17 +121,43 @@ define(function(require,exports,module) {
                 });
             });
         },
+        zoomRange: function(H, a) {  //设定放大缩小的选区，支持滚轮
+            var H = H || Highcharts;
+            var that = a;
+            var divZoom = document.createElement('div');
+            divZoom.setAttribute('class', 'zoom-range');
+            $('body').append(divZoom);
+            console.log('hello world');
+            Highcharts.Chart.prototype.callbacks.push(function (chart) {
+                H.addEvent(chart.container, 'mouseover', function (e) {
+                    e = chart.pointer.normalize();
+                    var x = e.clientX + 4;
+                    var y = e.clientY + 4;
+                    $('.zoom-range').css('display', 'block');
+                    $('.zoom-range').css('left', x);
+                    $('.zoom-range').css('top', y);
+                })
+                H.addEvent(chart.container, 'mouseout', function (e) {
+                    $('.zoom-range').css('display', 'none');
+                })
+            })
+        },
         scatterExtendClickChart: function() {
-            this.plusMinusScatter(Highcharts, this);
+           this.plusMinusScatter(Highcharts, this);
         },
         scatterExtendClickPoint: function() {
-            this.plusMinusScatter(Highcharts, this);
+           this.plusMinusScatter(Highcharts, this);
         },
         scatterExtendDrag: function() {
             draggableScatter.draggableScatter(Highcharts);
         },
         scatterExtendMouseover: function() {
-            //鼠标附近生成一张图片
+            //当选中是放大缩小的选项的时候，绑定事件
+            if(shareParams.shareParams._pm._flag !== 0) {
+                this.zoomRange(Highcharts, this);
+            } else {
+                //取消监听的事件
+            }
         }
     }
 })

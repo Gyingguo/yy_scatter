@@ -20,7 +20,7 @@
                         <label for="matrix-1">矩阵连接图</label>
                     </li>
                     <li class="pie-radio">
-                        <input type="radio" id="pie-1" name="radio-1" value="pie" />
+                        <input type="radio" id="pie-1" name="radio-1" value="pie" checked="true"/>
                         <label for="pie-1">饼图</label>
                     </li>
                     <li class="column-radio">
@@ -39,11 +39,11 @@
                         <label for="matrix-2">矩阵连接图</label>
                     </li>
                     <li class="pie-radio">
-                        <input type="radio" id="pie-2" name="radio-2" value="pie" />
+                        <input type="radio" id="pie-2" name="radio-2" value="pie"/>
                         <label for="pie-2">饼图</label>
                     </li>
                     <li class="column-radio">
-                        <input type="radio" id="column-2" name="radio-2" value="column" />
+                        <input type="radio" id="column-2" name="radio-2" value="column"  checked="true"/>
                         <label for="column-2">条形图</label>
                     </li>
                 </ul>
@@ -71,10 +71,14 @@
             <div id="all-points-drag">
                 簇集拖曳
             </div>
+            <div id="chart-rotate">
+                旋转
+            </div>
         </div>
-        <img id="scatter-menu-button" class="button" src="/image/menu.png" alt="下侧菜单"/>
         <div id="scatter-chart"></div>
     </div>
+
+    <div class="zoom-range"></div>
 
     <script src="/lib/jquery-2.0.3.js"></script>
     <script src="/lib/highcharts-4.0.1/js/highcharts.js"></script>

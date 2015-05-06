@@ -13,16 +13,20 @@ define(function(require, exports, module) {
             yAxis: {
                 min: -1,
                 max: 1,
+                startOnTick: false,
+                endOnTick: false,
                 title: {text: 'y'}
             },
             xAxis: {
                 min: -1,
                 max: 1,
+                startOnTick: false,
+                endOnTick: false,
                 title: {text: 'x'}
             },
             zAxis: {
                 min: -1,
-                max: 1,
+                 max: 1,
                 title: {text: 'z'}
             }
         },
@@ -37,7 +41,8 @@ define(function(require, exports, module) {
            "minus": 1,
            "single_point_drag": 2,
            "set_point_drag": 3,
-           "all_point_drag": 4
+           "all_point_drag": 4,
+            "rotate": 5
         },
         "_current_menu_choice": 0,
         "_dragChartType": {

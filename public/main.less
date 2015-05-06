@@ -1,5 +1,6 @@
 body {
   background: black;
+  overflow: hidden;
 }
 #left-container {
   width: 40%;
@@ -87,14 +88,18 @@ body {
 #plus img,#minus img {
   height: 20px;
 }
-#plus.chosen,#minus.chosen,#single-point-drag.chosen,#set-points-drag.chosen,#all-points-drag.chosen {
+#plus.chosen,#minus.chosen,#single-point-drag.chosen,
+#set-points-drag.chosen,#all-points-drag.chosen,
+#chart-rotate.chosen {
   border-radius: 17px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#907979), to(#000));
+  background: #828381;
 }
 .zoom-range {
   position: absolute;
   display: none;
   width: 100px;
   height: 80px;
+  //background: url("/image/area.png") no-repeat;
+  //background-position: 50% 50%;
   background-color: rgba(96, 175, 199, 0.7);
 }

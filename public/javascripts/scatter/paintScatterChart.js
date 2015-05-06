@@ -48,6 +48,8 @@ define(function(require,exports,module) {
             //绑定事件
             this.bindEvent();
             shareParams.shareParams._scatterChart = new Highcharts.Chart(shareParams.shareParams._current_scater_chart);
+            //设置旋转
+            this.bindRotate();
             shareParams.shareParams._scatter_data_json = data; //当前scatter图表中显示的数据
             var colors = common.common.randomColors(Math.max(data.children.length, 10));
             updateScatterChart(data, colors);
@@ -58,6 +60,8 @@ define(function(require,exports,module) {
             this.bindEvent();
 
             shareParams.shareParams._scatterChart = new Highcharts.Chart(shareParams.shareParams._current_scater_chart);
+            //设置旋转
+            this.bindRotate();
 
             shareParams.shareParams._scatterChart.yAxis[0].min = chart.yAxis.min;
             shareParams.shareParams._scatterChart.yAxis[0].max = chart.yAxis.max;
@@ -68,6 +72,36 @@ define(function(require,exports,module) {
             var data = shareParams.shareParams._scatter_data_json;
             var colors = common.common.randomColors(Math.max(data.children.length, 10));
             updateScatterChart(data, colors);
+        },
+        bindRotate: function() {
+            $(shareParams.shareParams._scatterChart.container).on('mousedown.hc touchstart.hc', function (event) {
+                event = shareParams.shareParams._scatterChart.pointer.normalize(event)
+
+                var sensitivity = 5
+                var oldPageX = event.pageX
+                var oldPageY = event.pageY
+                var oldAlpha = shareParams.shareParams._scatterChart.options.chart.options3d.alpha
+                var oldBeta = shareParams.shareParams._scatterChart.options.chart.options3d.beta
+
+                $(document).on({
+                    'mousemove.hc touchdrag.hc': function (event) {
+                        if(shareParams.shareParams._current_menu_choice == shareParams.shareParams._main_menu_choice['rotate']) {
+                            var newBeta = oldBeta + (oldPageX - event.pageX) / sensitivity
+                            shareParams.shareParams._scatterChart.options.chart.options3d.beta = newBeta
+
+                            var newAlpha = oldAlpha + (event.pageY - oldPageY) / sensitivity
+                            shareParams.shareParams._scatterChart.options.chart.options3d.alpha = newAlpha
+
+                            shareParams.shareParams._scatterChart.redraw(false);
+                        }
+                    },
+                    'mouseup touchend': function () {
+                        if(shareParams.shareParams._current_menu_choice == shareParams.shareParams._main_menu_choice['rotate']) {
+                            $(document).off('.hc');
+                        }
+                    }
+                })
+            })
         },
         bindEvent: function() {
             var eventPoint = {
@@ -124,10 +158,6 @@ define(function(require,exports,module) {
         zoomRange: function(H, a) {  //设定放大缩小的选区，支持滚轮
             var H = H || Highcharts;
             var that = a;
-            var divZoom = document.createElement('div');
-            divZoom.setAttribute('class', 'zoom-range');
-            $('body').append(divZoom);
-            console.log('hello world');
             Highcharts.Chart.prototype.callbacks.push(function (chart) {
                 H.addEvent(chart.container, 'mouseover', function (e) {
                     e = chart.pointer.normalize();

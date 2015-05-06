@@ -15,6 +15,7 @@ define(function(require, exports, module) {
             xPlusMax = 1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
             zPlusMin = -1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
             zPlusMax = 1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
+
             return {
                 yAxis: {
                     min: yPlusMin,

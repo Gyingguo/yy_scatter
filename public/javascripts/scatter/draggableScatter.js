@@ -78,24 +78,32 @@ define(function(require, exports, module) {
     function drawWithDragData() {
         if (upPosition === 1) {
             if(shareParams.shareParams._current_menu_choice === 2) {
+                alert("单点拖曳下没有可用于饼图可视化的数据信息！（试试单簇拖曳、簇集拖曳吧！）");
+            } else if(shareParams.shareParams._current_menu_choice === 3) {
+                //单簇拖曳
                 var url = shareParams.shareParams._url + options.id;
                 $.get(url,function(data) {
                     var data = JSON.stringify(data);
                     paintPieChart.paintPieChart(data, currentObj);
                 });
-            } else if(shareParams.shareParams._current_menu_choice === 3) {
+            } else if(shareParams.shareParams._current_menu_choice === 4) {
+                //整簇拖曳
                 paintPieChart.paintPieChart(JSON.stringify(shareParams.shareParams._scatter_data_json), currentObj);
             }
         } else if (upPosition === 2) {
            if(shareParams.shareParams._current_menu_choice === 2) {
-                var url = shareParams.shareParams._url + options.id;
-                $.get(url,function(data) {
-                    var data = JSON.stringify(data);
-                    paintColumnChart.paintColumnChart(data, currentObj);
-                });
+               alert("单点拖曳下没有可用于条形图可视化的数据信息！（试试单簇拖曳、簇集拖曳吧！）");
             } else if(shareParams.shareParams._current_menu_choice === 3) {
-                paintColumnChart.paintColumnChart(JSON.stringify(shareParams.shareParams._scatter_data_json), currentObj);
-            }
+               //单簇拖曳
+               var url = shareParams.shareParams._url + options.id;
+               $.get(url,function(data) {
+                   var data = JSON.stringify(data);
+                   paintColumnChart.paintColumnChart(data, currentObj);
+               });
+            } else if(shareParams.shareParams._current_menu_choice === 4) {
+               //整簇拖曳
+               paintColumnChart.paintColumnChart(JSON.stringify(shareParams.shareParams._scatter_data_json), currentObj);
+           }
         } else if (upPosition === 3) {
             var data = {
                 "keywordsArray": null,

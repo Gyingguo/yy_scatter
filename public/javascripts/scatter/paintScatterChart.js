@@ -160,12 +160,15 @@ define(function(require,exports,module) {
             var that = a;
             Highcharts.Chart.prototype.callbacks.push(function (chart) {
                 H.addEvent(chart.container, 'mouseover', function (e) {
-                    e = chart.pointer.normalize();
-                    var x = e.clientX + 4;
-                    var y = e.clientY + 4;
-                    $('.zoom-range').css('display', 'block');
-                    $('.zoom-range').css('left', x);
-                    $('.zoom-range').css('top', y);
+                    if(shareParams.shareParams._current_menu_choice == shareParams.shareParams._main_menu_choice.minus ||
+                        shareParams.shareParams._current_menu_choice == shareParams.shareParams._main_menu_choice.plus) {
+                        e = chart.pointer.normalize();
+                        var x = e.clientX + 4;
+                        var y = e.clientY + 4;
+                        $('.zoom-range').css('display', 'block');
+                        $('.zoom-range').css('left', x);
+                        $('.zoom-range').css('top', y);
+                    }
                 })
                 H.addEvent(chart.container, 'mouseout', function (e) {
                     $('.zoom-range').css('display', 'none');

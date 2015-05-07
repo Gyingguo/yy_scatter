@@ -26,6 +26,7 @@ define(function(require, exports, module) {
     }
 
     exports.paintPieChart = function(data, posObj) {
+        var data = JSON.parse(data);
         pieChart = new Highcharts.Chart({
             chart: {
                 renderTo: posObj.id,
@@ -39,7 +40,7 @@ define(function(require, exports, module) {
                 }
             },
             title: {
-                text: '聚类分布',
+                text: data.topic || '聚类分布',
                 style: {
                     color: 'white'
                 }
@@ -60,7 +61,6 @@ define(function(require, exports, module) {
             }
         })
 
-        var data = JSON.parse(data);
         var colors = common.common.randomColors(Math.max(data.children.length, 10));
         updatePieChart(data, colors);
     }

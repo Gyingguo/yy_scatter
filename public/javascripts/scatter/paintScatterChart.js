@@ -130,7 +130,7 @@ define(function(require,exports,module) {
             var that = a;
             Highcharts.Chart.prototype.callbacks.push(function (chart) {
                 H.addEvent(chart.container, 'click', function (e) {
-                    e = chart.pointer.normalize();
+                    e = chart.pointer.normalize(e);
                     $('.zoom-range').css('display', 'none');
                     if (shareParams.shareParams._pm._flag !== 0) {
                         var x = null;
@@ -162,7 +162,7 @@ define(function(require,exports,module) {
                 H.addEvent(chart.container, 'mouseover', function (e) {
                     if(shareParams.shareParams._current_menu_choice == shareParams.shareParams._main_menu_choice.minus ||
                         shareParams.shareParams._current_menu_choice == shareParams.shareParams._main_menu_choice.plus) {
-                        e = chart.pointer.normalize();
+                        e = chart.pointer.normalize(e);
                         var x = e.clientX + 4;
                         var y = e.clientY + 4;
                         $('.zoom-range').css('display', 'block');

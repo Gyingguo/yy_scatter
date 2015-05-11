@@ -227,7 +227,14 @@ define(function(require, exports, module) {
         var parent = document.getElementById(_gTooltipId);
         parent.insertBefore(path,parent.childNodes[0]);
         //对path进行监听
-        document.getElementById(_gTooltipId + '-path').addEventListener('mouseout', removeTooltip, false);  //当鼠标移出tooltip删除
+        /*if(window.addEventListener) {
+            document.getElementById(_gTooltipId + '-path').addEventListener('mouseout', removeTooltip, false);  //当鼠标移出tooltip删除
+        } else {
+            document.getElementById(_gTooltipId + '-path').attachEvent('onmouseout', removeTooltip);  //当鼠标移出tooltip删除
+        }*/
+        document.getElementById(_gTooltipId + '-path').onmouseout = function(e) {
+            removeTooltip(e);
+        }
     }
 
     function removeTooltip() {
@@ -238,13 +245,13 @@ define(function(require, exports, module) {
     }
 
     function createTooltip(evt) {
-        var event = evt || window.event;
-        var target = window.event.srcElement || evt.target;
+        var e = event || evt;
+        var target = e.srcElement || e.target;
         var id = target.id;
         if(!isNaN(parseInt(id,10))) {//判断位数字
             mouseOverPos = {
-                x:event.offsetX,
-                y:event.offsetY
+                x:e.offsetX,
+                y:e.offsetY
             };
             var data = tooltipData.dataJSON.patentsArray[id];
 
@@ -263,7 +270,6 @@ define(function(require, exports, module) {
             for(var i = len - 1, j = 0; i > 0; i--) {
                 sum = sum + i;
                 if(sum > id) {
-                    console.log(sum)
                     keywordY = j;
                     keywordX = len - (sum - id);
                     break;
@@ -299,7 +305,6 @@ define(function(require, exports, module) {
     }
 
     function drawMatrix(data) {
-        console.log(data);
         var len = data.dataJSON.keywordsArray.length > 10 ? 10 : data.dataJSON.keywordsArray.length;
         layoutInit(len);
 
@@ -316,7 +321,16 @@ define(function(require, exports, module) {
         tooltipData = data;
         var rectGroup = document.getElementById(_gMainId).childNodes;
         for(var i = 0; i < rectGroup.length; i++) {
-            rectGroup[i].addEventListener('mouseover',createTooltip, false);
+            /*if(window.addEventListener) {
+                console.log('listener');
+                rectGroup[i].addEventListener('mouseover', createTooltip, false);
+            } else {
+                console.log('attach');
+                rectGroup[i].attachEvent('onmouseover', createTooltip);
+            }*/
+            rectGroup[i].onmouseover = function(e) {
+                createTooltip(e);
+            }
         }
     }
     exports.matrix = function(options) {
@@ -330,7 +344,7 @@ define(function(require, exports, module) {
 
         var id = '#' + options.id;
         container = $(id);    //容器
-        svgElement = makeSVG('svg', {id: _svgId, width: '100%', height: '100%', style: 'background: black;'});
+        svgElement = makeSVG('svg', {xmlns: 'http://www.w3.org/2000/svg', id: _svgId, width: '100%', height: '100%', style: 'background: black;'});
 
         gRowElement = makeSVG('g', {id: _gRowId});
         gColumnElement = makeSVG('g', {id: _gColumnId});
@@ -344,8 +358,8 @@ define(function(require, exports, module) {
 
         document.getElementById(options.id).appendChild(svgElement);
 
-        svgClientWidth = svgElement.clientWidth;
-        svgClientHeight = svgElement.clientHeight;
+        svgClientWidth = svgElement.clientWidth || svgElement.parentNode.clientWidth;
+        svgClientHeight = svgElement.clientHeight || svgElement.parentNode.clientHeight;
 
         drawMatrix(options);
     }

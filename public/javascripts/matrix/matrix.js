@@ -196,8 +196,8 @@ define(function(require, exports, module) {
     var mouseOverPos = null;  //获取鼠标移入的位置
     function createTooltipBorder() { //根据内容大小生成对应大小tooltip那层遮罩
         //生成框
-        var width = document.getElementById(_gTooltipId + '-text').clientWidth;
-        var height = document.getElementById(_gTooltipId + '-text').clientHeight;
+        var width = document.getElementById(_gTooltipId + '-text').getBBox().width;
+        var height = document.getElementById(_gTooltipId + '-text').getBBox().height;
         var start = {
             x: mouseOverPos.x - 16,
             y: mouseOverPos.y - 16
@@ -226,12 +226,6 @@ define(function(require, exports, module) {
         var path = makeSVG('path', {id: _gTooltipId + '-path', zIndex: 3, d: pathD, style:'fill:rgba(249, 249, 249, .85);stoke-width:1;stroke:hsla(24, 100%, 50%, 0.7)'});
         var parent = document.getElementById(_gTooltipId);
         parent.insertBefore(path,parent.childNodes[0]);
-        //对path进行监听
-        /*if(window.addEventListener) {
-            document.getElementById(_gTooltipId + '-path').addEventListener('mouseout', removeTooltip, false);  //当鼠标移出tooltip删除
-        } else {
-            document.getElementById(_gTooltipId + '-path').attachEvent('onmouseout', removeTooltip);  //当鼠标移出tooltip删除
-        }*/
         document.getElementById(_gTooltipId + '-path').onmouseout = function(e) {
             removeTooltip(e);
         }
@@ -245,14 +239,16 @@ define(function(require, exports, module) {
     }
 
     function createTooltip(evt) {
-        var e = event || evt;
+        var e = window.event || evt;
         var target = e.srcElement || e.target;
         var id = target.id;
         if(!isNaN(parseInt(id,10))) {//判断位数字
             mouseOverPos = {
-                x:e.offsetX,
-                y:e.offsetY
+                x:e.offsetX || e.pageX - 10,
+                y:e.offsetY || e.pageY - 50
             };
+
+
             var data = tooltipData.dataJSON.patentsArray[id];
 
             var textNode = createTextNode('',{x: mouseOverPos.x,y: mouseOverPos.y, style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)',id: _gTooltipId + '-text'});
@@ -276,7 +272,10 @@ define(function(require, exports, module) {
                 }
                 j++;
             }
-            tSpanContent = tooltipData.dataJSON.keywordsArray[keywordX] + "&" + tooltipData.dataJSON.keywordsArray[keywordY] + " （共有" + tooltipData.dataJSON.patentsArray.count + "）篇";
+
+            tSpanContent = tooltipData.dataJSON.keywordsArray[keywordX] + "&" + tooltipData.dataJSON.keywordsArray[keywordY] + " （共有" + tooltipData.dataJSON.patentsArray[id].count + "）篇";
+
+            var commonPatent = tooltipData.dataJSON.patentsArray[id];   //自己要写的页面patent信息
 
             //var href = '';   需要自己写一个页面
             var aLink = createALink('http://www.baidu.com');
@@ -290,6 +289,7 @@ define(function(require, exports, module) {
                 var point = data.patents[i].points.trim();
                 var href = shareParams.shareParams._keyword_year_trend_url + point + "&keyword=" + point;
                 var aLink2 = createALink(href);
+
                 if(!unique[point]) {
                     unique[point] = 1;
                     var tSpan2 = createSpan(point, {x: mouseOverPos.x, dy: 16,style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
@@ -311,7 +311,6 @@ define(function(require, exports, module) {
         xAxisHTML = createxAxis(data.dataJSON.keywordsArray);
         yAxisHTML = createyAxis(data.dataJSON.keywordsArray);
         mainHTML = createMain(data.dataJSON);
-        gTooltipElement = createTooltip(data.dataJSON);
         //添加交互事件
         addEvent(data);
     }
@@ -321,13 +320,6 @@ define(function(require, exports, module) {
         tooltipData = data;
         var rectGroup = document.getElementById(_gMainId).childNodes;
         for(var i = 0; i < rectGroup.length; i++) {
-            /*if(window.addEventListener) {
-                console.log('listener');
-                rectGroup[i].addEventListener('mouseover', createTooltip, false);
-            } else {
-                console.log('attach');
-                rectGroup[i].attachEvent('onmouseover', createTooltip);
-            }*/
             rectGroup[i].onmouseover = function(e) {
                 createTooltip(e);
             }

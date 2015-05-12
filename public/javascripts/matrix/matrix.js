@@ -107,6 +107,9 @@ define(function(require, exports, module) {
         a.setAttributeNS('http://www.w3.org/1999/xlink',
             'xlink:href',
             href);
+        a.setAttributeNS('http://www.w3.org/1999/xlink',
+            'target',
+            '_blank');
         return a;
     }
 
@@ -273,12 +276,14 @@ define(function(require, exports, module) {
                 j++;
             }
 
-            tSpanContent = tooltipData.dataJSON.keywordsArray[keywordX] + "&" + tooltipData.dataJSON.keywordsArray[keywordY] + " （共有" + tooltipData.dataJSON.patentsArray[id].count + "）篇";
+            tSpanContent = tooltipData.dataJSON.keywordsArray[keywordX].trim() + "&" + tooltipData.dataJSON.keywordsArray[keywordY].trim() + " （共有" + tooltipData.dataJSON.patentsArray[id].count + "）篇";
 
             var commonPatent = tooltipData.dataJSON.patentsArray[id];   //自己要写的页面patent信息
+            console.log(commonPatent);
 
-            //var href = '';   需要自己写一个页面
-            var aLink = createALink('http://www.baidu.com');
+            var href = '/relatedPatent?keyword=' + tooltipData.dataJSON.keywordsArray[keywordX].trim() + "&" + tooltipData.dataJSON.keywordsArray[keywordY].trim();   //需要自己写一个页面
+            var aLink = createALink(href);
+            //var aLink = createALink('http://www.baidu.com');
             var tSpan = createSpan(tSpanContent, {style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
 
             aLink.appendChild(tSpan);

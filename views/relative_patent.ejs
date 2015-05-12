@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>聚类</title>
+    <!-- <link rel="stylesheet" href="/lib/boostrap.min.css">-->
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/related_patent.css">
+</head>
+<body>
+    <header>
+        <nav class="top-bar">
+            <ul class="title-area">
+                <li class="name">
+                    <h1><a href="http://scut-ai-lab.tk:8800/zhuanli/home.jsp">专利挖掘</a></h1>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main id="container">
+        <h3>同时出现"<%=keyword %>"的专利:</h3>
+        <% for (var i = 0; i < content.patents.length; i++) { %>
+        <article class="patent-infor">
+            <header>
+            <span>
+                <h2>
+                    <a href="http://scut-ai-lab.tk:8800/zhuanli/patentView.do?method=view&word=<%=content.patents[i].application_number%>" class="patent-title"><%=content.patents[i].title %></a>
+                </h2>
+            </span>
+            </header>
+            <div class="full">
+                <p><%=content.patents[i].abstract%></p>
+            </div>
+        </article>
+        <% } %>
+    </main>
+</body>
+</html>

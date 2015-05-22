@@ -251,7 +251,6 @@ define(function(require, exports, module) {
                 y:e.offsetY || e.pageY - 50
             };
 
-
             var data = tooltipData.dataJSON.patentsArray[id];
 
             var textNode = createTextNode('',{x: mouseOverPos.x,y: mouseOverPos.y, style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)',id: _gTooltipId + '-text'});
@@ -279,7 +278,6 @@ define(function(require, exports, module) {
             tSpanContent = tooltipData.dataJSON.keywordsArray[keywordX].trim() + "&" + tooltipData.dataJSON.keywordsArray[keywordY].trim() + " （共有" + tooltipData.dataJSON.patentsArray[id].count + "）篇";
 
             var commonPatent = tooltipData.dataJSON.patentsArray[id];   //自己要写的页面patent信息
-            console.log(commonPatent);
 
             var href = '/relatedPatent?keyword=' + tooltipData.dataJSON.keywordsArray[keywordX].trim() + "&" + tooltipData.dataJSON.keywordsArray[keywordY].trim();   //需要自己写一个页面
             var aLink = createALink(href);

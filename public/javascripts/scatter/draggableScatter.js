@@ -109,21 +109,37 @@ define(function(require, exports, module) {
                 "keywordsArray": null,
                 "patentsArray": null
             };
-            var keywordsArray = null;
+            var keywordsArray = [];
             if(shareParams.shareParams._current_menu_choice === 2) {//单个点的关键词
                 keywordsArray = dragPoint.keywords.split(',');
+                //获取两两关键词组合的patents信息
+                data.keywordsArray = keywordsArray;
+                data.patentsArray = searchByKeywords(keywordsArray);
+                paintMatrixChart.paintMatrixChart(data, currentObj);
             } else if(shareParams.shareParams._current_menu_choice === 3) {  //单个簇
                 var url = shareParams.shareParams._url + dragPoint.group_id;
-                $.get(url, function(data) {  //得到该簇的keywords
-                    keywordsArray = data.keywords;
+                $.get(url, function(result) {  //得到该簇的keywords
+                    for(var i = 0; i < result.keywords.length; i++) {
+                        keywordsArray.push(result.keywords[i].name);
+                    }
+                    //获取两两关键词组合的patents信息
+                    data.keywordsArray = keywordsArray;
+                    data.patentsArray = searchByKeywords(keywordsArray);
+                    paintMatrixChart.paintMatrixChart(data, currentObj);
                 });
             } else {  //散点图中的所有簇
-                keywordsArray = shareParams.shareParams._scatter_data_json.keywords;
+                for(var i = 0; i < shareParams.shareParams._scatter_data_json.keywords.length; i++) {
+                    keywordsArray.push(shareParams.shareParams._scatter_data_json.keywords[i].name);
+                }
+                //获取两两关键词组合的patents信息
+                data.keywordsArray = keywordsArray;
+                data.patentsArray = searchByKeywords(keywordsArray);
+                paintMatrixChart.paintMatrixChart(data, currentObj);
             }
             //获取两两关键词组合的patents信息
-            data.keywordsArray = keywordsArray;
+            /*data.keywordsArray = keywordsArray;
             data.patentsArray = searchByKeywords(keywordsArray);
-            paintMatrixChart.paintMatrixChart(data, currentObj);
+            paintMatrixChart.paintMatrixChart(data, currentObj);*/
         } else {
             //
         }

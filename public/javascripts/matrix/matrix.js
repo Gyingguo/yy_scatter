@@ -197,65 +197,44 @@ define(function(require, exports, module) {
 
     var tooltipData = null;
     var mouseOverPos = null;  //获取鼠标移入的位置
-    function createTooltipBorder() { //根据内容大小生成对应大小tooltip那层遮罩
-        //生成框
-        var width = document.getElementById(_gTooltipId + '-text').getBBox().width;
-        var height = document.getElementById(_gTooltipId + '-text').getBBox().height;
-        var start = {
-            x: mouseOverPos.x - 16,
-            y: mouseOverPos.y - 16
-        };
-        var L1 = {
-            x: start.x + width + 16,
-            y: start.y
-        };
-        var L2 = {
-            x: start.x + width + 16,
-            y: start.y + height + 16
-        };
-        var L3 = {
-            x: start.x ,
-            y: start.y + height + 16
-        };
-        var L4 = {
-            x: start.x,
-            y: start.y
-        };
-        var pathD = "M" + " " + start.x + " " + start.y + " " +
-            "L" + " " + L1.x    + " " + L1.y    + " " +
-            "L" + " " + L2.x    + " " + L2.y    + " " +
-            "L" + " " + L3.x    + " " + L3.y    + " " +
-            "L" + " " + L4.x    + " " + L4.y;
-        var path = makeSVG('path', {id: _gTooltipId + '-path', zIndex: 3, d: pathD, style:'fill:rgba(249, 249, 249, .85);stoke-width:1;stroke:hsla(24, 100%, 50%, 0.7)'});
-        var parent = document.getElementById(_gTooltipId);
-        parent.insertBefore(path,parent.childNodes[0]);
-        document.getElementById(_gTooltipId + '-path').onmouseout = function(e) {
-            removeTooltip(e);
-        }
-    }
 
     function removeTooltip() {
-        var path = document.getElementById(_gTooltipId + '-path');
-        var text = document.getElementById(_gTooltipId + '-text');
-        document.getElementById(_gTooltipId).removeChild(path);
-        document.getElementById(_gTooltipId).removeChild(text);
+        $('#matrix-tooltip')[0].innerHTML = "";
+        $('#matrix-tooltip').css('display', 'none');
+    }
+
+    function createElement(tag,attrs) {  //创建DOM元素非svg元素对象
+        var el= document.createElement(tag);
+        for (var k in attrs)
+            el.setAttribute(k, attrs[k]);
+        return el;
+    }
+
+    function getScrollTop1() {
+        if ('pageYOffset' in window) {
+            return window.pageYOffset;
+        } else if (document.compatMode === "BackCompat") {
+            return document.body.scrollTop;
+        } else {
+            return document.documentElement.scrollTop;
+        }
     }
 
     function createTooltip(evt) {
         var e = window.event || evt;
         var target = e.srcElement || e.target;
         var id = target.id;
+        var matrixTooltip = $('#matrix-tooltip');
         if(!isNaN(parseInt(id,10))) {//判断位数字
-            mouseOverPos = {
+
+           mouseOverPos = {
                 x:e.offsetX || e.pageX - 10,
                 y:e.offsetY || e.pageY - 50
             };
 
             var data = tooltipData.dataJSON.patentsArray[id];
 
-            var textNode = createTextNode('',{x: mouseOverPos.x,y: mouseOverPos.y, style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)',id: _gTooltipId + '-text'});
             //确定是哪两个关键词的组合
-            var tSpanContent = null;
             var keywordX = 0;    //确定是哪两个关键字的组合
             var keywordY = 0;
             var sum = 0;
@@ -275,34 +254,40 @@ define(function(require, exports, module) {
                 j++;
             }
 
-            tSpanContent = tooltipData.dataJSON.keywordsArray[keywordX].trim() + "&" + tooltipData.dataJSON.keywordsArray[keywordY].trim() + " （共有" + tooltipData.dataJSON.patentsArray[id].count + "）篇";
+            var contentTitleText = tooltipData.dataJSON.keywordsArray[keywordX].trim() + "&" + tooltipData.dataJSON.keywordsArray[keywordY].trim() + " （共有" + tooltipData.dataJSON.patentsArray[id].count + "）篇";
 
             var commonPatent = tooltipData.dataJSON.patentsArray[id];   //自己要写的页面patent信息
 
             var href = '/relatedPatent?keyword=' + tooltipData.dataJSON.keywordsArray[keywordX].trim() + "&" + tooltipData.dataJSON.keywordsArray[keywordY].trim();   //需要自己写一个页面
-            var aLink = createALink(href);
-            //var aLink = createALink('http://www.baidu.com');
-            var tSpan = createSpan(tSpanContent, {style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
 
-            aLink.appendChild(tSpan);
-            textNode.appendChild(aLink);
+            var contentTitleSpan = createElement('span',{style: 'font-size:12px;display:block;padding: 2px;color:hsla(200, 100%, 39%, 1)'});
+            contentTitleSpan.innerHTML = contentTitleText;
+
+            var contentTitleALink = createElement('a', {href: href,target: '_blank'});
+            contentTitleALink.appendChild(contentTitleSpan);
+
+            matrixTooltip.append(contentTitleALink);
 
             var unique = {};  //用于数组去重的对象
             for(var i = 0; i < data.patents.length; i++) {
                 var point = data.patents[i].points.trim();
                 var href = shareParams.shareParams._keyword_year_trend_url + point + "&keyword=" + point;
-                var aLink2 = createALink(href);
+                var contentALink = createElement('a', {href: href,target: '_blank'});
 
                 if(!unique[point]) {
                     unique[point] = 1;
-                    var tSpan2 = createSpan(point, {x: mouseOverPos.x, dy: 16,style: 'font-size:12px;fill:hsla(200, 100%, 39%, 1)'});
-                    aLink2.appendChild(tSpan2);
-                    textNode.appendChild(aLink2);
+                    var contentSpan = createElement('span', {style: 'font-size:12px;display:block;padding: 2px;color:hsla(200, 100%, 39%, 1)'});
+                    contentSpan.innerHTML = point;
+                    contentALink.appendChild(contentSpan);
+                    matrixTooltip.append(contentALink);
                 }
             }
-            document.getElementById(_gTooltipId).appendChild(textNode);
-
-           createTooltipBorder();
+            var x = e.clientX;
+            var y = e.clientY + getScrollTop1();
+            var matrixTooltipWidth = parseFloat(matrixTooltip.css('width')) / 2;
+            matrixTooltip.css('left',x - matrixTooltipWidth);
+            matrixTooltip.css('top', y - 2);
+            matrixTooltip.css('display', 'block');
         }
         return false;
     }
@@ -325,7 +310,12 @@ define(function(require, exports, module) {
         for(var i = 0; i < rectGroup.length; i++) {
             rectGroup[i].onmouseover = function(e) {
                 createTooltip(e);
+                return false;
             }
+        }
+        $('#matrix-tooltip')[0].onmouseleave = function(e) {
+            removeTooltip(e);
+            return false;
         }
     }
     exports.matrix = function(options) {

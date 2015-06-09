@@ -15,8 +15,26 @@ define(function(require, exports, module) {
             xPlusMax = 1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
             zPlusMin = -1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
             zPlusMax = 1 / Math.pow(shareParams.shareParams._pm._param, shareParams.shareParams._pm._plusMinusCount);
-
             return {
+                chart: {
+                    renderTo: 'scatter-chart',
+                    type: 'scatter',
+                    height: 500,
+                    spacingRight: 100,
+                    backgroundColor: 'black',
+                    options3d: {
+                        enabled: true,
+                        alpha: 5,
+                        beta: 45,
+                        depth: 400,
+                        viewDistance: 5,
+                        frame: {
+                            bottom: { size: 1, color: 'rgba(0,0,0,0.02)' },
+                            back: { size: 1, color: 'rgba(0,0,0,0.04)' },
+                            side: { size: 1, color: 'rgba(0,0,0,0.06)' }
+                        }
+                    }
+                },
                 yAxis: {
                     min: yPlusMin,
                     max: yPlusMax,

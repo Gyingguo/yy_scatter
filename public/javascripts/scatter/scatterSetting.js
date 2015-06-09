@@ -18,7 +18,7 @@ define(function(require, exports, module) {
                         options3d: {
                             enabled: true,
                             alpha: 5,
-                            beta: 16,
+                            beta: 45,
                             depth: 400,
                             viewDistance: 5,
                             frame: {

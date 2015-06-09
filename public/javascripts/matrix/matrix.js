@@ -17,7 +17,7 @@ define(function(require, exports, module) {
        },
        tooltip: {
            backgroundColor: 'rgba(249, 249, 249, 0.85)',
-           headerFormat: '<span style="font-size: 10px">{point.key}</span><br/>',
+           headerFormat: '<span style="font-size: 12px">{point.key}</span><br/>',
            pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: <b>{point.y}</b><br/>'
        }
    }
@@ -137,7 +137,7 @@ define(function(require, exports, module) {
            // var href = "http://www.baidu.com";
             // var content = " 计算机";
             var aNode = createALink(href);
-            var fillStyle = "font-size: 10px;fill:" + defaultOptions.colors[i*len - i];
+            var fillStyle = "font-size: 12px;fill:" + defaultOptions.colors[i*len - i];
             xAxisPos.style = fillStyle;
             var textNode = createTextNode(content, xAxisPos);
             $(aNode).append(textNode);
@@ -159,7 +159,7 @@ define(function(require, exports, module) {
             //var href = "http://www.baidu.com";
             //var content = "计算机";
             var aNode = createALink(href);
-            var fillStyle = "font-size: 10px;fill:" + defaultOptions.colors[i*len - i];
+            var fillStyle = "font-size: 12px;fill:" + defaultOptions.colors[i*len - i];
             yAxisPos.style = fillStyle;
             var textNode = createTextNode(content, yAxisPos);
             $(aNode).append(textNode);
